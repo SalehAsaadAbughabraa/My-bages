@@ -1,0 +1,736 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>اختبار تفاعلي – المتتاليات (الصفحات 1-8)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            options: {
+                enableMenu: false
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #c9c5b5;
+            background-image: radial-gradient(circle at 20% 35%, rgba(245,235,200,0.4) 2%, transparent 2.2%);
+            background-size: 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+        }
+        .container {
+            max-width: 768px;
+            width: 100%;
+            background: #fffef5;
+            background-image: linear-gradient(#f2efdf 1px, transparent 1px), linear-gradient(90deg, #f2efdf 1px, transparent 1px);
+            background-size: 30px 30px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2), 0 0 0 1px #e2d6b6;
+            border-radius: 24px;
+            padding: 30px 35px 50px 35px;
+            position: relative;
+            min-height: 900px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e3c4c;
+            border-bottom: 3px solid #c9a53b;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .teacher-name {
+            text-align: center;
+            font-size: 14px;
+            color: #795d19;
+            background: #efe7cf;
+            padding: 6px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 0 auto 20px;
+            width: auto;
+        }
+        .teacher-name i { margin-left: 6px; }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f3efdf;
+            padding: 12px 18px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .question-counter {
+            font-weight: 700;
+            color: #1e3c4c;
+            font-size: 16px;
+        }
+        .timer-box {
+            font-weight: 700;
+            color: #c62828;
+            font-size: 18px;
+            background: #ffebee;
+            padding: 4px 16px;
+            border-radius: 30px;
+        }
+        .timer-box i { margin-left: 8px; }
+        .question-box {
+            background: #fff8e8;
+            border: 1px solid #f0e0b0;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .question-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c4c;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .question-text .math {
+            font-size: 1.1em;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .option-btn {
+            background: #fcfaf0;
+            border: 2px solid #e2d6b6;
+            border-radius: 14px;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c3a41;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .option-btn .math {
+            font-size: 1.05em;
+        }
+        .option-btn:hover { background: #f3efdf; border-color: #c9a53b; transform: scale(1.02); }
+        .option-btn.selected { background: #c9a53b; color: white; border-color: #c9a53b; }
+        .option-btn.correct { background: #2e7d32; color: white; border-color: #2e7d32; }
+        .option-btn.wrong { background: #c62828; color: white; border-color: #c62828; }
+        .option-btn.disabled { cursor: not-allowed; opacity: 0.7; }
+        .option-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+        .btn-next {
+            background: #1e3c4c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Tajawal', sans-serif;
+            margin-top: 15px;
+            display: none;
+            width: 100%;
+        }
+        .btn-next:hover { background: #2a5f6e; transform: scale(1.02); }
+        .btn-next.active { display: block; }
+        .question-difficulty {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .easy { background: #c8e6c9; color: #2e7d32; }
+        .medium { background: #fff3e0; color: #e65100; }
+        .hard { background: #ffccbc; color: #bf360c; }
+        .result-box {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .result-box.active { display: block; }
+        .result-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1e3c4c;
+            margin: 10px 0;
+        }
+        .result-detail {
+            background: #eef2f7;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin: 15px 0;
+            text-align: right;
+            border-right: 5px solid #c9a53b;
+        }
+        .result-detail ul { list-style: none; padding-right: 0; }
+        .result-detail li { padding: 4px 0; font-size: 14px; line-height: 1.8; border-bottom: 1px dashed #eee; }
+        .result-detail li:last-child { border-bottom: none; }
+        .result-detail .correct-answer { color: #2e7d32; font-weight: 700; }
+        .result-detail .wrong-answer { color: #c62828; font-weight: 700; }
+        .result-detail .your-answer { font-weight: 700; }
+        .result-detail .math { font-size: 1em; }
+        .progress-bar { width: 100%; height: 6px; background: #e2d6b6; border-radius: 4px; margin: 15px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: #c9a53b; border-radius: 4px; transition: width 0.5s ease; width: 0%; }
+        .feedback-box {
+            background: #fff8e8;
+            border: 1px solid #f0e0b0;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin: 15px 0;
+            text-align: right;
+        }
+        .feedback-box h4 { color: #1e3c4c; margin-bottom: 8px; }
+        .feedback-box p { font-size: 14px; line-height: 1.7; }
+        .restart-btn {
+            background: #c9a53b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Tajawal', sans-serif;
+            margin-top: 15px;
+        }
+        .restart-btn:hover { background: #b8922f; transform: scale(1.02); }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+            cursor: pointer;
+        }
+        .whatsapp-btn:hover { background: #128C7E; }
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8f9eaa;
+            border-top: 1px dashed #ddd;
+            padding-top: 15px;
+        }
+        .math { 
+            direction: ltr; 
+            display: inline-block; 
+        }
+        @media (max-width: 550px) {
+            .options-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px 18px 35px 18px; }
+            .question-text { font-size: 16px; }
+            .option-btn { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="app">
+    <h1><i class="fas fa-brain"></i> اختبار المتتاليات</h1>
+    <div style="text-align:center;">
+        <span class="teacher-name"><i class="fas fa-chalkboard-user"></i> إعداد الأستاذ: صالح أبوغبرا</span>
+    </div>
+
+    <div id="quizArea">
+        <div class="quiz-header">
+            <span class="question-counter" id="questionCounter">السؤال 1 من 30</span>
+            <span class="timer-box" id="timerBox"><i class="fas fa-clock"></i> <span id="timerDisplay">00:30</span></span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div id="questionArea">
+            <div class="question-box">
+                <div id="difficultyBadge" class="question-difficulty easy">سهل</div>
+                <div class="question-text" id="questionText"></div>
+                <div class="options-grid" id="optionsContainer"></div>
+                <button class="btn-next" id="nextBtn">السؤال التالي <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+        <h2><i class="fas fa-check-circle"></i> انتهى الاختبار!</h2>
+        <div class="result-score" id="resultScore">0/30</div>
+        <p style="font-size:16px; color:#2c3a41;">نسبتك: <span id="resultPercent">0%</span></p>
+        <div class="result-detail" id="resultDetail">
+            <h4 style="margin-bottom:10px;">📋 تفاصيل الإجابات:</h4>
+            <ul id="resultList"></ul>
+        </div>
+        <div class="feedback-box" id="feedbackBox">
+            <h4><i class="fas fa-lightbulb"></i> نصائح لتقوية مهاراتك:</h4>
+            <p id="feedbackText"></p>
+        </div>
+        <button class="restart-btn" onclick="restartQuiz()"><i class="fas fa-redo"></i> إعادة الاختبار</button>
+        <a href="https://wa.me/0965292099" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> تواصل مع الأستاذ</a>
+        <div class="footer-note">
+            <i class="fas fa-gem"></i> الوحدة الأولى: المتتاليات والإثبات بالتدريج (الصفحات 1-8) <i class="fas fa-gem"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== 30 سؤالاً مع صيغ رياضية باستخدام LaTeX =====
+    const questions = [
+        // ===== أسئلة سهلة (30 ثانية) =====
+        {
+            question: 'المتتالية العددية هي تابع مجموعة تعريفها هي:',
+            options: ['$\\mathbb{R}$ (مجموعة الأعداد الحقيقية)', '$\\mathbb{N}$ (مجموعة الأعداد الطبيعية)', '$\\mathbb{Z}$ (مجموعة الأعداد الصحيحة)', '$\\mathbb{Q}$ (مجموعة الأعداد النسبية)'],
+            correct: 1,
+            difficulty: 'easy',
+            page: 4,
+            tip: 'المتتالية هي تابع معرف على $\\mathbb{N}$ أو مجموعة جزئية منها.'
+        },
+        {
+            question: 'في المتتالية $(u_n)$ حيث $n \\ge 2$، أي من التالي هو أول دليل؟',
+            options: ['0', '1', '2', '3'],
+            correct: 2,
+            difficulty: 'easy',
+            page: 4,
+            tip: '$n_0$ هو أول دليل، وفي هذه المتتالية $n_0 = 2$.'
+        },
+        {
+            question: 'أي من التالي يمثل متتالية معرفة بصيغة صريحة؟',
+            options: ['$u_0=1,\\; u_{n+1}=2u_n+1$', '$u_n = 2n + 3$', '$u_0=2,\\; u_{n+1}=u_n^2$', '$u_0=5,\\; u_{n+1}=u_n-3$'],
+            correct: 1,
+            difficulty: 'easy',
+            page: 5,
+            tip: 'الصيغة الصريحة تعطي $u_n$ بدلالة $n$ مباشرة، مثل $u_n = 2n + 3$.'
+        },
+        {
+            question: 'أي من التالي يمثل متتالية معرفة بعلاقة تدرجية؟',
+            options: ['$u_n = n^2 - 1$', '$u_n = \\frac{n}{n+1}$', '$u_0=1,\\; u_{n+1}=2u_n+1$', '$u_n = 3n - 5$'],
+            correct: 2,
+            difficulty: 'easy',
+            page: 5,
+            tip: 'العلاقة التدرجية تعطي $u_{n+1}$ بدلالة $u_n$، مثل $u_{n+1} = 2u_n + 1$.'
+        },
+        {
+            question: 'المتتالية $u_n = 2n + 3$ هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً', 'ثابتة', 'غير مضطردة'],
+            correct: 0,
+            difficulty: 'easy',
+            page: 6,
+            tip: '$u_{n+1} - u_n = 2 > 0$، إذن المتتالية متزايدة تماماً.'
+        },
+        {
+            question: 'المتتالية $u_n = -3n + 5$ هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً', 'ثابتة', 'غير مضطردة'],
+            correct: 1,
+            difficulty: 'easy',
+            page: 6,
+            tip: '$u_{n+1} - u_n = -3 < 0$، إذن المتتالية متناقصة تماماً.'
+        },
+        {
+            question: 'المتتالية $u_n = 5$ هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً', 'ثابتة', 'غير مضطردة'],
+            correct: 2,
+            difficulty: 'easy',
+            page: 6,
+            tip: '$u_{n+1} - u_n = 0$، إذن المتتالية ثابتة.'
+        },
+        {
+            question: 'لدراسة اضطراد متتالية، أي من الطرق التالية هي الأكثر أماناً؟',
+            options: ['مقارنة النسبة بالعدد 1', 'دراسة إشارة الفرق $u_{n+1} - u_n$', 'استخدام الدالة المساعدة', 'حساب الحدود الأولى فقط'],
+            correct: 1,
+            difficulty: 'easy',
+            page: 7,
+            tip: 'الطريقة الأولى (الفرق) هي الأكثر أماناً وتصلح لجميع المتتاليات.'
+        },
+        {
+            question: 'المتتالية $u_n = (-1)^n$ هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً', 'ثابتة', 'متناوبة (غير مضطردة)'],
+            correct: 3,
+            difficulty: 'easy',
+            page: 8,
+            tip: 'حدودها تتناوب بين $1$ و $-1$، فإشارة الفرق تتغير، إذن غير مضطردة (متناوبة).'
+        },
+        {
+            question: 'المتتالية $u_n = 7$ هي متتالية:',
+            options: ['متزايدة', 'متناقصة', 'ثابتة', 'غير مضطردة'],
+            correct: 2,
+            difficulty: 'easy',
+            page: 8,
+            tip: 'جميع الحدود متساوية، فهي متتالية ثابتة.'
+        },
+        // ===== أسئلة متوسطة (60 ثانية) =====
+        {
+            question: 'ما مجال تعريف المتتالية $u_n = \\dfrac{1}{n-3}$؟',
+            options: ['$\\mathbb{R} \\setminus \\{3\\}$', '$\\mathbb{N} \\setminus \\{3\\}$', '$[0, +\\infty[$', '$\\mathbb{R}$'],
+            correct: 1,
+            difficulty: 'medium',
+            page: 4,
+            tip: 'المقام ينعدم عند $n=3$، والمتتالية معرفة على $\\mathbb{N}$ باستثناء $3$.'
+        },
+        {
+            question: 'ما مجال تعريف المتتالية $u_n = \\sqrt{n-2}$؟',
+            options: ['$[2, +\\infty[$', '$]2, +\\infty[$', '$\\mathbb{N}$', '$\\mathbb{R}$'],
+            correct: 0,
+            difficulty: 'medium',
+            page: 4,
+            tip: 'تحت الجذر $n-2 \\ge 0 \\Rightarrow n \\ge 2$، أي $[2, +\\infty[$.'
+        },
+        {
+            question: 'المتتالية $u_n = \\dfrac{n}{n+1}$ هي متتالية:',
+            options: ['صريحة', 'تدرجية', 'صريحة وتدرجية معاً', 'ليست متتالية'],
+            correct: 0,
+            difficulty: 'medium',
+            page: 5,
+            tip: '$u_n$ معطاة بدلالة $n$ مباشرة، فهي صريحة.'
+        },
+        {
+            question: 'المتتالية $u_n = n^2$ هي متتالية:',
+            options: ['متزايدة تماماً (بدءاً من $n=1$)', 'متناقصة تماماً', 'ثابتة', 'غير مضطردة'],
+            correct: 0,
+            difficulty: 'medium',
+            page: 6,
+            tip: '$u_{n+1} - u_n = 2n+1 > 0$ لكل $n \\ge 0$، فهي متزايدة تماماً.'
+        },
+        {
+            question: 'المتتالية $u_n = \\dfrac{1}{n}$ هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً', 'ثابتة', 'غير مضطردة'],
+            correct: 1,
+            difficulty: 'medium',
+            page: 6,
+            tip: '$u_{n+1} - u_n = -\\dfrac{1}{n(n+1)} < 0$، فهي متناقصة تماماً.'
+        },
+        {
+            question: 'لماذا لا نستخدم النسبة $\\dfrac{u_{n+1}}{u_n}$ لدراسة اضطراد المتتالية $u_n = (-1)^n$؟',
+            options: ['لأنها متتالية متزايدة', 'لأن حدودها ليست موجبة تماماً', 'لأنها غير معرفة', 'لأنها ثابتة'],
+            correct: 1,
+            difficulty: 'medium',
+            page: 7,
+            tip: 'طريقة النسبة تستخدم فقط عندما تكون جميع الحدود موجبة تماماً.'
+        },
+        {
+            question: 'إذا كانت $f$ دالة متزايدة على $[0, +\\infty[$ والمتتالية $u_n = f(n)$، فإن $(u_n)$ هي:',
+            options: ['متزايدة', 'متناقصة', 'ثابتة', 'غير مضطردة'],
+            correct: 0,
+            difficulty: 'medium',
+            page: 7,
+            tip: 'اتجاه تغير الدالة هو نفس اتجاه تغير المتتالية.'
+        },
+        {
+            question: 'ما قيمة $u_{100}$ في المتتالية $u_n = (-1)^n$؟',
+            options: ['1', '-1', '0', 'غير معرفة'],
+            correct: 0,
+            difficulty: 'medium',
+            page: 8,
+            tip: '$100$ عدد زوجي، إذن $(-1)^{100} = 1$.'
+        },
+        {
+            question: 'ما قيمة $u_{101}$ في المتتالية $u_n = (-1)^n + 1$؟',
+            options: ['2', '0', '1', '-1'],
+            correct: 1,
+            difficulty: 'medium',
+            page: 8,
+            tip: '$101$ عدد فردي، إذن $(-1)^{101} = -1$، و $-1+1=0$.'
+        },
+        // ===== أسئلة صعبة (90 ثانية) =====
+        {
+            question: 'ما مجال تعريف المتتالية $u_n = \\dfrac{\\sqrt{n-1}}{n-2}$؟',
+            options: ['$[1, 2[ \\cup ]2, +\\infty[$', '$[1, +\\infty[ \\setminus \\{2\\}$', '$[1, 2] \\cup [2, +\\infty[$', '$\\mathbb{R} \\setminus \\{2\\}$'],
+            correct: 0,
+            difficulty: 'hard',
+            page: 4,
+            tip: 'شرط الجذر: $n-1 \\ge 0 \\Rightarrow n \\ge 1$، وشرط المقام: $n \\neq 2$. النتيجة: $[1, 2[ \\cup ]2, +\\infty[$.'
+        },
+        {
+            question: 'ما مجال تعريف المتتالية $u_n = \\dfrac{1}{\\sqrt{n^2-4}}$؟',
+            options: ['$]-\\infty, -2[ \\cup ]2, +\\infty[$', '$]2, +\\infty[$', '$[-2, 2]$', '$\\mathbb{R} \\setminus \\{-2, 2\\}$'],
+            correct: 1,
+            difficulty: 'hard',
+            page: 4,
+            tip: 'شرط الجذر: $n^2-4 > 0$ (لأنه في المقام)، ولأن $n \\in \\mathbb{N}$، النتيجة: $]2, +\\infty[$.'
+        },
+        {
+            question: 'المتتالية $u_n = \\dfrac{n^2}{n!}$ (مع $0! = 1$) هي متتالية:',
+            options: ['متزايدة تماماً', 'متناقصة تماماً (بدءاً من $n=2$)', 'ثابتة', 'غير مضطردة'],
+            correct: 1,
+            difficulty: 'hard',
+            page: 6,
+            tip: '$\\dfrac{u_{n+1}}{u_n} = \\dfrac{n+1}{n^2}$، عند $n \\ge 2$ النسبة $< 1$، فهي متناقصة من $n=2$.'
+        },
+        {
+            question: 'المتتالية $u_n = \\cos(n\\pi)$ هي متتالية:',
+            options: ['متزايدة', 'متناقصة', 'ثابتة', 'متناوبة'],
+            correct: 3,
+            difficulty: 'hard',
+            page: 6,
+            tip: '$\\cos(n\\pi) = (-1)^n$، وهي متتالية متناوبة (غير مضطردة).'
+        },
+        {
+            question: 'إذا كانت $u_n = (n-1)^2$، أي دالة مساعدة نختار لدراسة اطرادها؟',
+            options: ['$f(x) = (x-1)^2$', '$f(x) = x^2-1$', '$f(x) = (x+1)^2$', '$f(x) = x^2+1$'],
+            correct: 0,
+            difficulty: 'hard',
+            page: 7,
+            tip: '$u_n = f(n)$ حيث $f(x) = (x-1)^2$، ندرس اطراد $f$ على $[0, +\\infty[$.'
+        },
+        {
+            question: 'في المتتالية $u_n = (-1)^n \\cdot n$، ما قيمة $u_5$؟',
+            options: ['5', '-5', '0', '1'],
+            correct: 1,
+            difficulty: 'hard',
+            page: 8,
+            tip: '$5$ عدد فردي، إذن $(-1)^5 = -1$، و $-1 \\times 5 = -5$.'
+        },
+        {
+            question: 'أي من المتتاليات التالية غير مضطردة؟',
+            options: ['$u_n = 2n+1$', '$u_n = n^2$', '$u_n = (-1)^n$', '$u_n = \\dfrac{1}{n}$'],
+            correct: 2,
+            difficulty: 'hard',
+            page: 8,
+            tip: '$(-1)^n$ متتالية متناوبة، إشارة الفرق تتغير، فهي غير مضطردة.'
+        },
+        {
+            question: 'في المتتالية $u_n = (-1)^n + 2$، ما قيمة $u_{50}$ و $u_{51}$؟',
+            options: ['$u_{50}=3,\\; u_{51}=1$', '$u_{50}=1,\\; u_{51}=3$', '$u_{50}=2,\\; u_{51}=2$', '$u_{50}=-1,\\; u_{51}=1$'],
+            correct: 0,
+            difficulty: 'hard',
+            page: 8,
+            tip: '$50$ زوجي: $1+2=3$، $51$ فردي: $-1+2=1$.'
+        },
+        {
+            question: 'أي طريقة تصلح لدراسة اضطراد $u_n = \\dfrac{n}{10^n}$؟',
+            options: ['الفرق $u_{n+1}-u_n$', 'النسبة $\\dfrac{u_{n+1}}{u_n}$', 'الدالة المساعدة', 'جميع الطرق'],
+            correct: 1,
+            difficulty: 'hard',
+            page: 7,
+            tip: 'جميع الحدود موجبة، والنسبة تعطي $\\dfrac{n+1}{10n} < 1$، فهي أفضل طريقة.'
+        }
+    ];
+
+    // ===== حالة الاختبار =====
+    let currentQuestion = 0;
+    let score = 0;
+    let userAnswers = [];
+    let timerInterval = null;
+    let timeLeft = 0;
+    let isAnswered = false;
+    const totalQuestions = questions.length;
+
+    // ===== عناصر DOM =====
+    const questionText = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const nextBtn = document.getElementById('nextBtn');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerBox = document.getElementById('timerBox');
+    const questionCounter = document.getElementById('questionCounter');
+    const progressFill = document.getElementById('progressFill');
+    const difficultyBadge = document.getElementById('difficultyBadge');
+    const resultBox = document.getElementById('resultBox');
+    const quizArea = document.getElementById('quizArea');
+    const resultScore = document.getElementById('resultScore');
+    const resultPercent = document.getElementById('resultPercent');
+    const resultList = document.getElementById('resultList');
+    const feedbackText = document.getElementById('feedbackText');
+
+    // ===== دالة لعرض الصيغ باستخدام MathJax =====
+    function renderMath(element) {
+        if (window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([element]).catch(function(err) {
+                console.log('MathJax error:', err);
+            });
+        }
+    }
+
+    // ===== دالة عرض السؤال =====
+    function loadQuestion(index) {
+        const q = questions[index];
+        isAnswered = false;
+        
+        // عرض النص مع الصيغ
+        questionText.innerHTML = q.question;
+        difficultyBadge.textContent = q.difficulty === 'easy' ? 'سهل' : q.difficulty === 'medium' ? 'متوسط' : 'صعب';
+        difficultyBadge.className = 'question-difficulty ' + q.difficulty;
+        questionCounter.textContent = `السؤال ${index + 1} من ${totalQuestions}`;
+        progressFill.style.width = `${((index) / totalQuestions) * 100}%`;
+
+        optionsContainer.innerHTML = '';
+        q.options.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = opt;
+            btn.dataset.index = i;
+            btn.onclick = () => selectOption(i);
+            optionsContainer.appendChild(btn);
+        });
+
+        // عرض الصيغ
+        renderMath(questionText);
+        renderMath(optionsContainer);
+
+        const timeMap = { easy: 30, medium: 60, hard: 90 };
+        timeLeft = timeMap[q.difficulty] || 30;
+        timerDisplay.textContent = formatTime(timeLeft);
+        timerBox.style.color = '#1e3c4c';
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+
+        nextBtn.classList.remove('active');
+        nextBtn.textContent = index === totalQuestions - 1 ? 'عرض النتيجة' : 'السؤال التالي';
+    }
+
+    // ===== اختيار الإجابة =====
+    function selectOption(index) {
+        if (isAnswered) return;
+        isAnswered = true;
+        clearInterval(timerInterval);
+
+        const q = questions[currentQuestion];
+        const buttons = optionsContainer.querySelectorAll('.option-btn');
+        buttons.forEach((btn, i) => {
+            btn.classList.add('disabled');
+            btn.disabled = true;
+            if (i === q.correct) btn.classList.add('correct');
+            if (i === index && i !== q.correct) btn.classList.add('wrong');
+            if (i === index) btn.classList.add('selected');
+        });
+
+        if (index === q.correct) score++;
+        userAnswers[currentQuestion] = {
+            selected: index,
+            correct: q.correct,
+            isCorrect: index === q.correct
+        };
+
+        nextBtn.classList.add('active');
+    }
+
+    // ===== المؤقت =====
+    function updateTimer() {
+        timeLeft--;
+        timerDisplay.textContent = formatTime(timeLeft);
+        if (timeLeft <= 10) timerBox.style.color = '#c62828';
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            if (!isAnswered) {
+                const q = questions[currentQuestion];
+                userAnswers[currentQuestion] = {
+                    selected: -1,
+                    correct: q.correct,
+                    isCorrect: false
+                };
+                const buttons = optionsContainer.querySelectorAll('.option-btn');
+                buttons.forEach((btn, i) => {
+                    btn.classList.add('disabled');
+                    btn.disabled = true;
+                    if (i === q.correct) btn.classList.add('correct');
+                });
+                nextBtn.classList.add('active');
+                isAnswered = true;
+            }
+        }
+    }
+
+    function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    // ===== زر التالي =====
+    nextBtn.addEventListener('click', function() {
+        if (currentQuestion < totalQuestions - 1) {
+            currentQuestion++;
+            loadQuestion(currentQuestion);
+        } else {
+            showResult();
+        }
+    });
+
+    // ===== عرض النتيجة =====
+    function showResult() {
+        clearInterval(timerInterval);
+        quizArea.style.display = 'none';
+        resultBox.classList.add('active');
+
+        const percent = Math.round((score / totalQuestions) * 100);
+        resultScore.textContent = `${score}/${totalQuestions}`;
+        resultPercent.textContent = `${percent}%`;
+
+        let listHtml = '';
+        questions.forEach((q, i) => {
+            const answer = userAnswers[i];
+            if (!answer) {
+                listHtml += `<li>السؤال ${i+1}: لم يتم الإجابة عليه</li>`;
+                return;
+            }
+            const status = answer.isCorrect ? '✅' : '❌';
+            const statusClass = answer.isCorrect ? 'correct-answer' : 'wrong-answer';
+            const correctText = q.options[q.correct];
+            const userText = answer.selected !== -1 ? q.options[answer.selected] : 'لم يختر';
+            listHtml += `
+                <li>
+                    <span class="${statusClass}">${status}</span>
+                    السؤال ${i+1}: إجابتك: <span class="your-answer">${userText}</span>
+                    ${!answer.isCorrect ? ` | الإجابة الصحيحة: <span class="correct-answer">${correctText}</span>` : ''}
+                    <br><small style="color:#8f9eaa;">${q.tip}</small>
+                </li>
+            `;
+        });
+        resultList.innerHTML = listHtml;
+        
+        // عرض الصيغ في النتيجة
+        renderMath(resultList);
+
+        let feedback = '';
+        if (percent === 100) feedback = '🎉 ممتاز! أتقنت جميع المفاهيم. أنت جاهز للانتقال إلى الصفحات التالية. استمر بنفس المستوى!';
+        else if (percent >= 80) feedback = '👍 أداء ممتاز! لديك فهم قوي للمفاهيم. راجع الأسئلة التي أخطأت فيها لتعزيز نقاط الضعف.';
+        else if (percent >= 60) feedback = '📖 أداء جيد. تحتاج إلى مراجعة بعض المفاهيم الأساسية. ركز على تعريف المتتالية، الاضطراد، والمتتاليات المتناوبة.';
+        else if (percent >= 40) feedback = '📚 تحتاج إلى مراجعة أكثر. ارجع إلى الصفحات 1-8 وركز على الأمثلة المحلولة. حاول حل التمارين مرة أخرى.';
+        else feedback = '💪 لا تيأس! البداية دائماً صعبة. اقرأ الصفحات من 1 إلى 8 بتمهل، واستخدم القلم والورقة، وحاول فهم كل مثال قبل الانتقال إلى التالي. يمكنك التواصل مع الأستاذ للمساعدة.';
+        feedbackText.textContent = feedback;
+    }
+
+    // ===== إعادة الاختبار =====
+    function restartQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        userAnswers = [];
+        isAnswered = false;
+        clearInterval(timerInterval);
+        quizArea.style.display = 'block';
+        resultBox.classList.remove('active');
+        loadQuestion(0);
+    }
+
+    // ===== بدء الاختبار =====
+    loadQuestion(0);
+</script>
+
+</body>
+</html>
