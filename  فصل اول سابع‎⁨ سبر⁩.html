@@ -1,0 +1,477 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 اختبار الفصل الأول – 40 سؤالاً</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' },
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f4ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 12px;
+            font-family: 'Tajawal', sans-serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 20, 40, 0.15), 0 0 0 3px #ffb347, 0 0 0 8px #ffe599;
+            padding: 25px 28px 20px 28px;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a3a5c, #2a5f7a);
+            border-radius: 18px 18px 0 0;
+            padding: 15px 20px 12px 20px;
+            margin: -25px -28px 0 -28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            border-bottom: 6px solid #ffb347;
+        }
+        .header .title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .header .title i { color: #ffd966; }
+        .header .badge {
+            background: #ffb347;
+            color: #1a3a5c;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 16px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .header .teacher {
+            color: #ffd966;
+            font-weight: 700;
+            font-size: 12px;
+            background: rgba(255,255,255,0.10);
+            padding: 2px 12px;
+            border-radius: 30px;
+        }
+
+        .progress-bar {
+            margin: 15px 0 10px 0;
+            background: #eaf3fa;
+            border-radius: 30px;
+            height: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffb347, #f44336, #9c27b0);
+            border-radius: 30px;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a3a5c;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .question-area {
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .question-box {
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            border-right: 6px solid #ffb347;
+            margin-bottom: 12px;
+        }
+        .question-box .q-num {
+            font-weight: 900;
+            color: #1a3a5c;
+            font-size: 15px;
+        }
+        .question-box .q-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin: 6px 0 8px 0;
+            padding-right: 10px;
+            border-right: 3px solid #f9a825;
+        }
+        .question-box .q-text .math { direction: ltr; display: inline-block; }
+        .question-box .q-text .math-block { direction: ltr; display: block; text-align: center; font-size: 18px; margin: 4px 0; }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 12px;
+            margin-top: 4px;
+        }
+        .options .opt {
+            background: #ffffff;
+            border: 2px solid #d0dce8;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .options .opt:hover { background: #f0f7ff; border-color: #ffb347; }
+        .options .opt.selected { border-color: #f9a825; background: #fff8e1; }
+        .options .opt.correct { border-color: #2e7d32; background: #c8e6c9; }
+        .options .opt.wrong { border-color: #c62828; background: #ffcdd2; }
+        .options .opt.disabled { pointer-events: none; opacity: 0.7; }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .nav-buttons button {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .nav-buttons button:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-prev { background: #eaf3fa; color: #1a3a5c; }
+        .btn-prev:hover:not(:disabled) { background: #d0dce8; }
+        .btn-next { background: #ffb347; color: #1a3a5c; }
+        .btn-next:hover:not(:disabled) { background: #f0a500; }
+        .btn-submit { background: #2e7d32; color: #fff; }
+        .btn-submit:hover:not(:disabled) { background: #1b5e20; }
+        .btn-reset { background: #c62828; color: #fff; }
+        .btn-reset:hover { background: #b71c1c; }
+
+        .result-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-top: 15px;
+            text-align: center;
+            border-right: 6px solid #1565c0;
+            display: none;
+        }
+        .result-box .score {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1a3a5c;
+        }
+        .result-box .score span { color: #f44336; }
+        .result-box .details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .result-box .details .correct-count { color: #2e7d32; }
+        .result-box .details .wrong-count { color: #c62828; }
+        .result-box .percentage {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a3a5c;
+        }
+
+        .footer {
+            margin-top: 20px;
+            border-top: 3px solid #ffd966;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 12px;
+            color: #3a5a6a;
+        }
+        .footer .brand { font-weight: 700; color: #1a3a5c; display: flex; align-items: center; gap: 4px; }
+        .footer .brand i { color: #4caf50; }
+        .footer .wa { background: #25D366; color: #fff; padding: 3px 14px; border-radius: 40px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+
+        @media (max-width: 650px) {
+            .container { padding: 16px; }
+            .header { margin: -16px -16px 0 -16px; padding: 10px 14px; }
+            .header .title { font-size: 16px; }
+            .options { grid-template-columns: 1fr; }
+            .question-box .q-text { font-size: 14px; }
+            .nav-buttons button { padding: 8px 16px; font-size: 12px; }
+            .result-box .details { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="app">
+    <div class="header">
+        <div class="title"><i class="fas fa-graduation-cap"></i> اختبار الفصل الأول</div>
+        <div class="badge"><i class="fas fa-star"></i> 40 سؤالاً</div>
+        <div class="teacher"><i class="fas fa-chalkboard-teacher"></i> أ. صالح أبوغبرا</div>
+    </div>
+
+    <div class="progress-bar">
+        <div class="fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">السؤال 1 من 40</div>
+
+    <div class="question-area" id="questionArea"></div>
+
+    <div class="nav-buttons">
+        <button class="btn-prev" id="prevBtn" disabled><i class="fas fa-arrow-right"></i> السابق</button>
+        <button class="btn-next" id="nextBtn">التالي <i class="fas fa-arrow-left"></i></button>
+        <button class="btn-submit" id="submitBtn" style="display:none;"><i class="fas fa-check"></i> إنهاء الاختبار</button>
+        <button class="btn-reset" id="resetBtn" style="display:none;"><i class="fas fa-redo"></i> إعادة المحاولة</button>
+    </div>
+
+    <div class="result-box" id="resultBox">
+        <div class="score">نتيجة: <span id="scoreNum">0</span> / 40</div>
+        <div class="details">
+            <span class="correct-count">✅ صحيح: <span id="correctCount">0</span></span>
+            <span class="wrong-count">❌ خاطئ: <span id="wrongCount">0</span></span>
+        </div>
+        <div class="percentage" id="percentageText">النسبة: 0%</div>
+    </div>
+
+    <div class="footer">
+        <span class="brand"><i class="fas fa-check-circle"></i> دليل المهارات – الصف السابع</span>
+        <a href="#" class="wa"><i class="fab fa-whatsapp"></i> 0965292099</a>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // 40 سؤالاً – الفصل الأول (بدون استخدام MathJax داخل النص)
+    // ============================================================
+    const questions = [
+        // 1-10: أساسيات
+        { q: 'العدد الطبيعي مما يأتي هو:', options: ['2/6', '19/3', '20/7', '121/11'], answer: 3 },
+        { q: 'ناتج 0.090909 ÷ 10000 يساوي:', options: ['9090.9', '0.0000090909', '0.000090909', '90909'], answer: 1 },
+        { q: 'العدد "مليون وستمئة وأربعة وثلاثون" يُكتب:', options: ['100634', '10000634', '1000634', '10006034'], answer: 2 },
+        { q: 'الصيغة اللفظية للعدد 220200002 هي:', options: ['مئتان وعشرون مليوناً ومئتان واثنان', 'مئتان وثلاثون مليوناً ومئتان واثنان', '220 مليوناً ومئتان واثنان', 'مئتان وعشرون مليوناً ومئتا ألف واثنان'], answer: 3 },
+        { q: 'العدد الطبيعي من مضاعفات العدد 3 هو:', options: ['1234', '1234567', '123456', '23456'], answer: 2 },
+        { q: 'عند تقريب العدد 295992458 إلى أقرب مليون يصبح:', options: ['296000000', '290000000', '295000000', '300000000'], answer: 0 },
+        { q: 'ما هو العدد الذي إذا ضربته في 7 ثم طرحت منه 9، ثم قسمت على 4 كان الناتج 12؟', options: ['7', '8', '9', '10'], answer: 2 },
+        { q: 'إذا كان 0.090909 × 10000 = 909.09، فما قيمة 0.090909 × 100000؟', options: ['9090.9', '909.09', '90.909', '9.0909'], answer: 0 },
+        { q: 'ما هو أصغر عدد طبيعي مكون من 3 أرقام، آحاده ضعف عشراته، ومجموع أرقامه = 12؟', options: ['246', '248', '264', '268'], answer: 2 },
+        { q: 'تقريب العدد 345,678,901 إلى أقرب عشرة ملايين يصبح:', options: ['340,000,000', '345,000,000', '346,000,000', '350,000,000'], answer: 3 },
+
+        // 11-20: عمليات متقدمة
+        { q: 'إذا كان 25% من عدد هو 75، فما هو 40% من نفس العدد؟', options: ['100', '110', '120', '130'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا أضفت إليه 15% من نفسه كان الناتج 345؟', options: ['280', '300', '320', '350'], answer: 1 },
+        { q: 'إذا كان مربع العدد x يساوي 225، ومكعب العدد y يساوي 64، فما قيمة x + y؟', options: ['15', '17', '19', '21'], answer: 2 },
+        { q: 'سلسلة أعداد: 1، 2، 4، 8، 16، 32، ... ما هو الحد الذي يلي 256 مباشرة؟', options: ['384', '400', '512', '1024'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا جمعنا نصفه وثلثه وربعه كان الناتج 65؟', options: ['40', '50', '60', '70'], answer: 2 },
+        { q: 'العدد الذي يقع بين 3,457,000 و 3,458,000، وآحاده 7، وعشراته 5، ومئات الألوف 4 هو:', options: ['3,457,457', '3,457,547', '3,457,754', '3,457,457'], answer: 0 },
+        { q: 'إذا كان ثلاثة أمثال العدد a زائد 7 يساوي 28، فما قيمة a؟', options: ['5', '6', '7', '8'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا ضربناه في نفسه ثم أضفنا إليه 4 كان الناتج 85؟', options: ['7', '8', '9', '10'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا طرحنا منه 30% من قيمته كان الناتج 70؟', options: ['80', '90', '100', '110'], answer: 2 },
+        { q: 'إذا كان 2 مرفوعة للأس x تساوي 128، فما قيمة x؟', options: ['5', '6', '7', '8'], answer: 2 },
+
+        // 21-30: متنوعة
+        { q: 'سلسلة أعداد: 3، 9، 27، 81، 243، ... ما هو الحد الذي يلي 729 مباشرة؟', options: ['1458', '2187', '1458', '1093'], answer: 1 },
+        { q: 'ما هو العدد الذي إذا أضفنا إليه ثلث قيمته ثم ربع قيمته كان الناتج 38؟', options: ['20', '22', '24', '26'], answer: 2 },
+        { q: 'عدد طبيعي مكون من 5 أرقام، آحاده 6، وعشراته ضعف آحاده، ومئات الألوف يساوي نصف آحاده. ما هو العدد؟', options: ['31236', '31236', '31266', '31236'], answer: 0 },
+        { q: 'الصيغة اللفظية الصحيحة للعدد 3,050,060 هي:', options: ['ثلاثة ملايين وخمسون ألفاً وستون', 'ثلاثة ملايين وخمسمئة ألف وستون', 'ثلاثمئة وخمسون ألف وستون', 'ثلاثة ملايين وخمسة آلاف وستون'], answer: 0 },
+        { q: 'ما هو العدد الذي إذا قربناه إلى أقرب ألف أصبح 27,000، وإذا قربناه إلى أقرب عشرة آلاف أصبح 30,000؟', options: ['26,500', '27,400', '27,500', '28,000'], answer: 2 },
+        { q: 'إذا كان 3 ضرب 4 يساوي 15، و 5 ضرب 6 يساوي 35، فما قيمة 7 ضرب 8 وفق النمط؟', options: ['63', '56', '64', '72'], answer: 0 },
+        { q: 'ما هو العدد الذي إذا ضربناه في 3 ثم أضفنا 5 كان الناتج 29؟', options: ['6', '7', '8', '9'], answer: 2 },
+        { q: 'إذا كان 20% من عدد هو 40، فما هو العدد؟', options: ['150', '180', '200', '220'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا قسمته على 5 ثم طرحت منه 3 كان الناتج 9؟', options: ['50', '55', '60', '65'], answer: 2 },
+        { q: 'إذا كان مجموع a و b يساوي 20، والفرق بينهما يساوي 6، فما قيمة a؟', options: ['10', '11', '12', '13'], answer: 2 },
+
+        // 31-40: مهارات عالية
+        { q: 'سلسلة أعداد: 2، 6، 12، 20، 30، 42، ... ما هو الحد التالي؟', options: ['54', '56', '58', '60'], answer: 1 },
+        { q: 'ما هو العدد الذي إذا أضفنا إليه 12% من نفسه كان الناتج 336؟', options: ['280', '290', '300', '310'], answer: 2 },
+        { q: 'إذا كان مربع x يساوي 144، ومربع y يساوي 81، فما قيمة x + y (حيث x و y عددان موجبان)؟', options: ['15', '21', '25', '27'], answer: 1 },
+        { q: 'ما هو العدد الذي إذا طرحنا منه خمس قيمته كان الناتج 32؟', options: ['36', '38', '40', '42'], answer: 2 },
+        { q: 'إذا كان 30% من عدد هو 90، فما هو 50% من نفس العدد؟', options: ['120', '130', '140', '150'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا ضربناه في 6 ثم أضفنا 12 كان الناتج 60؟', options: ['6', '7', '8', '9'], answer: 2 },
+        { q: 'إذا كان الفرق بين a و b يساوي 12، ومجموعهما يساوي 28، فما قيمة a؟', options: ['16', '18', '20', '22'], answer: 2 },
+        { q: 'سلسلة أعداد: 5، 11، 23، 47، 95، ... ما هو الحد التالي؟', options: ['181', '187', '191', '195'], answer: 2 },
+        { q: 'ما هو العدد الذي إذا أضفنا إليه ربع قيمته كان الناتج 125؟', options: ['80', '90', '100', '110'], answer: 2 },
+        { q: 'إذا كان مجموع x و y يساوي 15، والفرق بينهما يساوي 3، فما قيمة x؟', options: ['7', '8', '9', '10'], answer: 2 }
+    ];
+
+    // ============================================================
+    // المنطق
+    // ============================================================
+    let current = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let answered = new Array(questions.length).fill(false);
+
+    const questionArea = document.getElementById('questionArea');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultBox = document.getElementById('resultBox');
+    const scoreNum = document.getElementById('scoreNum');
+    const correctCount = document.getElementById('correctCount');
+    const wrongCount = document.getElementById('wrongCount');
+    const percentageText = document.getElementById('percentageText');
+
+    function renderQuestion(index) {
+        const q = questions[index];
+        let html = `
+            <div class="question-box">
+                <div class="q-num">السؤال ${index + 1} من ${questions.length}</div>
+                <div class="q-text">${q.q}</div>
+                <div class="options" id="optionsContainer">
+        `;
+        const letters = ['أ', 'ب', 'ج', 'د'];
+        q.options.forEach((opt, i) => {
+            const selected = userAnswers[index] === i ? 'selected' : '';
+            const disabled = answered[index] ? 'disabled' : '';
+            const correctClass = answered[index] && i === q.answer ? 'correct' : '';
+            const wrongClass = answered[index] && userAnswers[index] === i && i !== q.answer ? 'wrong' : '';
+            html += `
+                <div class="opt ${selected} ${correctClass} ${wrongClass} ${disabled}" data-index="${i}" onclick="selectOption(${index}, ${i})">
+                    ${letters[i]}) ${opt}
+                </div>
+            `;
+        });
+        html += `</div></div>`;
+        questionArea.innerHTML = html;
+
+        const answeredCount = answered.filter(a => a === true).length;
+        const progress = (answeredCount / questions.length) * 100;
+        progressFill.style.width = progress + '%';
+        progressText.textContent = `السؤال ${index + 1} من ${questions.length} | تم الإجابة: ${answeredCount} سؤالاً`;
+
+        prevBtn.disabled = index === 0;
+        if (index === questions.length - 1) {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-flex';
+        } else {
+            nextBtn.style.display = 'inline-flex';
+            submitBtn.style.display = 'none';
+        }
+
+        document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function selectOption(index, choice) {
+        if (answered[index]) return;
+        userAnswers[index] = choice;
+        answered[index] = true;
+        renderQuestion(current);
+        if (current === questions.length - 1) {
+            submitBtn.style.display = 'inline-flex';
+        }
+    }
+
+    function prevQuestion() {
+        if (current > 0) {
+            current--;
+            renderQuestion(current);
+        }
+    }
+
+    function nextQuestion() {
+        if (current < questions.length - 1) {
+            current++;
+            renderQuestion(current);
+        }
+    }
+
+    function submitTest() {
+        let correct = 0;
+        let wrong = 0;
+        for (let i = 0; i < questions.length; i++) {
+            if (!answered[i]) continue;
+            if (userAnswers[i] === questions[i].answer) correct++;
+            else wrong++;
+        }
+        const total = answered.filter(a => a === true).length;
+        const score = correct;
+        const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+        scoreNum.textContent = correct;
+        correctCount.textContent = correct;
+        wrongCount.textContent = wrong;
+        percentageText.textContent = `النسبة: ${percentage}% (من ${total} سؤالاً مجاباً)`;
+
+        resultBox.style.display = 'block';
+        submitBtn.style.display = 'none';
+        resetBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'none';
+        prevBtn.style.display = 'none';
+
+        document.querySelectorAll('.opt').forEach(el => el.classList.add('disabled'));
+        progressFill.style.width = '100%';
+        progressText.textContent = '✅ انتهى الاختبار!';
+
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetTest() {
+        current = 0;
+        userAnswers = new Array(questions.length).fill(null);
+        answered = new Array(questions.length).fill(false);
+        resultBox.style.display = 'none';
+        submitBtn.style.display = 'none';
+        resetBtn.style.display = 'none';
+        nextBtn.style.display = 'inline-flex';
+        prevBtn.style.display = 'inline-flex';
+        renderQuestion(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+    document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+    document.getElementById('submitBtn').addEventListener('click', submitTest);
+    document.getElementById('resetBtn').addEventListener('click', resetTest);
+
+    renderQuestion(0);
+</script>
+
+</body>
+</html>
