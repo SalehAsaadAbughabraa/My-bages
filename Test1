@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>القوانين الشاملة - Loli Academy</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d0d1a;
+            color: #1a1a2e;
+            padding: 10px;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-header {
+            text-align: center;
+            border-bottom: 3px solid #1a237e;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .slide-header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #e65100);
+            color: #fff;
+            padding: 4px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .slide-header h1 {
+            font-size: 26px;
+            color: #1a237e;
+        }
+        .slide-header h1 span {
+            color: #e65100;
+        }
+        .slide-header .sub {
+            font-size: 15px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .law-number {
+            display: inline-block;
+            background: #1a237e;
+            color: #fff;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 15px;
+            font-weight: 700;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 20px 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #1a237e;
+            padding-bottom: 6px;
+        }
+        .section-title .tag {
+            font-size: 13px;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+
+        .law-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border-right: 5px solid #1a237e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            page-break-inside: avoid;
+        }
+        .law-card .law-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a237e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .law-card .law-formula {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e65100;
+            text-align: center;
+            padding: 10px 0;
+            background: #fff;
+            border-radius: 8px;
+            margin: 6px 0;
+        }
+        .law-card .law-desc {
+            font-size: 15px;
+            color: #555;
+            margin: 6px 0;
+        }
+        .law-card .law-desc strong {
+            color: #1a237e;
+        }
+        .law-card .law-use {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-right: 3px solid #2e7d32;
+            font-size: 14px;
+        }
+        .law-card .law-use .label {
+            font-weight: 700;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .law-card .example-box {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-right: 3px solid #e65100;
+            font-size: 14px;
+        }
+        .law-card .example-box .label {
+            font-weight: 700;
+            color: #e65100;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+        .law-card .example-box .step {
+            color: #1a237e;
+            font-weight: 700;
+            margin: 4px 0;
+        }
+        .law-card .exam-box {
+            background: #e8eaf6;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-right: 3px solid #1a237e;
+            font-size: 14px;
+        }
+        .law-card .exam-box .label {
+            font-weight: 700;
+            color: #1a237e;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .law-card .exam-box .answer {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 10px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        table th {
+            background: #1a237e;
+            color: #fff;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        table td {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .page-divider {
+            background: linear-gradient(135deg, #1a237e, #e65100);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 8px 0 4px 0;
+        }
+        .page-divider .icon {
+            font-size: 14px;
+        }
+
+        .footer-slide {
+            text-align: center;
+            padding: 20px 0 10px 0;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 20px;
+        }
+        .footer-slide .name {
+            font-weight: bold;
+            color: #1a237e;
+            font-size: 20px;
+        }
+        .footer-slide .name span {
+            color: #e65100;
+        }
+        .footer-slide .phone {
+            color: #555;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .footer-slide .wish {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-top: 6px;
+        }
+        .footer-slide .wish span {
+            color: #e65100;
+        }
+        .footer-slide .copy {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        .print-btn {
+            background: #2e7d32;
+            color: #fff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px 0;
+        }
+        .print-btn:hover {
+            background: #1b5e20;
+        }
+        .print-btn:active {
+            transform: scale(0.95);
+        }
+
+        .intro-box {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            border: 2px dashed #1a237e;
+            margin-bottom: 20px;
+        }
+        .intro-box h2 {
+            color: #1a237e;
+            font-size: 26px;
+        }
+        .intro-box p {
+            font-size: 17px;
+            color: #555;
+            margin: 15px 0;
+        }
+        .intro-box .tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .intro-box .tags span {
+            background: #1a237e;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 6px;
+            }
+            .container {
+                padding: 12px 14px;
+                border-radius: 10px;
+            }
+            .slide-header h1 {
+                font-size: 20px;
+            }
+            .law-card {
+                padding: 12px 14px;
+            }
+            .law-card .law-formula {
+                font-size: 18px;
+            }
+            .law-card .law-name {
+                font-size: 16px;
+            }
+            table {
+                font-size: 12px;
+            }
+            table th,
+            table td {
+                padding: 4px 8px;
+            }
+            .section-title {
+                font-size: 17px;
+            }
+            .intro-box h2 {
+                font-size: 20px;
+            }
+            .intro-box p {
+                font-size: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px 10px;
+            }
+            .slide-header h1 {
+                font-size: 17px;
+            }
+            .law-card .law-formula {
+                font-size: 15px;
+            }
+            .section-title {
+                font-size: 15px;
+            }
+            .law-card .law-name {
+                font-size: 14px;
+            }
+            .law-number {
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                font-size: 12px;
+            }
+            .intro-box .tags span {
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+        }
+        @media print {
+            body {
+                background: #fff;
+                padding: 10px;
+            }
+            .container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                padding: 15px;
+            }
+            .print-btn {
+                display: none !important;
+            }
+            .law-card {
+                page-break-inside: avoid;
+            }
+            .page-divider {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== المقدمة ===== -->
+        <div class="slide-header">
+            <div class="badge">🏫 Loli Academy</div>
+            <h1>📐 القوانين الشاملة <span>الفصول الخمسة الأولى</span></h1>
+            <div class="sub">35 قانوناً -- كل قانون مع شرح + أمثلة (مبوب + غير مبوب)</div>
+        </div>
+
+        <div class="intro-box">
+            <h2>📚 مرحباً بك في الموسوعة الإحصائية</h2>
+            <p>تصفح جميع القوانين بالتمرير للأسفل</p>
+            <div class="tags">
+                <span>📊 الفصل الأول: 4 قوانين</span>
+                <span>📊 الفصل الثاني: 7 قوانين</span>
+                <span>📈 الفصل الثالث: 9 قوانين</span>
+                <span>📉 الفصل الرابع: 8 قوانين</span>
+                <span>🎲 الفصل الخامس: 7 قوانين</span>
+            </div>
+            <button class="print-btn" onclick="window.print()">🖨️ طباعة جميع القوانين</button>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 1 - العينة المنتظمة -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">1</span> العينة المنتظمة - فترة السحب
+            <span class="tag">الفصل الأول</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$K = \frac{N}{n}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>K</strong> = فترة السحب (الخطوة بين كل مفردة وأخرى)<br>
+                <strong>N</strong> = حجم المجتمع (عدد المفردات الكلي)<br>
+                <strong>n</strong> = حجم العينة (عدد المفردات المطلوب سحبها)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد اختيار <strong>عينة منتظمة</strong> من مجتمع مرتب ومرقم.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحسب \( K = N \div n \)
+                <br>
+                2. المفردات هي: \( S, S+K, S+2K, S+3K, ... \)
+                <br>
+                حيث S هي أول مفردة يتم اختيارها عشوائياً من 1 إلى K
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                مجتمع مؤلف من 800 مفردة، نريد اختيار عينة منتظمة بحجم 40. إذا علمت أن أول مفردة تم اختيارها عشوائياً كانت الرقم 7، فما هي أول 5 مفردات؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب فترة السحب</span>
+                <br>
+                \( N = 800 \)، \( n = 40 \)
+                <br>
+                \( K = 800 \div 40 = 20 \)
+                <br><br>
+                <span class="step">الخطوة 2: إيجاد المفردات</span>
+                <br>
+                \( S = 7 \) (أول مفردة)
+                <br>
+                المفردة الثانية: \( 7 + 20 = 27 \)
+                <br>
+                المفردة الثالثة: \( 27 + 20 = 47 \)
+                <br>
+                المفردة الرابعة: \( 47 + 20 = 67 \)
+                <br>
+                المفردة الخامسة: \( 67 + 20 = 87 \)
+                <br><br>
+                <strong>الإجابة:</strong> \( 7, 27, 47, 67, 87, ... \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                مجتمع مؤلف من 1000 مفردة موزعة على 5 فئات كما في الجدول التالي. نريد اختيار عينة منتظمة بحجم 50. إذا كانت أول مفردة مختارة هي رقم 8، فما هي المفردات المختارة من كل فئة؟
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>عدد المفردات (Nᵢ)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>الفئة الأولى</td><td>200</td></tr>
+                            <tr><td>الفئة الثانية</td><td>250</td></tr>
+                            <tr><td>الفئة الثالثة</td><td>300</td></tr>
+                            <tr><td>الفئة الرابعة</td><td>150</td></tr>
+                            <tr><td>الفئة الخامسة</td><td>100</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>1000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب فترة السحب</span>
+                <br>
+                \( N = 1000 \)، \( n = 50 \)
+                <br>
+                \( K = 1000 \div 50 = 20 \)
+                <br><br>
+                <span class="step">الخطوة 2: إيجاد المفردات</span>
+                <br>
+                \( S = 8 \) (أول مفردة)
+                <br>
+                المفردات: \( 8, 28, 48, 68, 88, 108, ... \)
+                <br><br>
+                <span class="step">الخطوة 3: توزيع المفردات على الفئات</span>
+                <br>
+                • الفئة الأولى (1-200): 8, 28, 48, 68, 88, 108, 128, 148, 168, 188 → 10 مفردات
+                <br>
+                • الفئة الثانية (201-450): 208, 228, 248, 268, 288, 308, 328, 348, 368, 388, 408, 428, 448 → 13 مفردات
+                <br>
+                • وهكذا...
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                مجتمع مؤلف من 600 مفردة، نريد اختيار عينة منتظمة بحجم 30. إذا كانت أول مفردة هي 5، فما هي المفردة الثالثة؟
+                <br>
+                <span class="answer">الحل: \( K = 600 \div 30 = 20 \)، المفردة الثالثة = \( 5 + 2×20 = 45 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 2 - العينة الطبقية -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">2</span> العينة الطبقية - قانون التناسب
+            <span class="tag">الفصل الأول</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\frac{n}{N} = \frac{n_1}{N_1} = \frac{n_2}{N_2} = \frac{n_3}{N_3}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>n</strong> = حجم العينة الكلي<br>
+                <strong>N</strong> = حجم المجتمع الكلي<br>
+                <strong>nᵢ</strong> = حجم العينة من الطبقة i<br>
+                <strong>Nᵢ</strong> = حجم الطبقة i
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما يكون المجتمع <strong>غير متجانس</strong> ونريد تقسيمه إلى <strong>طبقات</strong> متجانسة.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحسب نسبة العينة: \( \frac{n}{N} \)
+                <br>
+                2. نضرب النسبة بحجم كل طبقة: \( n_i = \frac{n}{N} \times N_i \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                مجتمع بحجم 2000 شخص (1200 ذكور و 800 إناث). نريد عينة طبقية بحجم 60 شخص.
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب نسبة العينة</span>
+                <br>
+                \( n = 60 \)، \( N = 2000 \)
+                <br>
+                نسبة العينة = \( 60 \div 2000 = 0.03 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب عدد الذكور في العينة</span>
+                <br>
+                \( N_1 = 1200 \) (الذكور)
+                <br>
+                \( n_1 = 0.03 \times 1200 = 36 \) (ذكور)
+                <br><br>
+                <span class="step">الخطوة 3: حساب عدد الإناث في العينة</span>
+                <br>
+                \( N_2 = 800 \) (الإناث)
+                <br>
+                \( n_2 = 0.03 \times 800 = 24 \) (إناث)
+                <br><br>
+                <strong>الإجابة:</strong> \( 36 \) ذكراً و \( 24 \) أنثى
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                مجتمع مكون من 3 طبقات كما في الجدول التالي. نريد عينة طبقية بحجم 100 فرد. ما هو حجم العينة من كل طبقة؟
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الطبقة</th><th>الحجم (Nᵢ)</th><th>نسبة العينة</th><th>حجم العينة (nᵢ)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>الأولى</td><td>500</td><td>0.05</td><td>25</td></tr>
+                            <tr><td>الثانية</td><td>800</td><td>0.05</td><td>40</td></tr>
+                            <tr><td>الثالثة</td><td>700</td><td>0.05</td><td>35</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>2000</td><td>-</td><td>100</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب نسبة العينة</span>
+                <br>
+                \( n = 100 \)، \( N = 2000 \)
+                <br>
+                نسبة العينة = \( 100 \div 2000 = 0.05 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب حجم العينة من كل طبقة</span>
+                <br>
+                \( n_1 = 0.05 \times 500 = 25 \)
+                <br>
+                \( n_2 = 0.05 \times 800 = 40 \)
+                <br>
+                \( n_3 = 0.05 \times 700 = 35 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                مجتمع بحجم 3000 (1800 ذكور، 1200 إناث). نريد عينة طبقية بحجم 90. كم عدد الإناث في العينة؟
+                <br>
+                <span class="answer">الحل: نسبة العينة = \( 90 \div 3000 = 0.03 \)، عدد الإناث = \( 0.03 \times 1200 = 36 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 3 - أخطاء العينة -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">3</span> أخطاء العينة
+            <span class="tag">الفصل الأول</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 أنواع أخطاء العينة</div>
+            
+            <div class="law-desc">
+                <strong>الخطأ العشوائي:</strong>
+                <br>
+                • يحدث بسبب <strong>العشوائية</strong> في اختيار العينة
+                <br>
+                • يقل بزيادة <strong>حجم العينة</strong>
+                <br>
+                • يمكن <strong>قياسه والتنبؤ</strong> به
+                <br>
+                • يحدث في <strong>اتجاهين</strong> (موجب وسالب)
+            </div>
+            
+            <div class="law-desc" style="margin-top:10px;">
+                <strong>خطأ التحيز:</strong>
+                <br>
+                • يحدث في <strong>اتجاه واحد</strong> (موجب أو سالب)
+                <br>
+                • <strong>أخطر</strong> أنواع الأخطاء الإحصائية
+                <br>
+                • <strong>لا يمكن قياسه أو التنبؤ</strong> به
+                <br>
+                • ينتج عن <strong>انحياز</strong> العينة لصفة معينة
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال توضيحي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا أردنا قياس متوسط طول طلاب جامعة، واخترنا عينة من لاعبي كرة السلة فقط، فما نوع الخطأ؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                هذا مثال على <strong>خطأ التحيز</strong>، لأن العينة اختيرت من فئة معينة (لاعبي كرة السلة) مما يجعل النتائج منحازة نحو الطول.
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال توضيحي</span>
+                <strong>السؤال:</strong>
+                <br>
+                في دراسة عن دخل الأسر في مدينة، تم اختيار عينة عشوائية من 100 أسرة. الجدول التالي يوضح توزيع الدخل:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>فئة الدخل</th><th>التكرار</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>أقل من 2000</td><td>15</td></tr>
+                            <tr><td>2000 - 4000</td><td>30</td></tr>
+                            <tr><td>4000 - 6000</td><td>35</td></tr>
+                            <tr><td>أكثر من 6000</td><td>20</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <strong>السؤال:</strong> إذا تم اختيار العينة من منطقة الأغنياء فقط، فما نوع الخطأ؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                هذا <strong>خطأ تحيز</strong> لأن العينة لا تمثل جميع فئات المجتمع، مما يؤدي إلى تضخيم متوسط الدخل.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                أي من الأخطاء التالية يعتبر أخطر؟ ولماذا؟
+                <br>
+                أ) الخطأ العشوائي &nbsp; ب) خطأ التحيز
+                <br>
+                <span class="answer">الحل: ب) خطأ التحيز، لأنه يحدث باتجاه واحد ولا يمكن قياسه</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 4 - أنواع المتغيرات -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">4</span> أنواع المتغيرات
+            <span class="tag">الفصل الأول</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 أنواع المتغيرات الإحصائية</div>
+            
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>نوع المتغير</th><th>التعريف</th><th>أمثلة</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>نوعي (وصفي)</strong></td>
+                            <td>صفة غير قابلة للقياس العددي</td>
+                            <td>الجنس، اللون، التخصص، الحالة الاجتماعية</td>
+                        </tr>
+                        <tr>
+                            <td><strong>كمي مستمر</strong></td>
+                            <td>يقاس بالأجزاء ويأخذ أي قيمة ضمن مجال</td>
+                            <td>الطول، الوزن، العمر، درجة الحرارة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>كمي منقطع</strong></td>
+                            <td>أعداد صحيحة فقط (لا يأخذ كسوراً)</td>
+                            <td>عدد الطلاب، عدد السيارات، عدد أفراد الأسرة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال توضيحي</span>
+                <strong>السؤال:</strong>
+                <br>
+                صنف المتغيرات التالية:
+                <br>
+                1. طول الطالب → <strong>كمي مستمر</strong>
+                <br>
+                2. عدد الطلاب في الصف → <strong>كمي منقطع</strong>
+                <br>
+                3. لون السيارة → <strong>نوعي</strong>
+                <br>
+                4. درجة الحرارة → <strong>كمي مستمر</strong>
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال توضيحي</span>
+                <strong>السؤال:</strong>
+                <br>
+                الجدول التالي يوضح بيانات عن 50 طالباً. حدد نوع كل متغير:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>المتغير</th><th>القيم</th><th>النوع</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>التخصص</td><td>هندسة، طب، علوم، آداب</td><td>نوعي</td></tr>
+                            <tr><td>المعدل</td><td>من 0 إلى 100</td><td>كمي مستمر</td></tr>
+                            <tr><td>عدد المواد</td><td>5، 6، 7، 8</td><td>كمي منقطع</td></tr>
+                            <tr><td>الجنس</td><td>ذكر، أنثى</td><td>نوعي</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                لون الحبر الموجود في قلم الكتابة يعتبر متغير:
+                <br>
+                أ) كمي منقطع &nbsp; ب) نوعي &nbsp; ج) كمي مستمر
+                <br>
+                <span class="answer">الحل: ب) نوعي</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 5 - التكرار النسبي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">5</span> التكرار النسبي (RF)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$RF = \frac{f}{\sum f}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>RF</strong> = التكرار النسبي (قيمته بين 0 و 1)<br>
+                <strong>f</strong> = تكرار الفئة أو القيمة<br>
+                <strong>∑f</strong> = مجموع التكرارات الكلي
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد معرفة <strong>نسبة</strong> المفردات التي تنتمي لفئة معينة.
+                <br><br>
+                <strong>ملاحظة:</strong> مجموع التكرارات النسبية لجميع الفئات = 1
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كان f = 10 و ∑f = 50، فما هو التكرار النسبي؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( RF = f \div \sum f = 10 \div 50 = 0.2 \)
+                <br>
+                <strong>الإجابة:</strong> 0.2
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب التكرار النسبي لكل فئة في الجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>التكرار (f)</th><th>RF</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0 - 4</td><td>5</td><td>5 ÷ 20 = 0.25</td></tr>
+                            <tr><td>4 - 8</td><td>8</td><td>8 ÷ 20 = 0.40</td></tr>
+                            <tr><td>8 - 12</td><td>7</td><td>7 ÷ 20 = 0.35</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>20</td><td>1.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في جدول تكراري، إذا كان ∑f = 50 وتكرار فئة = 10، فما هو التكرار النسبي؟
+                <br>
+                <span class="answer">الحل: \( RF = 10 \div 50 = 0.2 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 6 - التكرار المئوي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">6</span> التكرار المئوي (النسبة المئوية)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\text{النسبة المئوية} = RF \times 100$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>RF</strong> = التكرار النسبي<br>
+                <strong>النسبة المئوية</strong> = التكرار معبراً عنه بـ %
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد التعبير عن التكرار <strong>بالنسبة المئوية</strong> بدلاً من الكسر العشري.
+                <br><br>
+                <strong>ملاحظة:</strong> مجموع النسب المئوية لجميع الفئات = 100%
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كان التكرار النسبي لفئة = 0.25، فما هو التكرار المئوي؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                النسبة المئوية = \( 0.25 \times 100 = 25\% \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب التكرار المئوي لكل فئة في الجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th><th>RF</th><th>%</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0 - 4</td><td>5</td><td>0.25</td><td>25%</td></tr>
+                            <tr><td>4 - 8</td><td>8</td><td>0.40</td><td>40%</td></tr>
+                            <tr><td>8 - 12</td><td>7</td><td>0.35</td><td>35%</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>20</td><td>1.00</td><td>100%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان التكرار النسبي لفئة = 0.25، فإن التكرار المئوي =
+                <br>
+                <span class="answer">الحل: \( 0.25 \times 100 = 25\% \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 7 - مركز الفئة -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">7</span> مركز الفئة (Class Midpoint)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$x_i = \frac{L + U}{2}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>xᵢ</strong> = مركز الفئة (يمثل جميع مفردات الفئة في الحسابات)<br>
+                <strong>L</strong> = الحد الأدنى للفئة (Lower limit)<br>
+                <strong>U</strong> = الحد الأعلى للفئة (Upper limit)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه في <strong>البيانات المبوبة</strong> عندما نحتاج إلى قيمة <strong>تمثل</strong> جميع مفردات الفئة.
+                <br><br>
+                <strong>ملاحظة:</strong> مركز الفئة = متوسط الحدين الأدنى والأعلى للفئة.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                ما هو مركز الفئة للفئة (10 - 14)؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( L = 10 \)، \( U = 14 \)
+                <br>
+                \( x_i = (10 + 14) \div 2 = 12 \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب مراكز الفئات للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>L</th><th>U</th><th>xᵢ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 14</td><td>10</td><td>14</td><td>12</td></tr>
+                            <tr><td>14 - 18</td><td>14</td><td>18</td><td>16</td></tr>
+                            <tr><td>18 - 22</td><td>18</td><td>22</td><td>20</td></tr>
+                            <tr><td>22 - 26</td><td>22</td><td>26</td><td>24</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <strong>ملاحظة:</strong> مركز الفئة يستخدم في حساب الوسط الحسابي للبيانات المبوبة.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                ما هو مركز الفئة للفئة (15 - 19)؟
+                <br>
+                <span class="answer">الحل: \( (15 + 19) \div 2 = 17 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 8 - علاقة سترجس -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">8</span> علاقة سترجس (Sturges' Rule)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$c = \frac{R}{1 + 3.32 \times \log n}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>c</strong> = طول الفئة (Class width)<br>
+                <strong>R</strong> = المدى (Range) = MAX - MIN<br>
+                <strong>n</strong> = عدد المفردات (Sample size)<br>
+                <strong>log</strong> = اللوغاريتم العشري (قاعدة 10)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد <strong>تبويب</strong> البيانات الكمية المستمرة، وتحديد <strong>طول الفئة</strong> المناسب.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحسب المدى: \( R = MAX - MIN \)
+                <br>
+                2. نعوض في العلاقة: \( c = R \div (1 + 3.32 \times \log n) \)
+                <br>
+                3. نقرب الناتج إلى <strong>عدد صحيح</strong> (عادةً للأعلى)
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                البيانات: 3، 5، 7، 12، 15، 20، 25، 30
+                <br>
+                احسب طول الفئة باستخدام علاقة سترجس.
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب المدى</span>
+                <br>
+                \( MAX = 30 \)، \( MIN = 3 \)
+                <br>
+                \( R = 30 - 3 = 27 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب طول الفئة</span>
+                <br>
+                \( n = 8 \)
+                <br>
+                \( \log 8 = 0.903 \)
+                <br>
+                \( c = 27 \div (1 + 3.32 \times 0.903) = 27 \div 3.998 = 6.75 \approx 7 \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                البيانات التالية تمثل درجات 20 طالباً:
+                <br>
+                12، 15، 18، 20، 22، 25، 27، 30، 32، 35، 38، 40، 42، 45، 48، 50، 52، 55، 58، 60
+                <br>
+                استخدم علاقة سترجس لإنشاء جدول تكراري.
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب المدى</span>
+                <br>
+                \( MAX = 60 \)، \( MIN = 12 \)
+                <br>
+                \( R = 60 - 12 = 48 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب طول الفئة</span>
+                <br>
+                \( n = 20 \)، \( \log 20 = 1.301 \)
+                <br>
+                \( c = 48 \div (1 + 3.32 \times 1.301) = 48 \div 5.319 = 9.02 \approx 10 \)
+                <br><br>
+                <span class="step">الخطوة 3: الجدول التكراري</span>
+                <br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>التكرار (f)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 20</td><td>4</td></tr>
+                            <tr><td>20 - 30</td><td>4</td></tr>
+                            <tr><td>30 - 40</td><td>4</td></tr>
+                            <tr><td>40 - 50</td><td>4</td></tr>
+                            <tr><td>50 - 60</td><td>4</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>20</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                علاقة سترجس تستخدم لحساب:
+                <br>
+                أ) المدى &nbsp; ب) طول الفئة &nbsp; ج) التكرار
+                <br>
+                <span class="answer">الحل: ب) طول الفئة</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 9 - المدى -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">9</span> المدى (Range)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$R = MAX - MIN$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>R</strong> = المدى (أبسط مقاييس التشتت)<br>
+                <strong>MAX</strong> = أكبر قيمة في البيانات<br>
+                <strong>MIN</strong> = أصغر قيمة في البيانات
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لمعرفة <strong>مدى انتشار</strong> البيانات، أي الفرق بين أكبر وأصغر قيمة.
+                <br><br>
+                <strong>ملاحظة:</strong> المدى يتأثر بالقيم المتطرفة.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                ما هو المدى للبيانات: 3، 7، 8، 12، 15؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( MAX = 15 \)، \( MIN = 3 \)
+                <br>
+                \( R = 15 - 3 = 12 \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                أوجد المدى للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>الحدود</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 14</td><td>الحد الأدنى = 10</td></tr>
+                            <tr><td>14 - 18</td><td></td></tr>
+                            <tr><td>18 - 22</td><td></td></tr>
+                            <tr><td>22 - 26</td><td>الحد الأعلى = 26</td></tr>
+                            <tr style="font-weight:bold;"><td>المدى</td><td>\( R = 26 - 10 = 16 \)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                ما هو المدى للبيانات: 5، 12، 8، 3، 15، 7؟
+                <br>
+                <span class="answer">الحل: \( R = 15 - 3 = 12 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 10 - زاوية القطاع -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">10</span> زاوية القطاع في الدائرة البيانية
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\text{الزاوية} = \frac{f}{\sum f} \times 360^\circ$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>f</strong> = تكرار الفئة<br>
+                <strong>∑f</strong> = مجموع التكرارات الكلي<br>
+                <strong>الزاوية</strong> = قياس زاوية القطاع بالدرجات
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عند إنشاء <strong>القطاعات الدائرية</strong> (Pie Chart) لتحديد زاوية كل قطاع.
+                <br><br>
+                <strong>ملاحظة:</strong> مجموع زوايا القطاعات = 360°
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                في استطلاع آراء 50 شخصاً حول تفضيلاتهم:
+                <br>
+                • 20 شخص يفضلون القهوة
+                <br>
+                • 15 شخص يفضلون الشاي
+                <br>
+                • 10 أشخاص يفضلون العصير
+                <br>
+                • 5 أشخاص يفضلون الحليب
+                <br>
+                احسب زاوية كل قطاع.
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( \sum f = 50 \)
+                <br>
+                القهوة: \( (20 \div 50) \times 360 = 144° \)
+                <br>
+                الشاي: \( (15 \div 50) \times 360 = 108° \)
+                <br>
+                العصير: \( (10 \div 50) \times 360 = 72° \)
+                <br>
+                الحليب: \( (5 \div 50) \times 360 = 36° \)
+                <br>
+                <strong>المجموع:</strong> 360°
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                في جدول توزيع الطلاب حسب التخصصات التالي، احسب زاوية كل قطاع:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>التخصص</th><th>f</th><th>الزاوية</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>هندسة</td><td>8</td><td>\( (8÷20) \times 360 = 144° \)</td></tr>
+                            <tr><td>طب</td><td>6</td><td>\( (6÷20) \times 360 = 108° \)</td></tr>
+                            <tr><td>علوم</td><td>4</td><td>\( (4÷20) \times 360 = 72° \)</td></tr>
+                            <tr><td>آداب</td><td>2</td><td>\( (2÷20) \times 360 = 36° \)</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>20</td><td>360°</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كانت زاوية قطاع في دائرة بيانية = 90°، فما هي النسبة المئوية لهذا القطاع؟
+                <br>
+                <span class="answer">الحل: \( (90 \div 360) \times 100 = 25\% \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 11 - التكرار التجميعي الصاعد -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">11</span> التكرار التجميعي الصاعد (CF↑)
+            <span class="tag">الفصل الثاني</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$CF_{\uparrow} = f_1 + f_2 + f_3 + \cdots + f_i$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>CF↑</strong> = التكرار التجميعي الصاعد<br>
+                <strong>fᵢ</strong> = تكرار الفئة i
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد معرفة <strong>عدد المفردات</strong> التي قيمتها <strong>أقل من أو تساوي</strong> حد معين.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                نجمع التكرارات من <strong>أول فئة</strong> حتى <strong>الفئة الحالية</strong>.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                البيانات: 3، 5، 7، 9، 11، 13، 15
+                <br>
+                رتب البيانات واحسب التكرار التجميعي الصاعد.
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                البيانات المرتبة: 3، 5، 7، 9، 11، 13، 15
+                <br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>القيمة</th><th>التكرار</th><th>CF↑</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3</td><td>1</td><td>1</td></tr>
+                            <tr><td>5</td><td>1</td><td>2</td></tr>
+                            <tr><td>7</td><td>1</td><td>3</td></tr>
+                            <tr><td>9</td><td>1</td><td>4</td></tr>
+                            <tr><td>11</td><td>1</td><td>5</td></tr>
+                            <tr><td>13</td><td>1</td><td>6</td></tr>
+                            <tr><td>15</td><td>1</td><td>7</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب التكرار التجميعي الصاعد للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th><th>CF↑</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 14</td><td>5</td><td>5</td></tr>
+                            <tr><td>14 - 18</td><td>8</td><td>5 + 8 = 13</td></tr>
+                            <tr><td>18 - 22</td><td>7</td><td>13 + 7 = 20</td></tr>
+                            <tr><td>22 - 26</td><td>5</td><td>20 + 5 = 25</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>25</td><td>25</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <strong>تفسير:</strong> عدد المفردات التي قيمتها أقل من 18 هو 13.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                التكرار التجميعي الصاعد هو مجموع التكرارات من أول فئة حتى الفئة الحالية. (صح/خطأ)
+                <br>
+                <span class="answer">الحل: صح</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 12 - الوسط الحسابي (غير مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">12</span> الوسط الحسابي - بيانات غير مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\bar{X} = \frac{\sum x_i}{n}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>X̄</strong> = الوسط الحسابي (متوسط البيانات)<br>
+                <strong>∑xᵢ</strong> = مجموع جميع القيم<br>
+                <strong>n</strong> = عدد القيم (حجم العينة)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون البيانات <strong>غير مبوبة</strong> (مفردات) ونريد حساب <strong>المتوسط</strong>.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نجمع جميع القيم: \( \sum x_i \)
+                <br>
+                2. نقسم المجموع على عددها: \( n \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب الوسط الحسابي للبيانات: 4، 6، 3، 2، 10، 5، 9، 1
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب مجموع القيم</span>
+                <br>
+                \( \sum x_i = 4+6+3+2+10+5+9+1 = 40 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب عدد القيم</span>
+                <br>
+                \( n = 8 \)
+                <br><br>
+                <span class="step">الخطوة 3: حساب الوسط الحسابي</span>
+                <br>
+                \( \bar{X} = 40 \div 8 = 5 \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب الوسط الحسابي للجدول التالي (بيانات مبوبة):
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th><th>xᵢ</th><th>f×xᵢ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0 - 4</td><td>5</td><td>2</td><td>10</td></tr>
+                            <tr><td>4 - 8</td><td>8</td><td>6</td><td>48</td></tr>
+                            <tr><td>8 - 12</td><td>7</td><td>10</td><td>70</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>20</td><td>-</td><td>128</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <span class="step">الحل:</span>
+                <br>
+                \( \sum f = 20 \)، \( \sum (f \times x_i) = 128 \)
+                <br>
+                \( \bar{X} = 128 \div 20 = 6.4 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إن الوسط الحسابي لهذه البيانات هو: 4، 6، 3، 2، 10، 5، 9، 1
+                <br>
+                <span class="answer">الحل: \( \sum = 40 \)، \( n = 8 \)، \( \bar{X} = 40 \div 8 = 5 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 13 - الوسط الحسابي (مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">13</span> الوسط الحسابي - بيانات مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\bar{X} = \frac{\sum (f \times x_i)}{\sum f}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>f</strong> = تكرار الفئة<br>
+                <strong>xᵢ</strong> = مركز الفئة<br>
+                <strong>∑(f × xᵢ)</strong> = مجموع جداء التكرار في مركز الفئة<br>
+                <strong>∑f</strong> = مجموع التكرارات
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون البيانات <strong>مبوبة</strong> (في جدول تكراري) ونريد حساب الوسط الحسابي.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحسب مركز كل فئة: \( x_i = (L + U) \div 2 \)
+                <br>
+                2. نضرب كل مركز بتكراره: \( f \times x_i \)
+                <br>
+                3. نجمع النواتج: \( \sum (f \times x_i) \)
+                <br>
+                4. نقسم على مجموع التكرارات: \( \sum f \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب الوسط الحسابي للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th><th>xᵢ</th><th>f×xᵢ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 20</td><td>5</td><td>15</td><td>75</td></tr>
+                            <tr><td>20 - 30</td><td>8</td><td>25</td><td>200</td></tr>
+                            <tr><td>30 - 40</td><td>7</td><td>35</td><td>245</td></tr>
+                            <tr><td>40 - 50</td><td>5</td><td>45</td><td>225</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>25</td><td>-</td><td>745</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <span class="step">الحل:</span>
+                <br>
+                \( \sum f = 25 \)، \( \sum (f \times x_i) = 745 \)
+                <br>
+                \( \bar{X} = 745 \div 25 = 29.8 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في جدول تكراري، إذا كان \( \sum f = 50 \) و \( \sum (f \times x_i) = 2500 \)، فما هو الوسط الحسابي؟
+                <br>
+                <span class="answer">الحل: \( \bar{X} = 2500 \div 50 = 50 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 14 - الوسط المرجح -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">14</span> الوسط الحسابي المرجح
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\bar{X} = \frac{\sum (x_i \times W_i)}{\sum W_i}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>xᵢ</strong> = القيم<br>
+                <strong>Wᵢ</strong> = الأوزان (أهمية كل قيمة)<br>
+                <strong>∑(xᵢ × Wᵢ)</strong> = مجموع جداء القيم في أوزانها<br>
+                <strong>∑Wᵢ</strong> = مجموع الأوزان
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون القيم <strong>مختلفة الأهمية</strong> (لكل قيمة وزن).
+                <br><br>
+                <strong>مثال:</strong> حساب المعدل الدراسي (المواد لها أعداد ساعات مختلفة).
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كانت درجات طالب في 3 مواد: 80 (وزن 3)، 90 (وزن 2)، 70 (وزن 1)، فما هو المعدل المرجح؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                <span class="step">الخطوة 1: حساب \( \sum (x_i \times W_i) \)</span>
+                <br>
+                \( 80 \times 3 = 240 \)
+                <br>
+                \( 90 \times 2 = 180 \)
+                <br>
+                \( 70 \times 1 = 70 \)
+                <br>
+                \( \sum = 240 + 180 + 70 = 490 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب مجموع الأوزان</span>
+                <br>
+                \( \sum W_i = 3 + 2 + 1 = 6 \)
+                <br><br>
+                <span class="step">الخطوة 3: حساب الوسط المرجح</span>
+                <br>
+                \( \bar{X} = 490 \div 6 = 81.67 \)
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                في دراسة عن متوسط الدخل، تم أخذ عينة من 3 مناطق بأحجام مختلفة:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>المنطقة</th><th>متوسط الدخل (xᵢ)</th><th>عدد السكان (Wᵢ)</th><th>xᵢ × Wᵢ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>الأولى</td><td>5000</td><td>200</td><td>1,000,000</td></tr>
+                            <tr><td>الثانية</td><td>6000</td><td>300</td><td>1,800,000</td></tr>
+                            <tr><td>الثالثة</td><td>4500</td><td>500</td><td>2,250,000</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>-</td><td>1000</td><td>5,050,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <span class="step">الحل:</span>
+                <br>
+                \( \bar{X} = 5,050,000 \div 1000 = 5050 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                درجات طالب: 85 (وزن 2)، 90 (وزن 3)، 75 (وزن 1). ما هو المعدل المرجح؟
+                <br>
+                <span class="answer">الحل: \( (85×2 + 90×3 + 75×1) \div 6 = 86.67 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 15 - الوسيط (غير مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">15</span> الوسيط - بيانات غير مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 تعريف الوسيط</div>
+            <div class="law-desc">
+                <strong>الوسيط</strong> هو القيمة التي <strong>تقسّم</strong> البيانات المرتبة إلى <strong>قسمين متساويين</strong>.
+                <br><br>
+                <strong>إذا كان n فردياً:</strong>
+                <br>
+                الموقع = \( (n + 1) \div 2 \)
+                <br>
+                الوسيط = القيمة في هذا الموقع
+                <br><br>
+                <strong>إذا كان n زوجياً:</strong>
+                <br>
+                الموقعان = \( n \div 2 \) و \( (n \div 2) + 1 \)
+                <br>
+                الوسيط = متوسط القيمتين في هذين الموقعين
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد قيمة <strong>لا تتأثر بالقيم المتطرفة</strong>، وتقسم البيانات إلى نصفين.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي (فردي)</span>
+                <strong>السؤال:</strong>
+                <br>
+                البيانات: 3، 5، 7، 9، 11
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( n = 5 \) (فردي)
+                <br>
+                الموقع = \( (5 + 1) \div 2 = 3 \)
+                <br>
+                الوسيط = القيمة الثالثة = 7
+            </div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي (زوجي)</span>
+                <strong>السؤال:</strong>
+                <br>
+                البيانات: 2، 4، 6، 8، 10، 12
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( n = 6 \) (زوجي)
+                <br>
+                الموقعان = 3 و 4
+                <br>
+                الوسيط = \( (6 + 8) \div 2 = 7 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                ما هو الوسيط للبيانات: 2، 4، 6، 8، 10، 12؟
+                <br>
+                <span class="answer">الحل: \( n=6 \) (زوجي)، الموقعان 3 و4، الوسيط = \( (6+8) \div 2 = 7 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 16 - الوسيط (مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">16</span> الوسيط - بيانات مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$Med = L + \left[ \frac{\frac{\sum f}{2} - CF}{f_m} \right] \times C$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>L</strong> = الحد الأدنى للفئة الوسيطية<br>
+                <strong>CF</strong> = التكرار التجميعي قبل الفئة الوسيطية<br>
+                <strong>f_m</strong> = تكرار الفئة الوسيطية<br>
+                <strong>C</strong> = طول الفئة
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون البيانات <strong>مبوبة</strong> في جدول تكراري.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحسب موقع الوسيط: \( \sum f \div 2 \)
+                <br>
+                2. نحدد الفئة التي يقع فيها هذا الموقع (الفئة الوسيطية)
+                <br>
+                3. نطبق القانون
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب الوسيط للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th><th>CF↑</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10 - 20</td><td>10</td><td>10</td></tr>
+                            <tr><td>20 - 30</td><td>15</td><td>25</td></tr>
+                            <tr><td>30 - 40</td><td>20</td><td>45</td></tr>
+                            <tr><td>40 - 50</td><td>5</td><td>50</td></tr>
+                            <tr style="font-weight:bold;"><td>المجموع</td><td>50</td><td>-</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <span class="step">الخطوة 1: حساب موقع الوسيط</span>
+                <br>
+                \( \sum f \div 2 = 50 \div 2 = 25 \)
+                <br><br>
+                <span class="step">الخطوة 2: تحديد الفئة الوسيطية</span>
+                <br>
+                الفئة التي يقع فيها الموقع 25 هي: 20 - 30
+                <br><br>
+                <span class="step">الخطوة 3: تطبيق القانون</span>
+                <br>
+                \( L = 20 \)، \( CF = 10 \)، \( f_m = 15 \)، \( C = 10 \)
+                <br>
+                \( Med = 20 + [(25 - 10) \div 15] \times 10 = 20 + (15 \div 15) \times 10 = 30 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في جدول تكراري، إذا كان \( \sum f = 80 \)، والفئة الوسيطية هي 30-40، و \( CF = 25 \)، \( f_m = 20 \)، \( L = 30 \)، \( C = 10 \)، فما هو الوسيط؟
+                <br>
+                <span class="answer">الحل: \( Med = 30 + [(40 - 25) \div 20] \times 10 = 30 + 7.5 = 37.5 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 17 - المنوال (غير مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">17</span> المنوال - بيانات غير مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 تعريف المنوال</div>
+            <div class="law-desc">
+                <strong>المنوال</strong> هو القيمة <strong>الأكثر تكراراً</strong> في البيانات.
+                <br><br>
+                <strong>ملاحظات:</strong>
+                <br>
+                • يمكن أن يكون للبيانات <strong>منوال واحد</strong> (أحادي المنوال)
+                <br>
+                • يمكن أن يكون <strong>منوالين</strong> (ثنائي المنوال)
+                <br>
+                • قد <strong>لا يوجد</strong> منوال إذا كانت جميع القيم مختلفة
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد معرفة <strong>القيمة الأكثر شيوعاً</strong> في البيانات.
+                <br><br>
+                <strong>ملاحظة:</strong> المنوال يمكن حسابه للبيانات <strong>النوعية</strong> أيضاً.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                ما هو المنوال للبيانات: 10، 9، 9، 9، 8، 6، 7، 6، 5، 6؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                نبحث عن القيمة الأكثر تكراراً:
+                <br>
+                10 تكررت 1 مرة
+                <br>
+                9 تكررت 3 مرات
+                <br>
+                8 تكررت 1 مرة
+                <br>
+                6 تكررت 3 مرات
+                <br>
+                7 تكررت 1 مرة
+                <br>
+                5 تكررت 1 مرة
+                <br><br>
+                <strong>الإجابة:</strong> المنوال = 9 (تكررت 3 مرات، وهي الأكثر)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                ما هو المنوال للبيانات: 10، 9، 9، 9، 8، 6، 7، 6، 5، 6؟
+                <br>
+                <span class="answer">الحل: 9 (تكررت 3 مرات)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 18 - المنوال (مبوب) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">18</span> المنوال - بيانات مبوبة
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية (طريقة الفروق)</div>
+            <div class="law-formula">$$Mod = L + \left[ \frac{\Delta_1}{\Delta_1 + \Delta_2} \right] \times C$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>L</strong> = الحد الأدنى للفئة المنوالية<br>
+                <strong>Δ₁</strong> = \( f_m - f_{m-1} \) (الفرق مع الفئة السابقة)<br>
+                <strong>Δ₂</strong> = \( f_m - f_{m+1} \) (الفرق مع الفئة التالية)<br>
+                <strong>C</strong> = طول الفئة<br>
+                <strong>f_m</strong> = تكرار الفئة المنوالية (الأكبر)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون البيانات <strong>مبوبة</strong> في جدول تكراري.
+                <br><br>
+                <strong>خطوات الحل:</strong>
+                <br>
+                1. نحدد الفئة ذات التكرار الأكبر (الفئة المنوالية)
+                <br>
+                2. نحسب \( \Delta_1 \) و \( \Delta_2 \)
+                <br>
+                3. نطبق القانون
+            </div>
+
+            <div class="page-divider"><span class="icon">📊</span> بيانات مبوبة (مع جدول)</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                احسب المنوال للجدول التالي:
+                <br><br>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>الفئة</th><th>f</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>5 - 10</td><td>15</td></tr>
+                            <tr><td>10 - 15</td><td>30</td></tr>
+                            <tr><td>15 - 20</td><td>25</td></tr>
+                            <tr><td>20 - 25</td><td>15</td></tr>
+                            <tr><td>25 - 30</td><td>10</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <span class="step">الخطوة 1: تحديد الفئة المنوالية</span>
+                <br>
+                أكبر تكرار هو 30 في الفئة (10 - 15)
+                <br>
+                \( f_m = 30 \)، \( L = 10 \)، \( C = 5 \)
+                <br><br>
+                <span class="step">الخطوة 2: حساب \( \Delta_1 \) و \( \Delta_2 \)</span>
+                <br>
+                \( f_{m-1} = 15 \) (الفئة السابقة)
+                <br>
+                \( \Delta_1 = 30 - 15 = 15 \)
+                <br>
+                \( f_{m+1} = 25 \) (الفئة التالية)
+                <br>
+                \( \Delta_2 = 30 - 25 = 5 \)
+                <br><br>
+                <span class="step">الخطوة 3: تطبيق القانون</span>
+                <br>
+                \( Mod = 10 + [15 \div (15 + 5)] \times 5 = 10 + 3.75 = 13.75 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في جدول تكراري، إذا كانت الفئة المنوالية هي 20-30، و \( \Delta_1 = 10 \)، \( \Delta_2 = 5 \)، \( L = 20 \)، \( C = 10 \)، فما هو المنوال؟
+                <br>
+                <span class="answer">الحل: \( Mod = 20 + [10 \div (10+5)] \times 10 = 20 + 6.67 = 26.67 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 19 - علاقة بيرسون -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">19</span> علاقة بيرسون
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$\bar{X} - Mod = 3(\bar{X} - Med)$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>X̄</strong> = الوسط الحسابي<br>
+                <strong>Mod</strong> = المنوال<br>
+                <strong>Med</strong> = الوسيط
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد <strong>إيجاد أحد المقاييس</strong> إذا عُرفت المقاييس الأخرى.
+                <br><br>
+                <strong>مثال:</strong> إذا عرفنا الوسط والوسيط، نستطيع إيجاد المنوال.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كان \( \bar{X} = 7 \) و \( Med = 6 \)، فما هو المنوال؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( \bar{X} - Mod = 3(\bar{X} - Med) \)
+                <br>
+                \( 7 - Mod = 3(7 - 6) \)
+                <br>
+                \( 7 - Mod = 3 \)
+                <br>
+                \( Mod = 7 - 3 = 4 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( \bar{X} = 10 \)، \( Med = 8 \)، فما هو المنوال باستخدام علاقة بيرسون؟
+                <br>
+                <span class="answer">الحل: \( Mod = 10 - 3(10-8) = 10 - 6 = 4 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 20 - تحديد شكل التوزيع -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">20</span> تحديد شكل التوزيع
+            <span class="tag">الفصل الثالث</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 العلاقة بين المقاييس تحدد شكل التوزيع</div>
+            
+            <div class="law-desc">
+                <strong>طبيعي (متماثل):</strong>
+                <br>
+                \( \bar{X} = Med = Mod \)
+                <br><br>
+                <strong>ملتوي نحو اليمين:</strong>
+                <br>
+                \( \bar{X} > Med > Mod \)
+                <br>
+                (الذيل الطويل جهة اليمين)
+                <br><br>
+                <strong>ملتوي نحو اليسار:</strong>
+                <br>
+                \( \bar{X} < Med < Mod \)
+                <br>
+                (الذيل الطويل جهة اليسار)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لتحديد <strong>شكل</strong> توزيع البيانات بدون الحاجة إلى رسم بياني.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كان \( \bar{X} = 10 \)، \( Med = 11 \)، \( Mod = 13 \)، فما هو شكل التوزيع؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( 10 < 11 < 13 \)
+                <br>
+                أي \( \bar{X} < Med < Mod \)
+                <br><br>
+                <strong>الإجابة:</strong> التوزيع <strong>ملتوي نحو اليسار</strong>.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( \bar{X} = 10 \)، \( Med = 11 \)، \( Mod = 13 \)، فشكل التوزيع هو:
+                <br>
+                <span class="answer">الحل: \( \bar{X} < Med < Mod \) ← ملتوي نحو اليسار</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 21 - المدى (الفصل الرابع) -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">21</span> المدى (Range)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$R = MAX - MIN$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>R</strong> = المدى (أبسط مقاييس التشتت)<br>
+                <strong>MAX</strong> = أكبر قيمة في البيانات<br>
+                <strong>MIN</strong> = أصغر قيمة في البيانات
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لمعرفة <strong>مدى انتشار</strong> البيانات بسرعة.
+                <br><br>
+                <strong>ملاحظة:</strong> المدى يتأثر بالقيم المتطرفة.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                ما هو المدى للبيانات: 3، 7، 8، 12، 15؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( MAX = 15 \)، \( MIN = 3 \)
+                <br>
+                \( R = 15 - 3 = 12 \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                ما هو المدى للبيانات: 5، 12، 8، 3، 15، 7؟
+                <br>
+                <span class="answer">الحل: \( R = 15 - 3 = 12 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 22 - المدى النسبي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">22</span> المدى النسبي (PR)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$PR = \frac{R}{\bar{X}} \times 100$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>PR</strong> = المدى النسبي (نسبة مئوية)<br>
+                <strong>R</strong> = المدى<br>
+                <strong>X̄</strong> = الوسط الحسابي
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لمقارنة تشتت بيانات <strong>مختلفة في الوحدات</strong>.
+            </div>
+
+            <div class="page-divider"><span class="icon">📝</span> بيانات غير مبوبة</div>
+            <div class="example-box">
+                <span class="label">📌 مثال تطبيقي</span>
+                <strong>السؤال:</strong>
+                <br>
+                إذا كان \( R = 12 \) و \( \bar{X} = 9 \)، فما هو المدى النسبي؟
+                <br><br>
+                <strong>الحل:</strong>
+                <br>
+                \( PR = (12 \div 9) \times 100 = 133.33\% \)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( R = 20 \) و \( \bar{X} = 40 \)، فما هو المدى النسبي؟
+                <br>
+                <span class="answer">الحل: \( PR = (20 \div 40) \times 100 = 50\% \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 23 - المدى الربيعي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">23</span> المدى الربيعي (IQR)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$IQR = Q_3 - Q_1$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>Q₁</strong> = الربيع الأول (الربيع الأدنى) - 25% من البيانات أقل منه<br>
+                <strong>Q₃</strong> = الربيع الثالث (الربيع الأعلى) - 75% من البيانات أقل منه<br>
+                <strong>IQR</strong> = المدى الربيعي (يقيس تشتت الـ 50% الوسطى)
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لقياس تشتت البيانات <strong>بدون تأثر بالقيم المتطرفة</strong>.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( Q_1 = 25 \) و \( Q_3 = 45 \)، فما هو IQR؟
+                <br>
+                <span class="answer">الحل: \( IQR = 45 - 25 = 20 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 24 - الانحراف الربيعي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">24</span> الانحراف الربيعي (QD)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$QD = \frac{Q_3 - Q_1}{2}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>QD</strong> = الانحراف الربيعي<br>
+                <strong>Q₁</strong> = الربيع الأول<br>
+                <strong>Q₃</strong> = الربيع الثالث
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لقياس التشتت في الـ 50% الوسطى من البيانات.
+                <br><br>
+                <strong>ملاحظة:</strong> الانحراف الربيعي = نصف المدى الربيعي.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( Q_1 = 20 \) و \( Q_3 = 50 \)، فما هو QD؟
+                <br>
+                <span class="answer">الحل: \( QD = (50 - 20) \div 2 = 15 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 25 - الانحراف المتوسط -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">25</span> الانحراف المتوسط (MD)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$MD = \frac{\sum |x_i - Med|}{n}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>MD</strong> = الانحراف المتوسط<br>
+                <strong>|xᵢ - Med|</strong> = القيمة المطلقة لانحراف كل قيمة عن الوسيط<br>
+                <strong>n</strong> = عدد القيم
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لقياس <strong>متوسط الانحرافات</strong> عن الوسيط.
+                <br><br>
+                <strong>ملاحظة:</strong> نستخدم القيم المطلقة للتخلص من الإشارات السالبة.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان مجموع الانحرافات المطلقة = 100 و n = 20، فما هو MD؟
+                <br>
+                <span class="answer">الحل: \( MD = 100 \div 20 = 5 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 26 - التباين -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">26</span> التباين (Variance)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية (بيانات غير مبوبة)</div>
+            <div class="law-formula">$$S^2 = \frac{\sum (x_i - \bar{X})^2}{n-1}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>S²</strong> = تباين العينة<br>
+                <strong>X̄</strong> = الوسط الحسابي<br>
+                <strong>n</strong> = حجم العينة
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما نريد قياس <strong>متوسط مربعات الانحرافات</strong> عن الوسط.
+                <br><br>
+                <strong>ملاحظة:</strong>
+                <br>
+                • إذا كان \( n \ge 30 \) نستخدم \( n \) في المقام
+                <br>
+                • إذا كان \( n < 30 \) نستخدم \( n-1 \) في المقام (تصحيح العينة)
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( \sum (x_i - \bar{X})^2 = 50 \) و \( n = 11 \)، فما هو التباين؟
+                <br>
+                <span class="answer">الحل: \( S^2 = 50 \div (11-1) = 5 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 27 - الانحراف المعياري -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">27</span> الانحراف المعياري (SD)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$S = \sqrt{S^2}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>S</strong> = الانحراف المعياري<br>
+                <strong>S²</strong> = التباين
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه للحصول على <strong>مقياس التشتت</strong> بنفس وحدة البيانات (بعد أخذ الجذر التربيعي).
+                <br><br>
+                <strong>ملاحظة:</strong> الانحراف المعياري هو أكثر مقاييس التشتت استخداماً.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان التباين \( S^2 = 25 \)، فما هو الانحراف المعياري؟
+                <br>
+                <span class="answer">الحل: \( S = \sqrt{25} = 5 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 28 - معامل الاختلاف -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">28</span> معامل الاختلاف (CV)
+            <span class="tag">الفصل الرابع</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$CV = \frac{S}{\bar{X}} \times 100$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>CV</strong> = معامل الاختلاف (نسبة مئوية)<br>
+                <strong>S</strong> = الانحراف المعياري<br>
+                <strong>X̄</strong> = الوسط الحسابي
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه لمقارنة تشتت بيانات <strong>مختلفة في الوحدات</strong> (مثل: الطول والوزن).
+                <br><br>
+                <strong>ملاحظة:</strong> كلما كانت النسبة أقل، كانت البيانات <strong>أكثر تجانساً</strong>.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( \bar{X} = 50 \) و \( S = 5 \)، فما هو معامل الاختلاف؟
+                <br>
+                <span class="answer">الحل: \( CV = (5 \div 50) \times 100 = 10\% \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 29 - الاحتمال النظري -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">29</span> الاحتمال النظري (التقليدي)
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$P(A) = \frac{\text{عدد النتائج المواتية}}{\text{عدد النتائج الممكنة}}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>P(A)</strong> = احتمال وقوع الحادث A<br>
+                <strong>عدد النتائج المواتية</strong> = عدد النتائج التي تحقق الحادث A<br>
+                <strong>عدد النتائج الممكنة</strong> = عدد جميع النتائج في فضاء العينة
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما تكون <strong>جميع النتائج متكافئة</strong> في الفرصة.
+                <br><br>
+                <strong>شرط الاستخدام:</strong> الحوادث البسيطة متكافئة.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في تجربة رمي قطعة نقود، ما هو فضاء العينة؟
+                <br>
+                <span class="answer">الحل: \( \{H, T\} \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 30 - الاحتمال التجريبي -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">30</span> الاحتمال التجريبي (التردد النسبي)
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 الصيغة القانونية</div>
+            <div class="law-formula">$$P(A) = \frac{\text{عدد مرات وقوع الحادث}}{\text{عدد مرات تكرار التجربة}}$$</div>
+            <div class="law-desc">
+                <strong>شرح الرموز:</strong><br>
+                <strong>P(A)</strong> = الاحتمال التجريبي<br>
+                <strong>عدد مرات وقوع الحادث</strong> = عدد المرات التي تحقق فيها الحادث<br>
+                <strong>عدد مرات تكرار التجربة</strong> = عدد المرات التي أجريت فيها التجربة
+            </div>
+            <div class="law-use">
+                <span class="label">📌 متى نستخدم هذا القانون؟</span>
+                نستخدمه عندما:
+                <br>
+                1. تكون الحوادث <strong>غير متكافئة</strong> (مثل: قطعة نقود مغشوشة)
+                <br>
+                2. لا نعرف عدد النتائج الممكنة مسبقاً
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في تجربة رمي حجر نرد 50 مرة، ظهر الوجه 4 10 مرات. ما هو الاحتمال التجريبي لظهور الوجه 4؟
+                <br>
+                <span class="answer">الحل: \( P(4) = 10 \div 50 = 0.2 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 31 - خصائص الاحتمال -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">31</span> خصائص الاحتمال
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 خصائص الاحتمال الأساسية</div>
+            
+            <div class="law-desc">
+                <strong>الخاصية الأولى:</strong>
+                <br>
+                \( 0 \le P(A) \le 1 \)
+                <br>
+                قيمة الاحتمال محصورة بين 0 و 1.
+                <br><br>
+                <strong>الخاصية الثانية:</strong>
+                <br>
+                \( P(\Omega) = 1 \)
+                <br>
+                احتمال الحادث الأكيد = 1.
+                <br><br>
+                <strong>الخاصية الثالثة:</strong>
+                <br>
+                \( P(\Phi) = 0 \)
+                <br>
+                احتمال الحادث المستحيل = 0.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                قيمة الاحتمال \( P(A) \) محصورة بين:
+                <br>
+                <span class="answer">الحل: 0 و 1</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 32 - الحوادث المتنافية -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">32</span> الحوادث المتنافية
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 تعريف الحوادث المتنافية</div>
+            <div class="law-formula">$$A \cap B = \Phi$$</div>
+            <div class="law-desc">
+                <strong>تعريف:</strong> حوادث <strong>لا يمكن وقوعها معاً</strong> في آن واحد.
+                <br><br>
+                <strong>مثال:</strong> في رمي حجر النرد، ظهور عدد فردي (A) وعدد زوجي (B) هما حادثان متنافيان.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                في تجربة رمي حجر النرد، \( A = \{1,3,5\} \) و \( B = \{2,4,6\} \)، العلاقة بينهما:
+                <br>
+                <span class="answer">الحل: متنافيان (\( A \cap B = \Phi \))</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 33 - الحوادث المتتامة -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">33</span> الحوادث المتتامة
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 تعريف الحوادث المتتامة</div>
+            <div class="law-formula">$$A \cup \bar{A} = \Omega \quad \text{و} \quad A \cap \bar{A} = \Phi$$</div>
+            <div class="law-desc">
+                <strong>تعريف:</strong> حادثان <strong>يقع أحدهما إذا وفقط إذا لم يقع الآخر</strong>.
+                <br><br>
+                <strong>مثال:</strong> ظهور صورة (A) و ظهور كتابة (Ā) في رمي قطعة نقود.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( A = \{1,3,5\} \) في تجربة رمي حجر النرد، فما هو \( \bar{A} \)؟
+                <br>
+                <span class="answer">الحل: \( \bar{A} = \{2,4,6\} \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- القانون 34 و 35 - الحوادث المستقلة والشرطية -->
+        <!-- ==================================================== -->
+        <div class="section-title">
+            <span class="law-number">34 & 35</span> الحوادث المستقلة والشرطية
+            <span class="tag">الفصل الخامس</span>
+        </div>
+
+        <div class="law-card">
+            <div class="law-name">📌 القانون 34: الحوادث المستقلة</div>
+            <div class="law-formula">$$P(A \cap B) = P(A) \times P(B)$$</div>
+            <div class="law-desc">
+                <strong>تعريف:</strong> وقوع <strong>أحدها لا يؤثر</strong> على وقوع الآخر.
+                <br><br>
+                <strong>مثال:</strong> رمي قطعة نقود مرتين (نتيجة الرمية الأولى لا تؤثر على الثانية).
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( P(A) = 0.3 \)، \( P(B) = 0.5 \)، وحادثان مستقلان، فإن \( P(A \cap B) = \)
+                <br>
+                <span class="answer">الحل: \( 0.3 \times 0.5 = 0.15 \)</span>
+            </div>
+
+            <hr style="margin:15px 0;border-color:#ddd;">
+
+            <div class="law-name">📌 القانون 35: الحوادث الشرطية</div>
+            <div class="law-formula">$$P(A \cap B) = P(A) \times P(B|A)$$</div>
+            <div class="law-desc">
+                <strong>تعريف:</strong> وقوع <strong>أحدها يؤثر</strong> على وقوع الآخر.
+                <br><br>
+                <strong>P(B|A)</strong> = احتمال وقوع B بشرط وقوع A.
+                <br><br>
+                <strong>مثال:</strong> سحب كرتين من صندوق بدون إعادة.
+            </div>
+
+            <div class="exam-box">
+                <span class="label">🏆 سؤال امتحاني</span>
+                إذا كان \( P(B|A) = 0.4 \)، \( P(A) = 0.5 \)، فإن \( P(A \cap B) = \)
+                <br>
+                <span class="answer">الحل: \( 0.5 \times 0.4 = 0.2 \)</span>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
+        <!-- الخاتمة -->
+        <!-- ==================================================== -->
+        <div class="footer-slide">
+            <div class="name">🏫 <span>Loli</span> Academy</div>
+            <div class="phone">📱 0933160094</div>
+            <div class="wish">🌟 بالتوفيق والنجاح 🌟</div>
+            <div class="copy">جميع الحقوق محفوظة © 2025</div>
+            <div style="margin-top:15px;">
+                <button class="print-btn" onclick="window.print()">🖨️ طباعة جميع القوانين</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // تهيئة MathJax بعد تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        });
+
+        window.addEventListener('load', function() {
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        });
+
+        console.log('✅ عرض القوانين جاهز!');
+        console.log('📚 يحتوي على 35 قانوناً مع شرح مفصل');
+        console.log('📱 متوافق تماماً مع iPad - مرر للأسفل للتصفح');
+    </script>
+
+</body>
+</html>
