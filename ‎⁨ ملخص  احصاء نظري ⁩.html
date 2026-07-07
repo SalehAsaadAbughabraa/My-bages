@@ -1,0 +1,2489 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>الشرح النظري الشامل - الإحصاء والاحتمالات - Loli Academy</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #1a1a2e;
+            padding: 12px;
+            line-height: 1.9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #1a237e;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+        }
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #e65100);
+            color: #fff;
+            padding: 3px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .header h1 {
+            font-size: 22px;
+            color: #1a237e;
+        }
+        .header h1 span { color: #e65100; }
+        .header .sub {
+            font-size: 14px;
+            color: #555;
+            margin-top: 2px;
+        }
+        .header .count {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+        .header .count strong { color: #1a237e; }
+
+        .chapter-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 25px 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid #1a237e;
+            padding-bottom: 8px;
+        }
+        .chapter-title .tag {
+            font-size: 11px;
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+        .tag-blue { background: #1565c0; }
+        .tag-orange { background: #e65100; }
+        .tag-green { background: #2e7d32; }
+        .tag-purple { background: #7b1fa2; }
+        .tag-teal { background: #00695c; }
+        .tag-pink { background: #c2185b; }
+
+        .theory-section {
+            background: #e8eaf6;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border-right: 4px solid #1a237e;
+        }
+        .theory-section .sub-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theory-section .sub-title .icon { font-size: 18px; }
+        .theory-section ul {
+            padding-right: 20px;
+            font-size: 14px;
+        }
+        .theory-section ul li {
+            margin-bottom: 4px;
+            color: #333;
+        }
+        .theory-section ul li strong { color: #1a237e; }
+        .theory-section .law-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-right: 3px solid #e65100;
+        }
+        .theory-section .law-box .formula {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e65100;
+            text-align: center;
+            padding: 4px 0;
+        }
+        .theory-section .law-box .desc { font-size: 13px; color: #555; }
+
+        .q-section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 16px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .q-section-title .tag {
+            font-size: 11px;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+        .q-section-title .tag.blue { background: #1565c0; }
+        .q-section-title .tag.green { background: #2e7d32; }
+        .q-section-title .tag.purple { background: #7b1fa2; }
+
+        .q-item {
+            background: #fffde7;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border-right: 4px solid #f9a825;
+            margin-bottom: 10px;
+            transition: 0.2s;
+        }
+        .q-item:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); }
+        .q-item .q-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 2px;
+        }
+        .q-item .q-num {
+            display: inline-block;
+            background: #1a237e;
+            color: #fff;
+            border-radius: 50%;
+            min-width: 22px;
+            height: 22px;
+            text-align: center;
+            line-height: 22px;
+            font-weight: bold;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+        .q-item .q-topic {
+            font-size: 11px;
+            background: #e8eaf6;
+            color: #1a237e;
+            padding: 1px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .q-item .q-topic .exam {
+            background: #e65100;
+            color: #fff;
+            padding: 1px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+        .q-item .q-topic .exam.blue { background: #1565c0; }
+        .q-item .q-topic .exam.green { background: #2e7d32; }
+        .q-item .q-text {
+            font-weight: 600;
+            color: #1a237e;
+            font-size: 14px;
+            margin: 4px 0 8px 0;
+            line-height: 1.7;
+        }
+        .q-item .q-options {
+            padding-right: 18px;
+            margin: 4px 0 8px 0;
+            font-size: 13px;
+        }
+        .q-item .q-options .opt {
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .q-item .q-options .opt-letter {
+            font-weight: 700;
+            color: #1a237e;
+            min-width: 16px;
+        }
+
+        .btn-answer {
+            background: #1a237e;
+            color: #fff;
+            border: none;
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+        .btn-answer:active { transform: scale(0.95); }
+        .btn-answer:hover { background: #0d1555; }
+        .btn-answer.showing { background: #2e7d32; }
+
+        .answer-box {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-top: 8px;
+            border-right: 4px solid #2e7d32;
+            display: none;
+        }
+        .answer-box.show { display: block; }
+        .answer-box .correct {
+            font-weight: 700;
+            color: #2e7d32;
+            font-size: 13px;
+        }
+        .answer-box .explain {
+            color: #333;
+            font-size: 13px;
+            margin-top: 3px;
+            line-height: 1.8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px 0 4px 0;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 18px;
+        }
+        .footer .name {
+            font-weight: bold;
+            color: #1a237e;
+            font-size: 18px;
+        }
+        .footer .name span { color: #e65100; }
+        .footer .phone { color: #555; font-size: 14px; margin-top: 2px; }
+        .footer .wish {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-top: 4px;
+        }
+        .footer .wish span { color: #e65100; }
+        .footer .copy { color: #aaa; font-size: 12px; margin-top: 4px; }
+
+        .expand-btn {
+            background: #e65100;
+            color: #fff;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+            touch-action: manipulation;
+        }
+        .expand-btn:active { transform: scale(0.95); }
+
+        @media (max-width: 600px) {
+            .container { padding: 12px 12px; }
+            .header h1 { font-size: 18px; }
+            .chapter-title { font-size: 16px; }
+            .theory-section ul { font-size: 13px; padding-right: 16px; }
+            .q-item { padding: 10px 12px; }
+            .q-item .q-text { font-size: 13px; }
+            .q-item .q-options { font-size: 12px; padding-right: 14px; }
+        }
+        @media (max-width: 400px) {
+            .header h1 { font-size: 16px; }
+            .q-item .q-text { font-size: 12px; }
+            .q-item .q-options { font-size: 11px; }
+        }
+        @media print {
+            body { background: #fff; padding: 10px; }
+            .container { box-shadow: none; border: 1px solid #ddd; }
+            .btn-answer { display: none; }
+            .answer-box { display: block !important; }
+            .expand-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="badge">🏫 Loli Academy</div>
+            <h1>📚 الشرح النظري <span>الشامل</span></h1>
+            <div class="sub">جميع فصول الإحصاء والاحتمالات · GMA402</div>
+            <div class="count">📝 إجمالي الأسئلة: <strong id="totalCount">0</strong> سؤالاً</div>
+            <div style="margin-top:8px;">
+                <button class="expand-btn" onclick="expandAll()">📖 عرض جميع الحلول</button>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الأول -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📖 الفصل الأول: تعاريف ومفاهيم إحصائية
+            <span class="tag tag-blue">أساسيات</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف الإحصاء</div>
+            <ul>
+                <li><strong>الإحصاء</strong> هو علم <strong>جمع البيانات</strong> العددية، <strong>وعرضها</strong>، <strong>وتحليلها</strong> بهدف الوصول إلى معلومات تساعد في <strong>اتخاذ القرارات</strong> الصحيحة.</li>
+                <li><strong>خطوات البحث الإحصائي:</strong> تحديد المشكلة ← جمع البيانات ← عرض البيانات ← تحليل البيانات واتخاذ القرار.</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 2. الإحصاء الوصفي والاستدلالي</div>
+            <ul>
+                <li><strong>الإحصاء الوصفي:</strong> يهتم <strong>بجمع البيانات وعرضها ووصفها</strong> (جداول، رسوم، مقاييس). مثال: حساب متوسط درجات الطلاب.</li>
+                <li><strong>الإحصاء الاستدلالي:</strong> يهتم <strong>بتعميم نتائج العينة على المجتمع</strong>. مثال: توقع نتائج الانتخابات من عينة.</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 3. أنواع المتغيرات</div>
+            <ul>
+                <li><strong>المتغير النوعي:</strong> صفة غير قابلة للقياس (الجنس، اللون، التخصص).</li>
+                <li><strong>المتغير الكمي المستمر:</strong> يقاس بالأجزاء (الطول، الوزن، العمر).</li>
+                <li><strong>المتغير الكمي المنقطع:</strong> أعداد صحيحة (عدد الطلاب، عدد السيارات).</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 4. المجتمع والعينة</div>
+            <ul>
+                <li><strong>المجتمع:</strong> كل المفردات موضوع الدراسة.</li>
+                <li><strong>العينة:</strong> جزء من المجتمع يمثله.</li>
+                <li><strong>الوحدة الإحصائية:</strong> كل مفردة على حدة.</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 5. مصادر البيانات</div>
+            <ul>
+                <li><strong>البيانات الأولية:</strong> يجمعها الباحث بنفسه (ملائمة للبحث، تحتاج وقت وجهد).</li>
+                <li><strong>البيانات الثانوية:</strong> جاهزة من مصادر سابقة (قليلة التكلفة، قد لا تكون ملائمة).</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 6. الحصر الشامل وأسلوب العينة</div>
+            <ul>
+                <li><strong>الحصر الشامل:</strong> دراسة كل المجتمع (دقة عالية، مكلف).</li>
+                <li><strong>أسلوب العينة:</strong> دراسة جزء من المجتمع (أقل تكلفة، أسرع).</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 7. العينة المنتظمة</div>
+            <div class="law-box">
+                <div class="formula">K = N ÷ n</div>
+                <div class="desc"><strong>شرح:</strong> K = فترة السحب، N = حجم المجتمع، n = حجم العينة. المفردات: S, S+K, S+2K, ...</div>
+            </div>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 8. العينة الطبقية</div>
+            <div class="law-box">
+                <div class="formula">n/N = n₁/N₁ = n₂/N₂ = n₃/N₃</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم عندما يكون المجتمع غير متجانس. nᵢ = (n÷N) × Nᵢ</div>
+            </div>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 9. أخطاء العينة</div>
+            <ul>
+                <li><strong>الخطأ العشوائي:</strong> يحدث باتجاهين، يمكن قياسه، يقل بزيادة حجم العينة.</li>
+                <li><strong>خطأ التحيز:</strong> يحدث باتجاه واحد، <strong>أخطر</strong> الأخطاء، لا يمكن قياسه.</li>
+            </ul>
+            <div class="sub-title" style="margin-top:10px;"><span class="icon">📌</span> 10. الاستمارة الإحصائية</div>
+            <ul>
+                <li><strong>قواعد التصميم:</strong> وضوح الأسئلة، تجنب الأسئلة المحرجة والمزدوجة، ذكر الوحدات.</li>
+                <li><strong>طرق الملء:</strong> المقابلة الشخصية، المراسلة، الهاتف، الإنترنت.</li>
+            </ul>
+        </div>
+
+        <!-- أسئلة الفصل الأول -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الأول <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف الإحصاء</span></div>
+            <div class="q-text">الإحصاء هو علم:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> جمع البيانات فقط</div>
+                <div class="opt"><span class="opt-letter">ب)</span> عرض البيانات فقط</div>
+                <div class="opt"><span class="opt-letter">ج)</span> جمع وعرض وتحليل البيانات</div>
+                <div class="opt"><span class="opt-letter">د)</span> تحليل البيانات فقط</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) جمع وعرض وتحليل البيانات</div>
+                <div class="explain">الإحصاء يشمل جمع البيانات وعرضها وتحليلها بهدف اتخاذ القرار.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">الإحصاء الوصفي</span></div>
+            <div class="q-text">الإحصاء الوصفي يهتم بـ:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> تعميم النتائج على المجتمع</div>
+                <div class="opt"><span class="opt-letter">ب)</span> جمع وعرض ووصف البيانات</div>
+                <div class="opt"><span class="opt-letter">ج)</span> حساب الاحتمالات</div>
+                <div class="opt"><span class="opt-letter">د)</span> اختبار الفرضيات</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) جمع وعرض ووصف البيانات</div>
+                <div class="explain">الإحصاء الوصفي يهتم بوصف البيانات من خلال الجداول والرسوم والمقاييس.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">المتغيرات</span></div>
+            <div class="q-text">لون الحبر الموجود في قلم الكتابة يعتبر متغير:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> كمي منقطع</div>
+                <div class="opt"><span class="opt-letter">ب)</span> نوعي</div>
+                <div class="opt"><span class="opt-letter">ج)</span> كمي مستمر</div>
+                <div class="opt"><span class="opt-letter">د)</span> جميع ما ذكر</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) نوعي</div>
+                <div class="explain">لون الحبر يعبر عن صفة غير قابلة للقياس العددي، فهو متغير نوعي.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">المتغير الكمي المستمر</span></div>
+            <div class="q-text">أي من التالي يعتبر متغيراً كمياً مستمراً؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> عدد الطلاب في الصف</div>
+                <div class="opt"><span class="opt-letter">ب)</span> طول الطالب</div>
+                <div class="opt"><span class="opt-letter">ج)</span> لون السيارة</div>
+                <div class="opt"><span class="opt-letter">د)</span> الجنس</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) طول الطالب</div>
+                <div class="explain">الطول يقاس بالأجزاء ويأخذ أي قيمة ضمن مجال، فهو متغير كمي مستمر.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">المتغير الكمي المنقطع</span></div>
+            <div class="q-text">أي من التالي يعتبر متغيراً كمياً منقطعاً؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> وزن الشخص</div>
+                <div class="opt"><span class="opt-letter">ب)</span> العمر</div>
+                <div class="opt"><span class="opt-letter">ج)</span> عدد أفراد الأسرة</div>
+                <div class="opt"><span class="opt-letter">د)</span> درجة الحرارة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) عدد أفراد الأسرة</div>
+                <div class="explain">عدد أفراد الأسرة هو عدد صحيح ولا يأخذ كسوراً، فهو متغير كمي منقطع.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">المجتمع والعينة</span></div>
+            <div class="q-text">المجتمع الإحصائي هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> جزء من المفردات</div>
+                <div class="opt"><span class="opt-letter">ب)</span> كل المفردات موضوع الدراسة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> مفردة واحدة</div>
+                <div class="opt"><span class="opt-letter">د)</span> عينة صغيرة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) كل المفردات موضوع الدراسة</div>
+                <div class="explain">المجتمع هو مجموعة جميع المفردات التي تتمتع بالصفة محل الدراسة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">البيانات الأولية</span></div>
+            <div class="q-text">البيانات التي يجمعها الباحث بنفسه من الميدان تسمى:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> بيانات ثانوية</div>
+                <div class="opt"><span class="opt-letter">ب)</span> بيانات أولية</div>
+                <div class="opt"><span class="opt-letter">ج)</span> بيانات رقمية</div>
+                <div class="opt"><span class="opt-letter">د)</span> بيانات نوعية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) بيانات أولية</div>
+                <div class="explain">البيانات الأولية هي التي يجمعها الباحث بنفسه من مصدرها الأصلي.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">أخطاء العينة</span></div>
+            <div class="q-text">خطأ التحيز يحدث في:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> اتجاهين (موجب وسالب)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> اتجاه واحد</div>
+                <div class="opt"><span class="opt-letter">ج)</span> كل الاتجاهات</div>
+                <div class="opt"><span class="opt-letter">د)</span> لا اتجاه محدد</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) اتجاه واحد</div>
+                <div class="explain">خطأ التحيز يحدث باتجاه واحد فقط، وهو أخطر أنواع الأخطاء الإحصائية.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">العينة المنتظمة</span></div>
+            <div class="q-text">فترة السحب في العينة المنتظمة تحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(K = N \times n\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(K = N \div n\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(K = n \div N\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(K = N + n\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(K = N \div n\)</div>
+                <div class="explain">فترة السحب = حجم المجتمع ÷ حجم العينة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">10</span><span class="q-topic">العينة الطبقية</span></div>
+            <div class="q-text">في العينة الطبقية، نسبة تمثيل كل طبقة تعتمد على:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> حجم الطبقة في المجتمع</div>
+                <div class="opt"><span class="opt-letter">ب)</span> رغبة الباحث</div>
+                <div class="opt"><span class="opt-letter">ج)</span> عدد الطبقات</div>
+                <div class="opt"><span class="opt-letter">د)</span> العشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) حجم الطبقة في المجتمع</div>
+                <div class="explain">تمثل كل طبقة في العينة بنفس نسبتها في المجتمع.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الأول -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">11</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">مجتمع مؤلف من 800 مفردة، نريد اختيار عينة منتظمة بحجم 40. إذا علمت أن أول مفردة تم اختيارها عشوائياً كانت الرقم 7، فما هي المفردة الثانية في العينة؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 107</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 47</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 27</div>
+                <div class="opt"><span class="opt-letter">د)</span> عدا ذلك</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) 27</div>
+                <div class="explain">\(K = 800 \div 40 = 20\)، المفردة الثانية = \(7 + 20 = 27\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">12</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">لدينا مجتمع بحجم 2000 شخص (1200 ذكور و 800 إناث)، نريد عينة طبقية بحجم 60 شخص. كم عدد الإناث في العينة؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 20</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 24</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 30</div>
+                <div class="opt"><span class="opt-letter">د)</span> 36</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) 24</div>
+                <div class="explain">نسبة العينة = \(60 \div 2000 = 0.03\)، عدد الإناث = \(800 \times 0.03 = 24\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الثاني -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📊 الفصل الثاني: عرض البيانات الإحصائية
+            <span class="tag tag-orange">جداول ورسوم</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف عرض البيانات</div>
+            <ul><li>عرض البيانات: تلخيص البيانات في <strong>جداول</strong> أو <strong>رسوم بيانية</strong> لتسهيل فهمها واستخلاص المعلومات.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. عرض البيانات النوعية</div>
+            <ul><li>تعرض بالأعمدة البيانية والقطاعات الدائرية.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. التكرار النسبي والمئوي</div>
+            <div class="law-box">
+                <div class="formula">RF = f ÷ ∑f</div>
+                <div class="desc"><strong>التكرار المئوي:</strong> النسبة المئوية = RF × 100</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. مركز الفئة</div>
+            <div class="law-box">
+                <div class="formula">xᵢ = (L + U) ÷ 2</div>
+                <div class="desc"><strong>شرح:</strong> L = الحد الأدنى، U = الحد الأعلى</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 5. علاقة سترجس</div>
+            <div class="law-box">
+                <div class="formula">c = R ÷ (1 + 3.32 × log n)</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم لحساب طول الفئة. R = المدى، n = عدد المفردات</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 6. المدى</div>
+            <div class="law-box">
+                <div class="formula">R = MAX - MIN</div>
+                <div class="desc"><strong>شرح:</strong> المدى = أكبر قيمة - أصغر قيمة</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 7. زاوية القطاع</div>
+            <div class="law-box">
+                <div class="formula">الزاوية = (f ÷ ∑f) × 360°</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم لإنشاء القطاعات الدائرية</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 8. المدرج والمضلع والمنحنى التكراري</div>
+            <ul>
+                <li><strong>المدرج التكراري:</strong> للبيانات المستمرة، أعمدة متلاصقة.</li>
+                <li><strong>المضلع التكراري:</strong> نقاط عند مراكز الفئات مربوطة بخطوط.</li>
+                <li><strong>المنحنى التكراري:</strong> تمليس (تنعيم) المضلع التكراري.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 9. التوزيع الطبيعي</div>
+            <ul><li>متماثل حول الوسط، \(\bar{X} = Med = Mod\).</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 10. التكرار التجميعي</div>
+            <ul>
+                <li><strong>التكرار التجميعي الصاعد:</strong> مجموع التكرارات من أول فئة حتى الفئة الحالية.</li>
+                <li><strong>التكرار التجميعي الهابط:</strong> مجموع التكرارات من آخر فئة حتى الفئة الحالية.</li>
+            </ul>
+        </div>
+
+        <!-- أسئلة الفصل الثاني -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الثاني <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">عرض البيانات</span></div>
+            <div class="q-text">عرض البيانات هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> جمع البيانات من المصادر</div>
+                <div class="opt"><span class="opt-letter">ب)</span> تلخيص البيانات في جداول ورسوم</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تحليل البيانات</div>
+                <div class="opt"><span class="opt-letter">د)</span> تخزين البيانات</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) تلخيص البيانات في جداول ورسوم</div>
+                <div class="explain">عرض البيانات يعني تلخيصها واختصارها في جداول أو رسوم بيانية لتسهيل فهمها.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">التكرار النسبي</span></div>
+            <div class="q-text">التكرار النسبي \(RF\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(RF = f \times \sum f\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(RF = f \div \sum f\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(RF = \sum f \div f\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(RF = f + \sum f\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(RF = f \div \sum f\)</div>
+                <div class="explain">التكرار النسبي = \(f \div \sum f\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">مركز الفئة</span></div>
+            <div class="q-text">مركز الفئة \(x_i\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((L + U) \div 2\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((L \times U) \div 2\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \((L + U) \times 2\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \((L - U) \div 2\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((L + U) \div 2\)</div>
+                <div class="explain">مركز الفئة = \((L + U) \div 2\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">علاقة سترجس</span></div>
+            <div class="q-text">علاقة سترجس تستخدم لحساب:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> المدى</div>
+                <div class="opt"><span class="opt-letter">ب)</span> طول الفئة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> التكرار</div>
+                <div class="opt"><span class="opt-letter">د)</span> مركز الفئة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) طول الفئة</div>
+                <div class="explain">علاقة سترجس: \(c = R \div (1 + 3.32 \times \log n)\) تستخدم لحساب طول الفئة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">المدى</span></div>
+            <div class="q-text">المدى \(R\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(MAX + MIN\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(MAX - MIN\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(MAX \times MIN\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(MAX \div MIN\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(MAX - MIN\)</div>
+                <div class="explain">المدى = \(MAX - MIN\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">زاوية القطاع</span></div>
+            <div class="q-text">زاوية القطاع في الدائرة البيانية تحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((f \div \sum f) \times 360°\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((f \div \sum f) \times 180°\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \((f \div \sum f) \times 90°\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \((f \div \sum f) \times 100°\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((f \div \sum f) \times 360°\)</div>
+                <div class="explain">زاوية القطاع = \((f \div \sum f) \times 360°\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">المضلع التكراري</span></div>
+            <div class="q-text">المضلع التكراري يرسم باستخدام:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> حدود الفئات</div>
+                <div class="opt"><span class="opt-letter">ب)</span> مراكز الفئات</div>
+                <div class="opt"><span class="opt-letter">ج)</span> التكرارات التجميعية</div>
+                <div class="opt"><span class="opt-letter">د)</span> النسب المئوية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) مراكز الفئات</div>
+                <div class="explain">المضلع التكراري يرسم بنقاط عند مراكز الفئات وربطها بخطوط مستقيمة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">التوزيع الطبيعي</span></div>
+            <div class="q-text">التوزيع الطبيعي يتميز بأنه:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> غير متماثل</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متماثل والقمة في المنتصف</div>
+                <div class="opt"><span class="opt-letter">ج)</span> له قمتان</div>
+                <div class="opt"><span class="opt-letter">د)</span> ملتوي نحو اليمين</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) متماثل والقمة في المنتصف</div>
+                <div class="explain">التوزيع الطبيعي متماثل حول الوسط، والقمة في المنتصف.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">التكرار التجميعي</span></div>
+            <div class="q-text">التكرار التجميعي الصاعد هو مجموع التكرارات من:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> آخر فئة حتى الفئة الحالية</div>
+                <div class="opt"><span class="opt-letter">ب)</span> أول فئة حتى الفئة الحالية</div>
+                <div class="opt"><span class="opt-letter">ج)</span> جميع الفئات معاً</div>
+                <div class="opt"><span class="opt-letter">د)</span> فئة واحدة فقط</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) أول فئة حتى الفئة الحالية</div>
+                <div class="explain">التكرار التجميعي الصاعد = مجموع التكرارات من البداية حتى الفئة الحالية.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الثاني -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">10</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">بيانات المتغيرات الكمية المستمرة تعرض بيانياً من خلال:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> المدرج التكراري</div>
+                <div class="opt"><span class="opt-letter">ب)</span> المضلع التكراري</div>
+                <div class="opt"><span class="opt-letter">ج)</span> المنحنى التكراري</div>
+                <div class="opt"><span class="opt-letter">د)</span> كل ما سبق</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: د) كل ما سبق</div>
+                <div class="explain">المدرج والمضلع والمنحنى كلها تستخدم للبيانات الكمية المستمرة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">11</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">التفريغ (عصا العد - Tally) يستخدم في مرحلة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> حساب المدى</div>
+                <div class="opt"><span class="opt-letter">ب)</span> تحديد الفئات</div>
+                <div class="opt"><span class="opt-letter">ج)</span> عدّ المفردات في كل فئة</div>
+                <div class="opt"><span class="opt-letter">د)</span> حساب مركز الفئة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) عدّ المفردات في كل فئة</div>
+                <div class="explain">التفريغ (Tally) هو عملية عدّ المفردات في كل فئة من فئات الجدول التكراري.</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الثالث -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📈 الفصل الثالث: مقاييس النزعة المركزية
+            <span class="tag tag-green">مقاييس</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. الوسط الحسابي</div>
+            <div class="law-box">
+                <div class="formula">X̄ = ∑xᵢ ÷ n (غير مبوب)</div>
+                <div class="desc"><strong>المبوب:</strong> X̄ = ∑(f × xᵢ) ÷ ∑f</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 2. الوسط المرجح</div>
+            <div class="law-box">
+                <div class="formula">X̄ = ∑(xᵢ × Wᵢ) ÷ ∑Wᵢ</div>
+                <div class="desc"><strong>شرح:</strong> Wᵢ هي الأوزان (أهمية كل قيمة)</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 3. الوسيط</div>
+            <ul>
+                <li><strong>فردي:</strong> الموقع = (n+1)÷2، الوسيط = القيمة في هذا الموقع.</li>
+                <li><strong>زوجي:</strong> متوسط القيمتين في الموقعين n÷2 و (n÷2)+1.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 4. المنوال</div>
+            <ul>
+                <li><strong>غير مبوب:</strong> القيمة الأكثر تكراراً.</li>
+                <li><strong>مبوب (طريقة الفروق):</strong> \(Mod = L + [\Delta_1/(\Delta_1 + \Delta_2)] \times C\)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. علاقة بيرسون</div>
+            <div class="law-box">
+                <div class="formula">X̄ - Mod = 3(X̄ - Med)</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم لإيجاد أحد المقاييس إذا عُرفت الأخرى</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 6. تحديد شكل التوزيع</div>
+            <ul>
+                <li><strong>طبيعي:</strong> X̄ = Med = Mod</li>
+                <li><strong>ملتوي يمين:</strong> X̄ > Med > Mod</li>
+                <li><strong>ملتوي يسار:</strong> X̄ < Med < Mod</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 7. الربيعيات</div>
+            <ul>
+                <li><strong>Q₁:</strong> 25% من البيانات أقل منه.</li>
+                <li><strong>Q₂:</strong> 50% من البيانات أقل منه = الوسيط.</li>
+                <li><strong>Q₃:</strong> 75% من البيانات أقل منه.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 8. شكل الصندوق والأذرع</div>
+            <ul><li>يتكون من 5 قيم: Min, Q₁, Med, Q₃, Max.</li></ul>
+        </div>
+
+        <!-- أسئلة الفصل الثالث -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الثالث <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">الوسط الحسابي</span></div>
+            <div class="q-text">الوسط الحسابي \(\bar{X}\) هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\sum x_i \div n\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> القيمة الأكثر تكراراً</div>
+                <div class="opt"><span class="opt-letter">ج)</span> القيمة التي تقسم البيانات لنصفين</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(MAX - MIN\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\sum x_i \div n\)</div>
+                <div class="explain">الوسط الحسابي = مجموع القيم ÷ عددها.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">الوسط المرجح</span></div>
+            <div class="q-text">الوسط الحسابي المرجح يستخدم عندما:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> جميع القيم متساوية الأهمية</div>
+                <div class="opt"><span class="opt-letter">ب)</span> القيم مختلفة الأهمية</div>
+                <div class="opt"><span class="opt-letter">ج)</span> البيانات نوعية</div>
+                <div class="opt"><span class="opt-letter">د)</span> البيانات غير مرتبة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) القيم مختلفة الأهمية</div>
+                <div class="explain">الوسط المرجح يستخدم عندما تكون القيم مختلفة الأهمية (أوزان مختلفة).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">الوسيط</span></div>
+            <div class="q-text">الوسيط هو القيمة التي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> تتكرر أكثر من غيرها</div>
+                <div class="opt"><span class="opt-letter">ب)</span> تقسّم البيانات إلى نصفين متساويين</div>
+                <div class="opt"><span class="opt-letter">ج)</span> هي \(\sum x_i \div n\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> هي \(MAX - MIN\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) تقسّم البيانات إلى نصفين متساويين</div>
+                <div class="explain">الوسيط يقسم البيانات إلى قسمين متساويين.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">المنوال</span></div>
+            <div class="q-text">المنوال هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\sum x_i \div n\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> القيمة الأكثر تكراراً</div>
+                <div class="opt"><span class="opt-letter">ج)</span> القيمة التي تقسم البيانات لنصفين</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(MAX - MIN\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) القيمة الأكثر تكراراً</div>
+                <div class="explain">المنوال هو القيمة الأكثر تكراراً في البيانات.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">العلاقة بين المقاييس</span></div>
+            <div class="q-text">في التوزيع الطبيعي، العلاقة بين المقاييس هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\bar{X} < Med < Mod\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\bar{X} > Med > Mod\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\bar{X} = Med = Mod\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Med < \bar{X} < Mod\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) \(\bar{X} = Med = Mod\)</div>
+                <div class="explain">في التوزيع الطبيعي: \(\bar{X} = Med = Mod\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">علاقة بيرسون</span></div>
+            <div class="q-text">علاقة بيرسون هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\bar{X} - Mod = 3(\bar{X} - Med)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\bar{X} - Med = 3(\bar{X} - Mod)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(Mod - \bar{X} = 3(Med - \bar{X})\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Med - \bar{X} = 3(\bar{X} - Mod)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\bar{X} - Mod = 3(\bar{X} - Med)\)</div>
+                <div class="explain">علاقة بيرسون: \(\bar{X} - Mod = 3(\bar{X} - Med)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">الربيعيات</span></div>
+            <div class="q-text">الربيع الثاني \(Q_2\) يساوي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> المنوال</div>
+                <div class="opt"><span class="opt-letter">ب)</span> الوسيط</div>
+                <div class="opt"><span class="opt-letter">ج)</span> الوسط الحسابي</div>
+                <div class="opt"><span class="opt-letter">د)</span> المدى</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) الوسيط</div>
+                <div class="explain">\(Q_2 =\) الوسيط (يقسم البيانات إلى نصفين).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">شكل الصندوق</span></div>
+            <div class="q-text">شكل الصندوق والأذرع يتكون من 5 قيم هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> Min, Q₁, Med, Q₃, Max</div>
+                <div class="opt"><span class="opt-letter">ب)</span> Min, Mean, Med, Max</div>
+                <div class="opt"><span class="opt-letter">ج)</span> Q₁, Q₂, Q₃</div>
+                <div class="opt"><span class="opt-letter">د)</span> Min, Mod, Max</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) Min, Q₁, Med, Q₃, Max</div>
+                <div class="explain">شكل الصندوق والأذرع يتكون من: Min, Q₁, Med, Q₃, Max.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الثالث -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(\bar{X} = 10\)، \(Med = 11\)، \(Mod = 13\)، فشكل التوزيع هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> ملتوي نحو اليمين</div>
+                <div class="opt"><span class="opt-letter">ب)</span> طبيعي</div>
+                <div class="opt"><span class="opt-letter">ج)</span> ملتوي نحو اليسار</div>
+                <div class="opt"><span class="opt-letter">د)</span> غير ذلك</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) ملتوي نحو اليسار</div>
+                <div class="explain">\(\bar{X} < Med < Mod\) → ملتوي نحو اليسار.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">10</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(\bar{X} = 7\)، \(Med = 6\)، فما هو المنوال باستخدام علاقة بيرسون؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 3</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 4</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 5</div>
+                <div class="opt"><span class="opt-letter">د)</span> 6</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) 4</div>
+                <div class="explain">\(7 - Mod = 3(7 - 6) = 3\) → \(Mod = 4\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الرابع -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📉 الفصل الرابع: مقاييس التشتت
+            <span class="tag tag-purple">تشتت</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف التشتت</div>
+            <ul><li>التشتت هو <strong>اختلاف وتباعد</strong> قيم البيانات عن بعضها البعض وعن الوسط.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. المدى (Range)</div>
+            <div class="law-box">
+                <div class="formula">R = MAX - MIN</div>
+                <div class="desc"><strong>شرح:</strong> أبسط مقاييس التشتت، يتأثر بالقيم المتطرفة.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 3. المدى النسبي</div>
+            <div class="law-box">
+                <div class="formula">PR = (R ÷ X̄) × 100</div>
+                <div class="desc"><strong>شرح:</strong> يستخدم لمقارنة تشتت بيانات مختلفة في الوحدات.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. المدى الربيعي (IQR)</div>
+            <div class="law-box">
+                <div class="formula">IQR = Q₃ - Q₁</div>
+                <div class="desc"><strong>شرح:</strong> يقيس تشتت الـ 50% الوسطى، لا يتأثر بالقيم المتطرفة.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 5. الانحراف الربيعي (QD)</div>
+            <div class="law-box">
+                <div class="formula">QD = (Q₃ - Q₁) ÷ 2</div>
+                <div class="desc"><strong>شرح:</strong> نصف المدى الربيعي.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 6. الانحراف المتوسط (MD)</div>
+            <div class="law-box">
+                <div class="formula">MD = ∑|xᵢ - Med| ÷ n</div>
+                <div class="desc"><strong>شرح:</strong> متوسط الانحرافات عن الوسيط (باستخدام القيم المطلقة).</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 7. التباين (Variance)</div>
+            <div class="law-box">
+                <div class="formula">S² = ∑(xᵢ - X̄)² ÷ (n-1)</div>
+                <div class="desc"><strong>شرح:</strong> متوسط مربعات الانحرافات عن الوسط. (للعينات الصغيرة نستخدم n-1)</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 8. الانحراف المعياري (Standard Deviation)</div>
+            <div class="law-box">
+                <div class="formula">S = √S²</div>
+                <div class="desc"><strong>شرح:</strong> الجذر التربيعي للتباين، بنفس وحدة البيانات.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 9. معامل الاختلاف (CV)</div>
+            <div class="law-box">
+                <div class="formula">CV = (S ÷ X̄) × 100</div>
+                <div class="desc"><strong>شرح:</strong> يستخدم لمقارنة تشتت بيانات مختلفة في الوحدات.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة الفصل الرابع -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الرابع <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف التشتت</span></div>
+            <div class="q-text">التشتت يعني:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> تجمع البيانات حول الوسط</div>
+                <div class="opt"><span class="opt-letter">ب)</span> اختلاف وتباعد البيانات</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تساوي جميع البيانات</div>
+                <div class="opt"><span class="opt-letter">د)</span> ترتيب البيانات</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) اختلاف وتباعد البيانات</div>
+                <div class="explain">التشتت هو اختلاف وتباعد قيم البيانات عن بعضها البعض.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">المدى</span></div>
+            <div class="q-text">المدى \(R\) هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(MAX - MIN\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\sum x_i \div n\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> القيمة الأكثر تكراراً</div>
+                <div class="opt"><span class="opt-letter">د)</span> \((Q_3 - Q_1) \div 2\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(MAX - MIN\)</div>
+                <div class="explain">المدى = \(MAX - MIN\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">المدى الربيعي</span></div>
+            <div class="q-text">المدى الربيعي \(IQR\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(Q_3 - Q_1\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(Q_1 + Q_3\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(Q_3 \div Q_1\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Q_1 \times Q_3\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(Q_3 - Q_1\)</div>
+                <div class="explain">المدى الربيعي = \(Q_3 - Q_1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">الانحراف الربيعي</span></div>
+            <div class="q-text">الانحراف الربيعي \(QD\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((Q_3 - Q_1) \div 2\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((Q_3 + Q_1) \div 2\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \((Q_3 - Q_1) \times 2\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Q_3 - Q_1\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((Q_3 - Q_1) \div 2\)</div>
+                <div class="explain">الانحراف الربيعي = \((Q_3 - Q_1) \div 2\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">الانحراف المعياري</span></div>
+            <div class="q-text">الانحراف المعياري \(S\) هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\sqrt{S^2}\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(S^2\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(2 \times S^2\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(S^2 \div 2\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\sqrt{S^2}\)</div>
+                <div class="explain">الانحراف المعياري = \(\sqrt{S^2}\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">معامل الاختلاف</span></div>
+            <div class="q-text">معامل الاختلاف \(CV\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((S \div \bar{X}) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((\bar{X} \div S) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(S \times \bar{X} \times 100\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \((S + \bar{X}) \times 100\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((S \div \bar{X}) \times 100\)</div>
+                <div class="explain">معامل الاختلاف = \((S \div \bar{X}) \times 100\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">التباين</span></div>
+            <div class="q-text">عند حساب تباين عينة صغيرة \((n < 30)\) نستخدم في المقام:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(n\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(n-1\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(n+1\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(n^2\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(n-1\)</div>
+                <div class="explain">للعينات الصغيرة نستخدم \(n-1\) في مقام التباين (تصحيح العينة).</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الرابع -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(Q_1 = 29\) و \(Q_3 = 38\)، فما هو الانحراف الربيعي \(QD\)؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 4.5</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 5</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 9</div>
+                <div class="opt"><span class="opt-letter">د)</span> 18</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) 4.5</div>
+                <div class="explain">\(QD = (38 - 29) \div 2 = 4.5\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(\bar{X} = 12\) و \(S = 3\)، فما هو معامل الاختلاف \(CV\)؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 20%</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 25%</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 30%</div>
+                <div class="opt"><span class="opt-letter">د)</span> 15%</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) 25%</div>
+                <div class="explain">\(CV = (3 \div 12) \times 100 = 25\%\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الخامس -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            🎲 الفصل الخامس: التجربة والحادث
+            <span class="tag tag-orange">احتمالات</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. التجربة الإحصائية</div>
+            <ul><li>عملية نتيجتها <strong>غير معروفة مسبقاً</strong>، ويمكن <strong>تكرارها</strong> تحت نفس الظروف.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. فضاء العينة (Ω)</div>
+            <ul><li>مجموعة <strong>جميع النتائج الممكنة</strong> للتجربة.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. الحادث</div>
+            <ul><li><strong>مجموعة جزئية</strong> من فضاء العينة، يُرمز له بأحرف كبيرة \(A, B, C, ...\).</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 4. أنواع الحوادث</div>
+            <ul>
+                <li><strong>حادث بسيط:</strong> يحتوي على <strong>عنصر واحد</strong>.</li>
+                <li><strong>حادث مركب:</strong> يحتوي على <strong>أكثر من عنصر</strong>.</li>
+                <li><strong>حادث أكيد (Ω):</strong> يقع دائماً، \(P(Ω) = 1\).</li>
+                <li><strong>حادث مستحيل (Φ):</strong> لا يمكن وقوعه، \(P(Φ) = 0\).</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. العلاقات بين الحوادث</div>
+            <ul>
+                <li><strong>متنافية:</strong> \(A \cap B = Φ\) (لا يمكن وقوعها معاً).</li>
+                <li><strong>متتامة:</strong> \(A \cap B = Φ\) و \(A \cup B = Ω\).</li>
+                <li><strong>متكافئة:</strong> لها نفس فرصة الوقوع.</li>
+                <li><strong>مستقلة:</strong> وقوع أحدها لا يؤثر على الآخر.</li>
+                <li><strong>شرطية:</strong> وقوع أحدها يؤثر على الآخر \(P(B|A)\).</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 6. العمليات على الحوادث</div>
+            <ul>
+                <li><strong>الاتحاد (∪):</strong> يقع A أو B أو كليهما.</li>
+                <li><strong>التقاطع (∩):</strong> يقع A و B معاً.</li>
+                <li><strong>الفرق (-):</strong> يقع A ولا يقع B.</li>
+                <li><strong>التجزئة:</strong> تقسيم الحادث إلى حوادث متنافية تغطيه.</li>
+            </ul>
+        </div>
+
+        <!-- أسئلة الفصل الخامس -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الخامس <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">التجربة الإحصائية</span></div>
+            <div class="q-text">التجربة الإحصائية هي عملية:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> نتيجتها معروفة مسبقاً</div>
+                <div class="opt"><span class="opt-letter">ب)</span> نتيجتها غير معروفة مسبقاً</div>
+                <div class="opt"><span class="opt-letter">ج)</span> لا يمكن تكرارها</div>
+                <div class="opt"><span class="opt-letter">د)</span> نتيجتها دائماً صحيحة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) نتيجتها غير معروفة مسبقاً</div>
+                <div class="explain">التجربة الإحصائية: نتيجتها غير معروفة مسبقاً، ويمكن تكرارها.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">فضاء العينة</span></div>
+            <div class="q-text">فضاء العينة هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> مجموعة النتائج الممكنة للتجربة</div>
+                <div class="opt"><span class="opt-letter">ب)</span> نتيجة واحدة للتجربة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> جزء من النتائج</div>
+                <div class="opt"><span class="opt-letter">د)</span> تجربة فاشلة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) مجموعة النتائج الممكنة للتجربة</div>
+                <div class="explain">فضاء العينة = مجموعة جميع النتائج الممكنة للتجربة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">الحادث</span></div>
+            <div class="q-text">الحادث هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> مجموعة جزئية من فضاء العينة</div>
+                <div class="opt"><span class="opt-letter">ب)</span> فضاء العينة كاملاً</div>
+                <div class="opt"><span class="opt-letter">ج)</span> مجموعة خالية</div>
+                <div class="opt"><span class="opt-letter">د)</span> نتيجة مستحيلة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) مجموعة جزئية من فضاء العينة</div>
+                <div class="explain">الحادث = مجموعة جزئية من فضاء العينة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">الحوادث المتنافية</span></div>
+            <div class="q-text">الحوادث المتنافية هي التي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> يمكن وقوعها معاً</div>
+                <div class="opt"><span class="opt-letter">ب)</span> لا يمكن وقوعها معاً</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تقع دائماً معاً</div>
+                <div class="opt"><span class="opt-letter">د)</span> ليس لها علاقة</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) لا يمكن وقوعها معاً</div>
+                <div class="explain">الحوادث المتنافية: لا يمكن وقوعها معاً \((A \cap B = Φ)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">الحادث الأكيد</span></div>
+            <div class="q-text">الحادث الأكيد هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> Φ</div>
+                <div class="opt"><span class="opt-letter">ب)</span> Ω</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(A \cap B\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(A - B\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) Ω</div>
+                <div class="explain">الحادث الأكيد هو فضاء العينة Ω، ويقع دائماً.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">الحوادث المستقلة</span></div>
+            <div class="q-text">الحوادث المستقلة هي التي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> وقوع أحدها يؤثر على الآخر</div>
+                <div class="opt"><span class="opt-letter">ب)</span> وقوع أحدها لا يؤثر على الآخر</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تقع دائماً معاً</div>
+                <div class="opt"><span class="opt-letter">د)</span> لا يمكن وقوعها معاً</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) وقوع أحدها لا يؤثر على الآخر</div>
+                <div class="explain">الحوادث المستقلة: وقوع أحدها لا يؤثر على وقوع الآخر.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الخامس -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(A = \{1,3,5\}\) و \(B = \{2,4,6\}\) في تجربة رمي حجر النرد، فما هي العلاقة بين \(A\) و \(B\)؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> متنافيان</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متناميان</div>
+                <div class="opt"><span class="opt-letter">ج)</span> متنافيان ومتناميان</div>
+                <div class="opt"><span class="opt-letter">د)</span> لا شيء مما سبق</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) متنافيان</div>
+                <div class="explain">\(A \cap B = Φ\) → متنافيان.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(A = \{1,3,5\}\)، فما هو \(\bar{A}\) في تجربة رمي حجر النرد؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\{1,3,5\}\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\{2,4,6\}\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\{1,2,3,4,5,6\}\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> Φ</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(\{2,4,6\}\)</div>
+                <div class="explain">\(\bar{A} = \Omega - A = \{2,4,6\}\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل السادس -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            🎯 الفصل السادس: الاحتمالات والعمليات عليها
+            <span class="tag tag-blue">احتمالات</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف الاحتمال</div>
+            <ul><li>قياس <strong>فرصة</strong> وقوع حادث ما، يُرمز له بـ \(P(A)\).</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. خصائص الاحتمال</div>
+            <ul>
+                <li>\(0 \le P(A) \le 1\)</li>
+                <li>\(P(\Omega) = 1\) (الحادث الأكيد)</li>
+                <li>\(P(\Phi) = 0\) (الحادث المستحيل)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. الاحتمال الشرطي</div>
+            <div class="law-box">
+                <div class="formula">P(B|A) = P(A ∩ B) ÷ P(A)</div>
+                <div class="desc"><strong>شرح:</strong> احتمال وقوع B بشرط وقوع A، حيث \(P(A) > 0\).</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. اتحاد حادثين</div>
+            <ul>
+                <li><strong>متنافيان:</strong> \(P(A ∪ B) = P(A) + P(B)\)</li>
+                <li><strong>غير متنافيان:</strong> \(P(A ∪ B) = P(A) + P(B) - P(A ∩ B)\)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. تقاطع حادثين</div>
+            <ul>
+                <li><strong>مستقلان:</strong> \(P(A ∩ B) = P(A) × P(B)\)</li>
+                <li><strong>غير مستقلان (شرطيان):</strong> \(P(A ∩ B) = P(A) × P(B|A)\)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 6. الاحتمال الكلي</div>
+            <div class="law-box">
+                <div class="formula">P(A) = ∑ P(Bᵢ) × P(A|Bᵢ)</div>
+                <div class="desc"><strong>شرح:</strong> حيث Bᵢ تشكل تجزئة لفضاء العينة.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 7. قاعدة بايز</div>
+            <div class="law-box">
+                <div class="formula">P(Bᵢ|A) = [P(Bᵢ) × P(A|Bᵢ)] ÷ P(A)</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم لحساب احتمال السبب.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة الفصل السادس -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل السادس <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف الاحتمال</span></div>
+            <div class="q-text">الاحتمال هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> قياس فرصة وقوع حادث</div>
+                <div class="opt"><span class="opt-letter">ب)</span> نتيجة مؤكدة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> حادث مستحيل</div>
+                <div class="opt"><span class="opt-letter">د)</span> تجربة عشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) قياس فرصة وقوع حادث</div>
+                <div class="explain">الاحتمال = قياس فرصة أو حظ وقوع حادث ما.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">خصائص الاحتمال</span></div>
+            <div class="q-text">قيمة الاحتمال \(P(A)\) محصورة بين:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0 و 1</div>
+                <div class="opt"><span class="opt-letter">ب)</span> -1 و 1</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 0 و 100</div>
+                <div class="opt"><span class="opt-letter">د)</span> 1 و 10</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) 0 و 1</div>
+                <div class="explain">\(0 \le P(A) \le 1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">خصائص الاحتمال</span></div>
+            <div class="q-text">\(P(\Omega) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 1</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 0.5</div>
+                <div class="opt"><span class="opt-letter">د)</span> 100</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) 1</div>
+                <div class="explain">\(P(\Omega) = 1\) (الحادث الأكيد).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">الاحتمال الشرطي</span></div>
+            <div class="q-text">الاحتمال الشرطي \(P(B|A)\) يعبر عن:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> احتمال وقوع B بشرط وقوع A</div>
+                <div class="opt"><span class="opt-letter">ب)</span> احتمال وقوع A بشرط وقوع B</div>
+                <div class="opt"><span class="opt-letter">ج)</span> احتمال وقوع A و B معاً</div>
+                <div class="opt"><span class="opt-letter">د)</span> احتمال وقوع A أو B</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) احتمال وقوع B بشرط وقوع A</div>
+                <div class="explain">\(P(B|A) =\) احتمال وقوع B بشرط أن يكون A قد وقع.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">اتحاد حادثين متنافيين</span></div>
+            <div class="q-text">إذا كان A و B متنافيين، فإن \(P(A \cup B) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(P(A) + P(B)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(P(A) + P(B) - P(A \cap B)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(P(A) \times P(B)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(P(A) \div P(B)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(P(A) + P(B)\)</div>
+                <div class="explain">للحوادث المتنافية: \(P(A \cup B) = P(A) + P(B)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">اتحاد حادثين غير متنافيين</span></div>
+            <div class="q-text">إذا كان A و B غير متنافيين، فإن \(P(A \cup B) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(P(A) + P(B)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(P(A) + P(B) - P(A \cap B)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(P(A) \times P(B)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(P(A) \div P(B)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(P(A) + P(B) - P(A \cap B)\)</div>
+                <div class="explain">للحوادث غير المتنافية: \(P(A \cup B) = P(A) + P(B) - P(A \cap B)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">تقاطع حادثين مستقلين</span></div>
+            <div class="q-text">إذا كان A و B مستقلين، فإن \(P(A \cap B) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(P(A) + P(B)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(P(A) + P(B) - P(A \cap B)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(P(A) \times P(B)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(P(A) \div P(B)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) \(P(A) \times P(B)\)</div>
+                <div class="explain">للحوادث المستقلة: \(P(A \cap B) = P(A) \times P(B)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">تقاطع حادثين غير مستقلين</span></div>
+            <div class="q-text">إذا كان A و B غير مستقلين، فإن \(P(A \cap B) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(P(A) + P(B)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(P(A) \times P(B|A)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(P(A) \times P(B)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(P(A) \div P(B)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(P(A) \times P(B|A)\)</div>
+                <div class="explain">للحوادث غير المستقلة: \(P(A \cap B) = P(A) \times P(B|A)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">الاحتمال الكلي</span></div>
+            <div class="q-text">الاحتمال الكلي \(P(A) =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\sum P(B_i) \times P(A|B_i)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\sum P(B_i) + P(A|B_i)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\sum P(B_i) \div P(A|B_i)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\sum P(B_i) - P(A|B_i)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\sum P(B_i) \times P(A|B_i)\)</div>
+                <div class="explain">الاحتمال الكلي = \(\sum P(B_i) \times P(A|B_i)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">10</span><span class="q-topic">قاعدة بايز</span></div>
+            <div class="q-text">قاعدة بايز تستخدم لحساب:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> الاحتمال الكلي</div>
+                <div class="opt"><span class="opt-letter">ب)</span> احتمال السبب \(P(B_i|A)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> احتمال الاتحاد</div>
+                <div class="opt"><span class="opt-letter">د)</span> احتمال التقاطع</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) احتمال السبب \(P(B_i|A)\)</div>
+                <div class="explain">قاعدة بايز: \(P(B_i|A) = [P(B_i) \times P(A|B_i)] \div P(A)\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل السابع -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            🔔 الفصل السابع: التوزيع الطبيعي والمعياري
+            <span class="tag tag-green">توزيعات</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. التوزيع الطبيعي</div>
+            <ul>
+                <li>توزيع <strong>متماثل</strong> على شكل جرس، القمة في المنتصف عند \(\mu\).</li>
+                <li>\(\mu = Med = Mod\)</li>
+                <li>المساحة الكلية تحت المنحنى = 1.</li>
+                <li>نقطتا الانعطاف عند \(\mu - \sigma\) و \(\mu + \sigma\).</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. التوزيع الطبيعي المعياري</div>
+            <ul>
+                <li>\(\mu = 0\)، \(\sigma = 1\)، يُرمز له بـ \(Z \sim N(0,1)\).</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. قانون التحويل</div>
+            <div class="law-box">
+                <div class="formula">Z = (X - μ) ÷ σ</div>
+                <div class="desc"><strong>شرح:</strong> يحول أي توزيع طبيعي إلى توزيع معياري.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. تفسير Z</div>
+            <ul>
+                <li>\(Z > 0\) → \(X > \mu\) (أكبر من الوسط)</li>
+                <li>\(Z < 0\) → \(X < \mu\) (أصغر من الوسط)</li>
+                <li>\(Z = 0\) → \(X = \mu\) (يساوي الوسط)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. قاعدة 68-95-99.7</div>
+            <ul>
+                <li>68% ضمن \(\mu \pm \sigma\)</li>
+                <li>95% ضمن \(\mu \pm 2\sigma\)</li>
+                <li>99.7% ضمن \(\mu \pm 3\sigma\)</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 6. جدول التوزيع المعياري</div>
+            <ul>
+                <li>يعطي \(P(Z < z)\) من \(-\infty\) إلى \(z\).</li>
+                <li>\(P(Z > z) = 1 - P(Z < z)\)</li>
+                <li>\(P(Z < -z) = 1 - P(Z < z)\) (بسبب التماثل)</li>
+            </ul>
+        </div>
+
+        <!-- أسئلة الفصل السابع -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل السابع <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">التوزيع الطبيعي</span></div>
+            <div class="q-text">التوزيع الطبيعي هو توزيع:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> متماثل حول الوسط</div>
+                <div class="opt"><span class="opt-letter">ب)</span> غير متماثل</div>
+                <div class="opt"><span class="opt-letter">ج)</span> له قمتان</div>
+                <div class="opt"><span class="opt-letter">د)</span> ملتوي دائماً</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) متماثل حول الوسط</div>
+                <div class="explain">التوزيع الطبيعي متماثل حول الوسط الحسابي \(\mu\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">خصائص التوزيع الطبيعي</span></div>
+            <div class="q-text">في التوزيع الطبيعي، العلاقة بين الوسط \(\mu\) والوسيط \(Med\) والمنوال \(Mod\) هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\mu < Med < Mod\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\mu > Med > Mod\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\mu = Med = Mod\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Med < \mu < Mod\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) \(\mu = Med = Mod\)</div>
+                <div class="explain">في التوزيع الطبيعي: \(\mu = Med = Mod\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">التوزيع المعياري</span></div>
+            <div class="q-text">التوزيع الطبيعي المعياري له:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\mu = 0, \sigma = 1\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\mu = 1, \sigma = 0\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\mu = 0, \sigma = 0\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\mu = 1, \sigma = 1\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\mu = 0, \sigma = 1\)</div>
+                <div class="explain">التوزيع الطبيعي المعياري: \(\mu = 0\) و \(\sigma = 1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">قانون التحويل</span></div>
+            <div class="q-text">قانون التحويل إلى التوزيع المعياري هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(Z = (X - \mu) \div \sigma\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(Z = (X + \mu) \div \sigma\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(Z = (X - \sigma) \div \mu\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(Z = (X + \sigma) \div \mu\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(Z = (X - \mu) \div \sigma\)</div>
+                <div class="explain">\(Z = (X - \mu) \div \sigma\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">تفسير Z</span></div>
+            <div class="q-text">إذا كانت \(Z = 0\)، فهذا يعني أن \(X\):</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> أكبر من \(\mu\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> أصغر من \(\mu\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> يساوي \(\mu\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> يساوي \(\sigma\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) يساوي \(\mu\)</div>
+                <div class="explain">\(Z = 0\) → \(X = \mu\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">قاعدة 68-95-99.7</span></div>
+            <div class="q-text">في التوزيع الطبيعي، حوالي 68% من البيانات تقع ضمن:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\mu \pm \sigma\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\mu \pm 2\sigma\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\mu \pm 3\sigma\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\mu \pm 0.5\sigma\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\mu \pm \sigma\)</div>
+                <div class="explain">68% من البيانات تقع ضمن \(\mu \pm \sigma\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">جدول التوزيع المعياري</span></div>
+            <div class="q-text">جدول التوزيع المعياري يعطي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(P(Z < z)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(P(Z > z)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(P(Z = z)\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(P(-z < Z < z)\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(P(Z < z)\)</div>
+                <div class="explain">جدول التوزيع المعياري يعطي \(P(Z < z)\) من \(-\infty\) إلى \(z\).</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل السابع -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">إذا كان \(\mu = 175\)، \(\sigma = 5\)، و \(X = 180\)، فما هي قيمة \(Z\)؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> -1</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 0</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 1</div>
+                <div class="opt"><span class="opt-letter">د)</span> 2</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) 1</div>
+                <div class="explain">\(Z = (180-175) \div 5 = 5 \div 5 = 1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">في التوزيع الطبيعي، حوالي 68% من البيانات تقع ضمن:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\mu \pm \sigma\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\mu \pm 2\sigma\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\mu \pm 3\sigma\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\mu \pm 0.5\sigma\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\mu \pm \sigma\)</div>
+                <div class="explain">68% من البيانات تقع ضمن \(\mu \pm \sigma\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل الثامن -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📊 الفصل الثامن: الارتباط والانحدار
+            <span class="tag tag-purple">ارتباط</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف الارتباط</div>
+            <ul><li>دراسة <strong>العلاقة</strong> بين متغيرين أو أكثر، وتحديد <strong>نوعها</strong> (طردية/عكسية) و<strong>قوتها</strong>.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. المتغير المستقل والتابع</div>
+            <ul>
+                <li><strong>المتغير المستقل (X):</strong> المؤثر (السبب).</li>
+                <li><strong>المتغير التابع (Y):</strong> المتأثر (النتيجة).</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. معامل ارتباط بيرسون (R)</div>
+            <ul>
+                <li><strong>محصور بين -1 و +1.</strong></li>
+                <li>\(R = 0\) → لا توجد علاقة خطية.</li>
+                <li>\(R > 0\) → علاقة طردية.</li>
+                <li>\(R < 0\) → علاقة عكسية.</li>
+                <li>\(|R|\) بين 0 و 0.3 → ضعيفة، 0.3-0.7 → متوسطة، 0.7-1 → قوية.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 4. معامل سبيرمان</div>
+            <ul><li>يستخدم للبيانات <strong>الرتبية (النوعية)</strong>.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. معامل الاقتران</div>
+            <ul><li>يستخدم للمتغيرات <strong>النوعية</strong> ذات القيمتين.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 6. معادلة الانحدار</div>
+            <div class="law-box">
+                <div class="formula">ŷ = a + bx</div>
+                <div class="desc"><strong>شرح:</strong> تستخدم للتنبؤ بقيم Y من X. \(b\) = ميل الخط، \(a\) = نقطة التقاطع.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 7. معامل التحديد (R²)</div>
+            <div class="law-box">
+                <div class="formula">R² = R × R</div>
+                <div class="desc"><strong>شرح:</strong> نسبة التغير في Y التي يفسرها X. (0 ≤ R² ≤ 1)</div>
+            </div>
+        </div>
+
+        <!-- أسئلة الفصل الثامن -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل الثامن <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف الارتباط</span></div>
+            <div class="q-text">الارتباط هو دراسة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> العلاقة بين متغيرين أو أكثر</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متوسط البيانات</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تشتت البيانات</div>
+                <div class="opt"><span class="opt-letter">د)</span> توزيع البيانات</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) العلاقة بين متغيرين أو أكثر</div>
+                <div class="explain">الارتباط = دراسة العلاقة بين متغيرين أو أكثر.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">معامل بيرسون</span></div>
+            <div class="q-text">معامل ارتباط بيرسون \(R\) محصور بين:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0 و 1</div>
+                <div class="opt"><span class="opt-letter">ب)</span> -1 و +1</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(-\infty\) و \(+\infty\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> 0 و 100</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) -1 و +1</div>
+                <div class="explain">\(-1 \le R \le +1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">معامل بيرسون</span></div>
+            <div class="q-text">إذا كان \(R = 0\)، فهذا يعني:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> علاقة طردية تامة</div>
+                <div class="opt"><span class="opt-letter">ب)</span> علاقة عكسية تامة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> لا توجد علاقة خطية</div>
+                <div class="opt"><span class="opt-letter">د)</span> علاقة قوية جداً</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) لا توجد علاقة خطية</div>
+                <div class="explain">\(R = 0\) يعني عدم وجود علاقة خطية بين المتغيرين.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">معامل سبيرمان</span></div>
+            <div class="q-text">معامل ارتباط سبيرمان يستخدم للبيانات:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> الكمية فقط</div>
+                <div class="opt"><span class="opt-letter">ب)</span> الرتبية (النوعية)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> المستمرة فقط</div>
+                <div class="opt"><span class="opt-letter">د)</span> جميع ما سبق</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) الرتبية (النوعية)</div>
+                <div class="explain">سبيرمان يستخدم للبيانات الرتبية (النوعية).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">معادلة الانحدار</span></div>
+            <div class="q-text">معادلة الانحدار الخطي هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\hat{y} = a + bx\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(y = a + bx\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\hat{y} = a - bx\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(y = ax + b\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\hat{y} = a + bx\)</div>
+                <div class="explain">معادلة الانحدار: \(\hat{y} = a + bx\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">معامل التحديد</span></div>
+            <div class="q-text">معامل التحديد \(R^2\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(R^2 = R\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(R^2 = R \times R\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(R^2 = R + R\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(R^2 = 1 - R\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) \(R^2 = R \times R\)</div>
+                <div class="explain">\(R^2 = R \times R\) (مربع معامل الارتباط).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">معامل الاقتران</span></div>
+            <div class="q-text">معامل الاقتران يستخدم لقياس العلاقة بين:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> متغيرين كميين</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متغيرين نوعيين</div>
+                <div class="opt"><span class="opt-letter">ج)</span> متغير كمي ومتغير نوعي</div>
+                <div class="opt"><span class="opt-letter">د)</span> جميع ما سبق</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) متغيرين نوعيين</div>
+                <div class="explain">معامل الاقتران يستخدم للمتغيرات النوعية ذات القيمتين.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل الثامن -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">قيمة معامل ارتباط بيرسون \(R\) محصورة بين:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0 و 1</div>
+                <div class="opt"><span class="opt-letter">ب)</span> -1 و +1</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(-\infty\) و \(+\infty\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> 0 و 100</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) -1 و +1</div>
+                <div class="explain">\(-1 \le R \le +1\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">دورة GMA402 <span class="exam blue">GMA402</span></span></div>
+            <div class="q-text">إذا كان \(R = 0.992\)، فإن \(R^2 =\)</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0.984</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 0.992</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 0.5</div>
+                <div class="opt"><span class="opt-letter">د)</span> 0.996</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) 0.984</div>
+                <div class="explain">\(R^2 = 0.992^2 = 0.984\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل التاسع -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📈 الفصل التاسع: السلاسل الزمنية
+            <span class="tag tag-teal">زمنية</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف السلسلة الزمنية</div>
+            <ul><li>بيانات تصف ظاهرة خلال <strong>فترات زمنية متعاقبة</strong> (سنوات، أشهر، ...).</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. مركبات السلسلة الزمنية</div>
+            <ul>
+                <li><strong>الاتجاه العام (Trend):</strong> حركة مستمرة على المدى البعيد (صاعد أو هابط).</li>
+                <li><strong>الحركات الدورية (Cycle):</strong> متكررة على فترات طويلة (أكثر من سنة).</li>
+                <li><strong>العوامل الموسمية (Seasonal):</strong> متكررة سنوياً بنفس الاتجاه.</li>
+                <li><strong>العوامل غير المنتظمة (Irregular):</strong> عشوائية لا يمكن التنبؤ بها.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. معادلة الاتجاه العام</div>
+            <div class="law-box">
+                <div class="formula">ŷₜ = a + bt</div>
+                <div class="desc"><strong>شرح:</strong> \(b\) = متوسط التغير السنوي، \(a\) = قيمة الظاهرة عند \(t=0\).</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. الرقم القياسي الموسمي</div>
+            <ul>
+                <li><strong>بدون اتجاه:</strong> \(S = (\text{متوسط الفصل} \div \text{المتوسط العام}) \times 100\)</li>
+                <li><strong>مع اتجاه:</strong> يحسب بعد إيجاد معادلة الاتجاه العام.</li>
+                <li>\(S > 100\) → تأثير موسمي موجب، \(S < 100\) → تأثير سالب.</li>
+            </ul>
+            <div class="sub-title"><span class="icon">📌</span> 5. استخدامات الرقم الموسمي</div>
+            <ul>
+                <li><strong>القيمة مع الموسم:</strong> \(\hat{y}_t \times S\)</li>
+                <li><strong>القيمة بدون موسم:</strong> \((y \div S) \times 100\)</li>
+            </ul>
+        </div>
+
+        <!-- أسئلة الفصل التاسع -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل التاسع <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف السلسلة الزمنية</span></div>
+            <div class="q-text">السلسلة الزمنية هي بيانات تصف ظاهرة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> في مكان واحد</div>
+                <div class="opt"><span class="opt-letter">ب)</span> خلال فترات زمنية متعاقبة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> في مكانين مختلفين</div>
+                <div class="opt"><span class="opt-letter">د)</span> بطريقة عشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) خلال فترات زمنية متعاقبة</div>
+                <div class="explain">السلسلة الزمنية = بيانات ظاهرة خلال فترات زمنية متعاقبة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">الاتجاه العام</span></div>
+            <div class="q-text">الاتجاه العام (Trend) هو حركة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> مستمرة على المدى البعيد</div>
+                <div class="opt"><span class="opt-letter">ب)</span> موسمية</div>
+                <div class="opt"><span class="opt-letter">ج)</span> عشوائية</div>
+                <div class="opt"><span class="opt-letter">د)</span> دورية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) مستمرة على المدى البعيد</div>
+                <div class="explain">الاتجاه العام = حركة مستمرة على المدى البعيد (صاعد أو هابط).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">الحركات الدورية</span></div>
+            <div class="q-text">الحركات الدورية (Cycle) هي حركة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> مستمرة</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متكررة على فترات طويلة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> موسمية</div>
+                <div class="opt"><span class="opt-letter">د)</span> عشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) متكررة على فترات طويلة</div>
+                <div class="explain">الحركات الدورية = متكررة على فترات طويلة (مرتبطة بالدورات الاقتصادية).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">العوامل الموسمية</span></div>
+            <div class="q-text">العوامل الموسمية (Seasonal) هي حركة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> مستمرة</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متكررة سنوياً بنفس الاتجاه</div>
+                <div class="opt"><span class="opt-letter">ج)</span> دورية</div>
+                <div class="opt"><span class="opt-letter">د)</span> عشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) متكررة سنوياً بنفس الاتجاه</div>
+                <div class="explain">العوامل الموسمية = متكررة سنوياً بنفس الاتجاه (مرتبطة بالفصول والعادات).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">معادلة الاتجاه العام</span></div>
+            <div class="q-text">معادلة الاتجاه العام هي:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \(\hat{y}_t = a + bt\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \(\hat{y}_t = a - bt\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\hat{y}_t = abt\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\hat{y}_t = a \times b^t\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \(\hat{y}_t = a + bt\)</div>
+                <div class="explain">معادلة الاتجاه العام: \(\hat{y}_t = a + bt\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">الرقم الموسمي</span></div>
+            <div class="q-text">الرقم القياسي الموسمي \(S\) يقيس:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> الاتجاه العام</div>
+                <div class="opt"><span class="opt-letter">ب)</span> تأثير الموسم على الظاهرة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> التغير الدوري</div>
+                <div class="opt"><span class="opt-letter">د)</span> العوامل العشوائية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) تأثير الموسم على الظاهرة</div>
+                <div class="explain">الرقم القياسي الموسمي = يقيس تأثير الموسم على قيم الظاهرة.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل التاسع -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">في معادلة الاتجاه العام \(\hat{y}_t = a + bt\)، \(b\) يمثل:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> قيمة الظاهرة عند \(t=0\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> متوسط التغير السنوي</div>
+                <div class="opt"><span class="opt-letter">ج)</span> الزمن</div>
+                <div class="opt"><span class="opt-letter">د)</span> القيمة التقديرية</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) متوسط التغير السنوي</div>
+                <div class="explain">\(b =\) متوسط التغير السنوي (معدل النمو).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">إذا كان \(\hat{y}_t = 14.8 + 3.2t\) و \(S\) للفصل الأول = 82.5%، ما هي القيمة المتوقعة للفصل الأول عند \(t = 21\)؟</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 67.65</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 82</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 75</div>
+                <div class="opt"><span class="opt-letter">د)</span> 70</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) 67.65</div>
+                <div class="explain">\(\hat{y}_t = 14.8 + 3.2(21) = 82\)، القيمة مع الموسم = \(82 \times 0.825 = 67.65\).</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- الفصل العاشر -->
+        <!-- ========================================================= -->
+        <div class="chapter-title">
+            📊 الفصل العاشر: الأرقام القياسية
+            <span class="tag tag-orange">قياسية</span>
+        </div>
+
+        <div class="theory-section">
+            <div class="sub-title"><span class="icon">📌</span> 1. تعريف الرقم القياسي</div>
+            <ul><li>أداة إحصائية لـ <strong>مقارنة</strong> ظاهرة في فترات زمنية مختلفة أو أماكن مختلفة.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 2. سنة الأساس</div>
+            <ul><li>السنة التي تتم المقارنة بها، ويكون رقمها القياسي = <strong>100</strong>.</li></ul>
+            <div class="sub-title"><span class="icon">📌</span> 3. الرقم القياسي البسيط</div>
+            <div class="law-box">
+                <div class="formula">I = (p₁ ÷ p₀) × 100</div>
+                <div class="desc"><strong>شرح:</strong> لسلعة واحدة، p₁ = سعر سنة الدراسة، p₀ = سعر سنة الأساس.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 4. الرقم التجميعي البسيط</div>
+            <div class="law-box">
+                <div class="formula">I = (∑p₁ ÷ ∑p₀) × 100</div>
+                <div class="desc"><strong>شرح:</strong> لعدة سلع، ∑p₁ = مجموع أسعار سنة الدراسة، ∑p₀ = مجموع أسعار سنة الأساس.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 5. رقم لاسبير</div>
+            <div class="law-box">
+                <div class="formula">I_L = (∑p₁q₀ ÷ ∑p₀q₀) × 100</div>
+                <div class="desc"><strong>شرح:</strong> يرجح بكميات سنة الأساس (q₀).</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 6. رقم باش</div>
+            <div class="law-box">
+                <div class="formula">I_P = (∑p₁q₁ ÷ ∑p₀q₁) × 100</div>
+                <div class="desc"><strong>شرح:</strong> يرجح بكميات سنة الدراسة (q₁).</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 7. رقم فيشر</div>
+            <div class="law-box">
+                <div class="formula">I_F = √(I_L × I_P)</div>
+                <div class="desc"><strong>شرح:</strong> الرقم المثالي، الوسط الهندسي للاسبير وباش.</div>
+            </div>
+            <div class="sub-title"><span class="icon">📌</span> 8. القيمة الحقيقية</div>
+            <div class="law-box">
+                <div class="formula">القيمة الحقيقية = (القيمة الاسمية ÷ I) × 100</div>
+                <div class="desc"><strong>شرح:</strong> تعزل تأثير التضخم وتحسب بأسعار سنة الأساس.</div>
+            </div>
+        </div>
+
+        <!-- أسئلة الفصل العاشر -->
+        <div class="q-section-title">
+            📝 أسئلة الفصل العاشر <span class="tag">نظري</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">1</span><span class="q-topic">تعريف الرقم القياسي</span></div>
+            <div class="q-text">الرقم القياسي هو أداة لـ:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> جمع البيانات</div>
+                <div class="opt"><span class="opt-letter">ب)</span> مقارنة ظاهرة في فترات مختلفة</div>
+                <div class="opt"><span class="opt-letter">ج)</span> تحليل البيانات</div>
+                <div class="opt"><span class="opt-letter">د)</span> تخزين البيانات</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) مقارنة ظاهرة في فترات مختلفة</div>
+                <div class="explain">الرقم القياسي = أداة لمقارنة ظاهرة في فترات زمنية مختلفة.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">2</span><span class="q-topic">سنة الأساس</span></div>
+            <div class="q-text">سنة الأساس في الأرقام القياسية يكون رقمها:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 0</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 1</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 100</div>
+                <div class="opt"><span class="opt-letter">د)</span> 1000</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ج) 100</div>
+                <div class="explain">سنة الأساس يكون رقمها القياسي = 100.</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">3</span><span class="q-topic">الرقم البسيط</span></div>
+            <div class="q-text">الرقم القياسي البسيط \(I\) يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((p_1 \div p_0) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((p_0 \div p_1) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(p_1 + p_0\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(p_1 - p_0\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((p_1 \div p_0) \times 100\)</div>
+                <div class="explain">الرقم البسيط = \((p_1 \div p_0) \times 100\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">4</span><span class="q-topic">الرقم التجميعي البسيط</span></div>
+            <div class="q-text">الرقم التجميعي البسيط يحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((\sum p_1 \div \sum p_0) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((\sum p_0 \div \sum p_1) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> \(\sum p_1 + \sum p_0\)</div>
+                <div class="opt"><span class="opt-letter">د)</span> \(\sum p_1 - \sum p_0\)</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((\sum p_1 \div \sum p_0) \times 100\)</div>
+                <div class="explain">الرقم التجميعي البسيط = \((\sum p_1 \div \sum p_0) \times 100\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">5</span><span class="q-topic">رقم لاسبير</span></div>
+            <div class="q-text">رقم لاسبير يرجح بكميات:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> سنة الدراسة \((q_1)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> سنة الأساس \((q_0)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> متوسط السنتين</div>
+                <div class="opt"><span class="opt-letter">د)</span> بدون ترجيح</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) سنة الأساس \((q_0)\)</div>
+                <div class="explain">لاسبير يرجح بكميات سنة الأساس \((q_0)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">6</span><span class="q-topic">رقم باش</span></div>
+            <div class="q-text">رقم باش يرجح بكميات:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> سنة الدراسة \((q_1)\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> سنة الأساس \((q_0)\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> متوسط السنتين</div>
+                <div class="opt"><span class="opt-letter">د)</span> بدون ترجيح</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) سنة الدراسة \((q_1)\)</div>
+                <div class="explain">باش يرجح بكميات سنة الدراسة \((q_1)\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">7</span><span class="q-topic">رقم فيشر</span></div>
+            <div class="q-text">رقم فيشر هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> الوسط الحسابي للاسبير وباش</div>
+                <div class="opt"><span class="opt-letter">ب)</span> الوسط الهندسي للاسبير وباش \(\sqrt{I_L \times I_P}\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> مجموع الاسبير وباش</div>
+                <div class="opt"><span class="opt-letter">د)</span> الفرق بين الاسبير وباش</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) الوسط الهندسي للاسبير وباش \(\sqrt{I_L \times I_P}\)</div>
+                <div class="explain">رقم فيشر = الوسط الهندسي للاسبير وباش: \(\sqrt{I_L \times I_P}\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">8</span><span class="q-topic">القيمة الحقيقية</span></div>
+            <div class="q-text">القيمة الحقيقية تحسب من العلاقة:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> \((\text{القيمة الاسمية} \div I) \times 100\)</div>
+                <div class="opt"><span class="opt-letter">ب)</span> \((\text{القيمة الاسمية} \times I) \div 100\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> القيمة الاسمية + I</div>
+                <div class="opt"><span class="opt-letter">د)</span> القيمة الاسمية - I</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) \((\text{القيمة الاسمية} \div I) \times 100\)</div>
+                <div class="explain">القيمة الحقيقية = \((\text{القيمة الاسمية} \div I) \times 100\).</div>
+            </div>
+        </div>
+
+        <!-- أسئلة دورات الفصل العاشر -->
+        <div class="q-section-title">
+            🏆 أسئلة الدورات <span class="tag blue">F22 · GMA402</span>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">9</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">إذا كان الدخل الاسمي في 2017 = 9250 والرقم القياسي \(I = 185\)، فإن الدخل الحقيقي =</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> 5000</div>
+                <div class="opt"><span class="opt-letter">ب)</span> 9250</div>
+                <div class="opt"><span class="opt-letter">ج)</span> 5550</div>
+                <div class="opt"><span class="opt-letter">د)</span> 4500</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: أ) 5000</div>
+                <div class="explain">الدخل الحقيقي = \((9250 \div 185) \times 100 = 5000\).</div>
+            </div>
+        </div>
+
+        <div class="q-item">
+            <div class="q-header"><span class="q-num">10</span><span class="q-topic">دورة F22 <span class="exam">F22</span></span></div>
+            <div class="q-text">رقم فيشر هو:</div>
+            <div class="q-options">
+                <div class="opt"><span class="opt-letter">أ)</span> الوسط الحسابي للاسبير وباش</div>
+                <div class="opt"><span class="opt-letter">ب)</span> الوسط الهندسي للاسبير وباش \(\sqrt{I_L \times I_P}\)</div>
+                <div class="opt"><span class="opt-letter">ج)</span> مجموع الاسبير وباش</div>
+                <div class="opt"><span class="opt-letter">د)</span> الفرق بين الاسبير وباش</div>
+            </div>
+            <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+            <div class="answer-box">
+                <div class="correct">✅ الإجابة: ب) الوسط الهندسي للاسبير وباش \(\sqrt{I_L \times I_P}\)</div>
+                <div class="explain">رقم فيشر = الوسط الهندسي للاسبير وباش: \(\sqrt{I_L \times I_P}\).</div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            <div class="name">🏫 <span>Loli</span> Academy</div>
+            <div class="phone">📱 0933160094</div>
+            <div class="wish">🌟 بالتوفيق والنجاح 🌟</div>
+            <div class="copy">جميع الحقوق محفوظة © 2025</div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const box = btn.nextElementSibling;
+            if (box.classList.contains('show')) {
+                box.classList.remove('show');
+                btn.textContent = '📖 إظهار الحل';
+                btn.classList.remove('showing');
+            } else {
+                box.classList.add('show');
+                btn.textContent = '📖 إخفاء الحل';
+                btn.classList.add('showing');
+            }
+        }
+
+        function expandAll() {
+            const boxes = document.querySelectorAll('.answer-box');
+            const btns = document.querySelectorAll('.btn-answer');
+            const allShown = boxes.length > 0 && boxes[0].classList.contains('show');
+
+            boxes.forEach((b, i) => {
+                if (allShown) {
+                    b.classList.remove('show');
+                    btns[i].textContent = '📖 إظهار الحل';
+                    btns[i].classList.remove('showing');
+                } else {
+                    b.classList.add('show');
+                    btns[i].textContent = '📖 إخفاء الحل';
+                    btns[i].classList.add('showing');
+                }
+            });
+        }
+
+        // حساب عدد الأسئلة
+        let total = 0;
+        const allQuestions = document.querySelectorAll('.q-item');
+        total = allQuestions.length;
+        document.getElementById('totalCount').textContent = total;
+
+        // Re-render MathJax
+        if (window.MathJax) {
+            MathJax.typesetPromise();
+        }
+    </script>
+
+</body>
+</html>
