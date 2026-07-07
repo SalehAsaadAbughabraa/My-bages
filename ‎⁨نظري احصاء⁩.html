@@ -1,0 +1,1757 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>الأسئلة النظرية الشاملة - الإحصاء والاحتمالات - Loli Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #1a1a2e;
+            padding: 12px;
+            line-height: 1.8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #1a237e;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+        }
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a237e, #e65100);
+            color: #fff;
+            padding: 3px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .header h1 {
+            font-size: 22px;
+            color: #1a237e;
+        }
+        .header h1 span {
+            color: #e65100;
+        }
+        .header .sub {
+            font-size: 14px;
+            color: #555;
+            margin-top: 2px;
+        }
+        .header .count {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+        .header .count strong {
+            color: #1a237e;
+        }
+
+        /* ===== CHAPTER TABS ===== */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .tabs .tab {
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e8eaf6;
+            color: #1a237e;
+            border: 2px solid transparent;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .tabs .tab:active {
+            transform: scale(0.95);
+        }
+        .tabs .tab.active {
+            background: #1a237e;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+        }
+        .tabs .tab .num {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            line-height: 18px;
+            font-size: 9px;
+            margin-left: 4px;
+        }
+        .tabs .tab.active .num {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .tabs .tab .short {
+            display: none;
+        }
+        @media (max-width: 500px) {
+            .tabs .tab .full {
+                display: none;
+            }
+            .tabs .tab .short {
+                display: inline;
+            }
+        }
+
+        /* ===== CONTENT ===== */
+        .content-card {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .content-card.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== THEORY SECTION ===== */
+        .theory-section {
+            background: #e8eaf6;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-right: 4px solid #1a237e;
+        }
+        .theory-section .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a237e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .theory-section .title .icon {
+            font-size: 20px;
+        }
+        .theory-section ul {
+            padding-right: 20px;
+            font-size: 14px;
+        }
+        .theory-section ul li {
+            margin-bottom: 4px;
+            color: #333;
+        }
+        .theory-section ul li strong {
+            color: #1a237e;
+        }
+        .theory-section .law-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-right: 3px solid #e65100;
+            font-size: 14px;
+        }
+        .theory-section .law-box .formula {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e65100;
+            text-align: center;
+            padding: 4px 0;
+        }
+        .theory-section .law-box .desc {
+            font-size: 13px;
+            color: #555;
+        }
+        .theory-section .law-box .example {
+            background: #fff3e0;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-top: 4px;
+            font-size: 13px;
+            border-right: 3px solid #e65100;
+        }
+
+        /* ===== QUESTIONS ===== */
+        .q-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 16px 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .q-section-title .tag {
+            font-size: 11px;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+        .q-section-title .tag.blue {
+            background: #1565c0;
+        }
+        .q-section-title .tag.green {
+            background: #2e7d32;
+        }
+        .q-section-title .tag.purple {
+            background: #7b1fa2;
+        }
+        .q-section-title .tag.orange {
+            background: #e65100;
+        }
+        .q-section-title .tag.teal {
+            background: #00695c;
+        }
+
+        .q-item {
+            background: #fffde7;
+            border-radius: 12px;
+            padding: 14px 16px;
+            border-right: 4px solid #f9a825;
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+        .q-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .q-item .q-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 2px;
+        }
+        .q-item .q-num {
+            display: inline-block;
+            background: #1a237e;
+            color: #fff;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .q-item .q-topic {
+            font-size: 11px;
+            background: #e8eaf6;
+            color: #1a237e;
+            padding: 1px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .q-item .q-topic .exam {
+            background: #e65100;
+            color: #fff;
+            padding: 1px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            margin-right: 4px;
+        }
+        .q-item .q-topic .exam.blue {
+            background: #1565c0;
+        }
+        .q-item .q-topic .exam.green {
+            background: #2e7d32;
+        }
+        .q-item .q-topic .exam.purple {
+            background: #7b1fa2;
+        }
+        .q-item .q-text {
+            font-weight: 600;
+            color: #1a237e;
+            font-size: 14px;
+            margin: 4px 0 8px 0;
+            line-height: 1.7;
+        }
+        .q-item .q-options {
+            padding-right: 20px;
+            margin: 4px 0 8px 0;
+            font-size: 13px;
+        }
+        .q-item .q-options .opt {
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .q-item .q-options .opt-letter {
+            font-weight: 700;
+            color: #1a237e;
+            min-width: 18px;
+        }
+
+        .btn-answer {
+            background: #1a237e;
+            color: #fff;
+            border: none;
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+        .btn-answer:active {
+            transform: scale(0.95);
+        }
+        .btn-answer:hover {
+            background: #0d1555;
+        }
+        .btn-answer.showing {
+            background: #2e7d32;
+        }
+
+        .answer-box {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 8px;
+            border-right: 4px solid #2e7d32;
+            display: none;
+        }
+        .answer-box.show {
+            display: block;
+        }
+        .answer-box .correct {
+            font-weight: 700;
+            color: #2e7d32;
+            font-size: 13px;
+        }
+        .answer-box .explain {
+            color: #333;
+            font-size: 13px;
+            margin-top: 3px;
+            line-height: 1.8;
+        }
+        .answer-box .step {
+            color: #1a237e;
+            font-weight: 700;
+            margin-top: 3px;
+            font-size: 13px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 16px 0 4px 0;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 18px;
+        }
+        .footer .name {
+            font-weight: bold;
+            color: #1a237e;
+            font-size: 18px;
+        }
+        .footer .name span {
+            color: #e65100;
+        }
+        .footer .phone {
+            color: #555;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        .footer .wish {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a237e;
+            margin-top: 4px;
+        }
+        .footer .wish span {
+            color: #e65100;
+        }
+        .footer .copy {
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .print-btn {
+            background: #2e7d32;
+            color: #fff;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+            touch-action: manipulation;
+        }
+        .print-btn:active {
+            transform: scale(0.95);
+        }
+        .print-btn:hover {
+            background: #1b5e20;
+        }
+
+        .expand-btn {
+            background: #e65100;
+            color: #fff;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+            margin-right: 8px;
+            touch-action: manipulation;
+        }
+        .expand-btn:active {
+            transform: scale(0.95);
+        }
+        .expand-btn:hover {
+            background: #bf360c;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 10px;
+            }
+            .header h1 {
+                font-size: 18px;
+            }
+            .tabs .tab {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            .tabs .tab .num {
+                width: 15px;
+                height: 15px;
+                line-height: 15px;
+                font-size: 8px;
+            }
+            .theory-section {
+                padding: 10px 12px;
+            }
+            .theory-section .title {
+                font-size: 15px;
+            }
+            .theory-section ul {
+                font-size: 13px;
+                padding-right: 16px;
+            }
+            .q-item {
+                padding: 10px 12px;
+            }
+            .q-item .q-text {
+                font-size: 13px;
+            }
+            .q-item .q-options {
+                font-size: 12px;
+                padding-right: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .tabs .tab {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+            .header h1 {
+                font-size: 16px;
+            }
+            .q-item .q-text {
+                font-size: 12px;
+            }
+            .q-item .q-options {
+                font-size: 11px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 10px;
+            }
+            .container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            .tabs {
+                display: none;
+            }
+            .content-card {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+            .btn-answer {
+                display: none;
+            }
+            .answer-box {
+                display: block !important;
+            }
+            .print-btn,
+            .expand-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="badge">🏫 Loli Academy</div>
+            <h1>📚 الأسئلة النظرية <span>الشاملة</span></h1>
+            <div class="sub">جميع فصول الإحصاء والاحتمالات · GMA402</div>
+            <div class="count">📝 إجمالي الأسئلة: <strong id="totalCount">0</strong> سؤالاً</div>
+            <div style="margin-top:8px;">
+                <button class="expand-btn" onclick="expandAll()">📖 عرض جميع الحلول</button>
+                <button class="print-btn" onclick="window.print()">🖨️ طباعة</button>
+            </div>
+        </div>
+
+        <!-- ===== TABS ===== -->
+        <div class="tabs" id="tabsContainer">
+            <!-- سيتم إنشاء التبويبات بواسطة JavaScript -->
+        </div>
+
+        <!-- ===== CONTENT ===== -->
+        <div id="contentContainer">
+            <!-- سيتم إنشاء المحتوى بواسطة JavaScript -->
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            <div class="name">🏫 <span>Loli</span> Academy</div>
+            <div class="phone">📱 0933160094</div>
+            <div class="wish">🌟 بالتوفيق والنجاح 🌟</div>
+            <div class="copy">جميع الحقوق محفوظة © 2025</div>
+        </div>
+
+    </div>
+
+    <script>
+        // =============================================================
+        // ALL THEORETICAL QUESTIONS - 10 CHAPTERS (بدون سبورة)
+        // =============================================================
+        const chaptersData = [{
+            id: 1,
+            name: 'الفصل الأول: تعاريف ومفاهيم إحصائية',
+            short: 'الفصل الأول',
+            icon: '📖',
+            tag: 'أساسيات',
+            tagColor: 'blue',
+            theory: [
+                'تعريف الإحصاء: علم جمع البيانات وعرضها وتحليلها بهدف اتخاذ القرار',
+                'الإحصاء الوصفي: يهتم بوصف البيانات (جداول، رسوم، مقاييس)',
+                'الإحصاء الاستدلالي: يهتم بتعميم نتائج العينة على المجتمع',
+                'المتغير النوعي: صفة غير قابلة للقياس (الجنس، اللون، التخصص)',
+                'المتغير الكمي المستمر: يقاس بالأجزاء (الطول، الوزن، العمر)',
+                'المتغير الكمي المنقطع: أعداد صحيحة (عدد الطلاب، عدد السيارات)',
+                'المجتمع: كل المفردات موضوع الدراسة',
+                'العينة: جزء من المجتمع يمثله',
+                'البيانات الأولية: يجمعها الباحث بنفسه من الميدان',
+                'البيانات الثانوية: جاهزة من مصادر سابقة (وزارات، كتب)',
+                'الحصر الشامل: دراسة كل المجتمع (دقة عالية، مكلف، وقت طويل)',
+                'أسلوب العينة: دراسة جزء من المجتمع (أقل تكلفة، أسرع)',
+                'العينة المنتظمة: K = N ÷ n، المفردات: S, S+K, S+2K, ...',
+                'العينة الطبقية: n/N = n₁/N₁ = n₂/N₂ = ... (تناسب)',
+                'الخطأ العشوائي: يحدث باتجاهين (موجب وسالب)، يمكن قياسه ويقل بزيادة حجم العينة',
+                'خطأ التحيز: يحدث باتجاه واحد، أخطر الأخطاء، لا يمكن قياسه أو التنبؤ به'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف الإحصاء',
+                text: 'الإحصاء هو علم:',
+                options: ['جمع البيانات فقط', 'عرض البيانات فقط', 'جمع وعرض وتحليل البيانات',
+                    'تحليل البيانات فقط'
+                ],
+                answer: 2,
+                explain: 'الإحصاء يشمل جمع البيانات وعرضها وتحليلها بهدف اتخاذ القرار.'
+            }, {
+                id: 2,
+                topic: 'الإحصاء الوصفي والاستدلالي',
+                text: 'الإحصاء الوصفي يهتم بـ:',
+                options: ['تعميم النتائج على المجتمع', 'جمع وعرض ووصف البيانات', 'حساب الاحتمالات',
+                    'اختبار الفرضيات'
+                ],
+                answer: 1,
+                explain: 'الإحصاء الوصفي يهتم بوصف البيانات من خلال الجداول والرسوم والمقاييس.'
+            }, {
+                id: 3,
+                topic: 'المتغيرات',
+                text: 'لون الحبر الموجود في قلم الكتابة يعتبر متغير:',
+                options: ['كمي منقطع', 'نوعي', 'كمي مستمر', 'جميع ما ذكر'],
+                answer: 1,
+                explain: 'لون الحبر يعبر عن صفة غير قابلة للقياس العددي، فهو متغير نوعي.'
+            }, {
+                id: 4,
+                topic: 'المتغير الكمي المستمر',
+                text: 'أي من التالي يعتبر متغيراً كمياً مستمراً؟',
+                options: ['عدد الطلاب في الصف', 'طول الطالب', 'لون السيارة', 'الجنس'],
+                answer: 1,
+                explain: 'الطول يقاس بالأجزاء (سم، متر) ويأخذ أي قيمة ضمن مجال، فهو متغير كمي مستمر.'
+            }, {
+                id: 5,
+                topic: 'المتغير الكمي المنقطع',
+                text: 'أي من التالي يعتبر متغيراً كمياً منقطعاً؟',
+                options: ['وزن الشخص', 'العمر', 'عدد أفراد الأسرة', 'درجة الحرارة'],
+                answer: 2,
+                explain: 'عدد أفراد الأسرة هو عدد صحيح ولا يأخذ كسوراً، فهو متغير كمي منقطع.'
+            }, {
+                id: 6,
+                topic: 'المجتمع والعينة',
+                text: 'المجتمع الإحصائي هو:',
+                options: ['جزء من المفردات', 'كل المفردات موضوع الدراسة', 'مفردة واحدة', 'عينة صغيرة'],
+                answer: 1,
+                explain: 'المجتمع هو مجموعة جميع المفردات التي تتمتع بالصفة محل الدراسة.'
+            }, {
+                id: 7,
+                topic: 'البيانات الأولية والثانوية',
+                text: 'البيانات التي يجمعها الباحث بنفسه من الميدان تسمى:',
+                options: ['بيانات ثانوية', 'بيانات أولية', 'بيانات رقمية', 'بيانات نوعية'],
+                answer: 1,
+                explain: 'البيانات الأولية هي التي يجمعها الباحث بنفسه من مصدرها الأصلي.'
+            }, {
+                id: 8,
+                topic: 'أخطاء العينة',
+                text: 'خطأ التحيز يحدث في:',
+                options: ['اتجاهين (موجب وسالب)', 'اتجاه واحد', 'كل الاتجاهات', 'لا اتجاه محدد'],
+                answer: 1,
+                explain: 'خطأ التحيز يحدث باتجاه واحد فقط، وهو أخطر أنواع الأخطاء الإحصائية.'
+            }, {
+                id: 9,
+                topic: 'دورة F22 - العينة المنتظمة',
+                text: 'في العينة المنتظمة، إذا كان حجم المجتمع N وحجم العينة n، فإن فترة السحب K تساوي:',
+                options: ['N × n', 'N ÷ n', 'n ÷ N', 'N + n'],
+                answer: 1,
+                explain: 'فترة السحب = N ÷ n'
+            }, {
+                id: 10,
+                topic: 'دورة GMA402 - العينة الطبقية',
+                text: 'العينة الطبقية تستخدم عندما يكون المجتمع:',
+                options: ['صغيراً', 'متجانساً', 'غير متجانس', 'معروفاً'],
+                answer: 2,
+                explain: 'العينة الطبقية تستخدم عندما يكون المجتمع غير متجانس.'
+            }, {
+                id: 11,
+                topic: 'دورة F22 - العينة المنتظمة',
+                text: 'مجتمع مؤلف من 800 مفردة، نريد اختيار عينة منتظمة بحجم 40. إذا علمت أن أول مفردة تم اختيارها عشوائياً كانت الرقم 7، فما هي المفردة الثانية في العينة؟',
+                options: ['107', '47', '27', 'عدا ذلك'],
+                answer: 2,
+                explain: 'K = 800 ÷ 40 = 20، المفردة الثانية = 7 + 20 = 27'
+            }, {
+                id: 12,
+                topic: 'دورة GMA402 - العينة الطبقية',
+                text: 'لدينا مجتمع بحجم 2000 شخص (1200 ذكور و 800 إناث)، نريد عينة طبقية بحجم 60 شخص. كم عدد الإناث في العينة؟',
+                options: ['20', '24', '30', '36'],
+                answer: 1,
+                explain: 'نسبة العينة = 60 ÷ 2000 = 0.03، عدد الإناث = 800 × 0.03 = 24'
+            }]
+        }, {
+            id: 2,
+            name: 'الفصل الثاني: عرض البيانات الإحصائية',
+            short: 'الفصل الثاني',
+            icon: '📊',
+            tag: 'جداول ورسوم',
+            tagColor: 'orange',
+            theory: [
+                'عرض البيانات: تلخيص البيانات في جداول ورسوم بيانية لتسهيل فهمها',
+                'البيانات النوعية: تعرض بالأعمدة البيانية والقطاعات الدائرية',
+                'التكرار النسبي: RF = f ÷ ∑f (قيمته بين 0 و 1)',
+                'التكرار المئوي: النسبة المئوية = RF × 100',
+                'مركز الفئة: xᵢ = (الحد الأدنى + الحد الأعلى) ÷ 2',
+                'علاقة سترجس: c = R ÷ (1 + 3.32 × log n) (تستخدم لحساب طول الفئة)',
+                'المدى: R = MAX - MIN (أبسط مقاييس التشتت)',
+                'زاوية القطاع: (f ÷ ∑f) × 360° (لإنشاء القطاعات الدائرية)',
+                'المدرج التكراري: للبيانات المستمرة، أعمدة متلاصقة (بدون فجوات)',
+                'المضلع التكراري: نقاط عند مراكز الفئات مربوطة بخطوط مستقيمة',
+                'المنحنى التكراري: تمليس (تنعيم) للمضلع التكراري',
+                'التوزيع الطبيعي: متماثل، الوسط = الوسيط = المنوال',
+                'التكرار التجميعي الصاعد: مجموع التكرارات من أول فئة حتى الفئة الحالية',
+                'التكرار التجميعي الهابط: مجموع التكرارات من آخر فئة حتى الفئة الحالية',
+                'الجداول العامة: تعد من قبل الوزارات والدول (مثل: المكتب المركزي للإحصاء)',
+                'الجداول الخاصة: يعدها الباحث بنفسه لدراسة مشكلة معينة'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف عرض البيانات',
+                text: 'عرض البيانات هو:',
+                options: ['جمع البيانات من المصادر', 'تلخيص البيانات في جداول ورسوم', 'تحليل البيانات',
+                    'تخزين البيانات'
+                ],
+                answer: 1,
+                explain: 'عرض البيانات يعني تلخيصها واختصارها في جداول أو رسوم بيانية لتسهيل فهمها.'
+            }, {
+                id: 2,
+                topic: 'عرض البيانات النوعية',
+                text: 'أي من التالي يعتبر عرضاً بيانياً للمتغيرات النوعية؟',
+                options: ['المدرج التكراري', 'الأعمدة البيانية', 'المضلع التكراري', 'المنحنى التكراري'],
+                answer: 1,
+                explain: 'الأعمدة البيانية والقطاعات الدائرية تستخدم للبيانات النوعية.'
+            }, {
+                id: 3,
+                topic: 'التكرار النسبي',
+                text: 'التكرار النسبي (RF) يحسب من العلاقة:',
+                options: ['RF = f × ∑f', 'RF = f ÷ ∑f', 'RF = ∑f ÷ f', 'RF = f + ∑f'],
+                answer: 1,
+                explain: 'التكرار النسبي = f ÷ ∑f'
+            }, {
+                id: 4,
+                topic: 'مركز الفئة',
+                text: 'مركز الفئة يحسب من العلاقة:',
+                options: ['(L + U) ÷ 2', '(L × U) ÷ 2', '(L + U) × 2', '(L - U) ÷ 2'],
+                answer: 0,
+                explain: 'مركز الفئة = (الحد الأدنى + الحد الأعلى) ÷ 2'
+            }, {
+                id: 5,
+                topic: 'علاقة سترجس',
+                text: 'علاقة سترجس تستخدم لحساب:',
+                options: ['المدى', 'طول الفئة', 'التكرار', 'مركز الفئة'],
+                answer: 1,
+                explain: 'علاقة سترجس: c = R ÷ (1 + 3.32 × log n) تستخدم لحساب طول الفئة.'
+            }, {
+                id: 6,
+                topic: 'المدى',
+                text: 'المدى (Range) يحسب من العلاقة:',
+                options: ['MAX + MIN', 'MAX - MIN', 'MAX × MIN', 'MAX ÷ MIN'],
+                answer: 1,
+                explain: 'المدى = أكبر قيمة - أصغر قيمة'
+            }, {
+                id: 7,
+                topic: 'المضلع التكراري',
+                text: 'المضلع التكراري يرسم باستخدام:',
+                options: ['حدود الفئات', 'مراكز الفئات', 'التكرارات التجميعية', 'النسب المئوية'],
+                answer: 1,
+                explain: 'المضلع التكراري يرسم بنقاط عند مراكز الفئات وربطها بخطوط مستقيمة.'
+            }, {
+                id: 8,
+                topic: 'التوزيع الطبيعي',
+                text: 'التوزيع الطبيعي يتميز بأنه:',
+                options: ['غير متماثل', 'متماثل والقمة في المنتصف', 'له قمتان', 'ملتوي نحو اليمين'],
+                answer: 1,
+                explain: 'التوزيع الطبيعي متماثل حول الوسط، والقمة في المنتصف.'
+            }, {
+                id: 9,
+                topic: 'التكرار التجميعي',
+                text: 'التكرار التجميعي الصاعد هو مجموع التكرارات من:',
+                options: ['آخر فئة حتى الفئة الحالية', 'أول فئة حتى الفئة الحالية', 'جميع الفئات معاً',
+                    'فئة واحدة فقط'
+                ],
+                answer: 1,
+                explain: 'التكرار التجميعي الصاعد = مجموع التكرارات من البداية حتى الفئة الحالية.'
+            }, {
+                id: 10,
+                topic: 'المدرج التكراري',
+                text: 'المدرج التكراري يستخدم للبيانات:',
+                options: ['النوعية فقط', 'الكمية المستمرة فقط', 'الكمية المنقطعة فقط', 'جميع أنواع البيانات'],
+                answer: 1,
+                explain: 'المدرج التكراري يستخدم للبيانات الكمية المستمرة، وتكون أعمدة المدرج متلاصقة.'
+            }, {
+                id: 11,
+                topic: 'دورة GMA402 - العرض البياني',
+                text: 'بيانات المتغيرات الكمية المستمرة تعرض بيانياً من خلال:',
+                options: ['المدرج التكراري', 'المضلع التكراري', 'المنحنى التكراري', 'كل ما سبق'],
+                answer: 3,
+                explain: 'المدرج والمضلع والمنحنى كلها تستخدم للبيانات الكمية المستمرة.'
+            }, {
+                id: 12,
+                topic: 'دورة F22 - التفريغ',
+                text: 'التفريغ (عصا العد - Tally) يستخدم في مرحلة:',
+                options: ['حساب المدى', 'تحديد الفئات', 'عدّ المفردات في كل فئة', 'حساب مركز الفئة'],
+                answer: 2,
+                explain: 'التفريغ (Tally) هو عملية عدّ المفردات في كل فئة من فئات الجدول التكراري.'
+            }]
+        }, {
+            id: 3,
+            name: 'الفصل الثالث: مقاييس النزعة المركزية',
+            short: 'الفصل الثالث',
+            icon: '📈',
+            tag: 'مقاييس',
+            tagColor: 'green',
+            theory: [
+                'الوسط الحسابي: X̄ = ∑xᵢ ÷ n (غير مبوب) - مجموع القيم ÷ عددها',
+                'الوسط الحسابي المبوب: X̄ = ∑(f × xᵢ) ÷ ∑f',
+                'الوسط المرجح: X̄ = ∑(xᵢ × Wᵢ) ÷ ∑Wᵢ (حيث Wᵢ هي الأوزان)',
+                'الوسيط: القيمة التي تقسم البيانات المرتبة إلى نصفين متساويين',
+                'الوسيط (فردي): الموقع = (n+1)÷2، الوسيط = القيمة في هذا الموقع',
+                'الوسيط (زوجي): متوسط القيمتين في الموقعين n÷2 و (n÷2)+1',
+                'المنوال: القيمة الأكثر تكراراً في البيانات',
+                'المنوال المبوب: Mod = L + [Δ₁/(Δ₁+Δ₂)] × C (طريقة الفروق)',
+                'علاقة بيرسون: X̄ - Mod = 3(X̄ - Med) (لإيجاد أحد المقاييس إذا عُرفت الأخرى)',
+                'التوزيع الطبيعي: X̄ = Med = Mod (متماثل)',
+                'الملتوي يميناً: X̄ > Med > Mod (الذيل الطويل جهة اليمين)',
+                'الملتوي يساراً: X̄ < Med < Mod (الذيل الطويل جهة اليسار)',
+                'الربيع الثاني (Q₂) = الوسيط',
+                'شكل الصندوق والأذرع: يتكون من 5 قيم (Min, Q₁, Med, Q₃, Max)'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'الوسط الحسابي',
+                text: 'الوسط الحسابي هو:',
+                options: ['مجموع القيم ÷ عددها', 'القيمة الأكثر تكراراً', 'القيمة التي تقسم البيانات لنصفين',
+                    'الفرق بين أكبر وأصغر قيمة'
+                ],
+                answer: 0,
+                explain: 'الوسط الحسابي = مجموع القيم ÷ عددها'
+            }, {
+                id: 2,
+                topic: 'الوسط المرجح',
+                text: 'الوسط الحسابي المرجح يستخدم عندما:',
+                options: ['جميع القيم متساوية الأهمية', 'القيم مختلفة الأهمية', 'البيانات نوعية',
+                    'البيانات غير مرتبة'
+                ],
+                answer: 1,
+                explain: 'الوسط المرجح يستخدم عندما تكون القيم مختلفة الأهمية (أوزان مختلفة).'
+            }, {
+                id: 3,
+                topic: 'الوسيط',
+                text: 'الوسيط هو القيمة التي:',
+                options: ['تتكرر أكثر من غيرها', 'تقسّم البيانات إلى نصفين متساويين', 'هي مجموع القيم ÷ عددها',
+                    'هي الفرق بين أكبر وأصغر قيمة'
+                ],
+                answer: 1,
+                explain: 'الوسيط يقسم البيانات إلى قسمين متساويين.'
+            }, {
+                id: 4,
+                topic: 'المنوال',
+                text: 'المنوال هو:',
+                options: ['مجموع القيم ÷ عددها', 'القيمة الأكثر تكراراً', 'القيمة التي تقسم البيانات لنصفين',
+                    'الفرق بين أكبر وأصغر قيمة'
+                ],
+                answer: 1,
+                explain: 'المنوال هو القيمة الأكثر تكراراً في البيانات.'
+            }, {
+                id: 5,
+                topic: 'العلاقة بين المقاييس',
+                text: 'في التوزيع الطبيعي، العلاقة بين المقاييس هي:',
+                options: ['X̄ < Med < Mod', 'X̄ > Med > Mod', 'X̄ = Med = Mod', 'Med < X̄ < Mod'],
+                answer: 2,
+                explain: 'في التوزيع الطبيعي: X̄ = Med = Mod'
+            }, {
+                id: 6,
+                topic: 'العلاقة بين المقاييس',
+                text: 'في التوزيع الملتوي نحو اليمين، العلاقة بين المقاييس هي:',
+                options: ['X̄ < Med < Mod', 'X̄ > Med > Mod', 'X̄ = Med = Mod', 'Med < X̄ < Mod'],
+                answer: 1,
+                explain: 'في التوزيع الملتوي يميناً: X̄ > Med > Mod'
+            }, {
+                id: 7,
+                topic: 'علاقة بيرسون',
+                text: 'علاقة بيرسون هي:',
+                options: ['X̄ - Mod = 3(X̄ - Med)', 'X̄ - Med = 3(X̄ - Mod)',
+                    'Mod - X̄ = 3(Med - X̄)', 'Med - X̄ = 3(X̄ - Mod)'
+                ],
+                answer: 0,
+                explain: 'علاقة بيرسون: X̄ - Mod = 3(X̄ - Med)'
+            }, {
+                id: 8,
+                topic: 'الربيعيات',
+                text: 'الربيع الثاني (Q₂) يساوي:',
+                options: ['المنوال', 'الوسيط', 'الوسط الحسابي', 'المدى'],
+                answer: 1,
+                explain: 'Q₂ = الوسيط (يقسم البيانات إلى نصفين).'
+            }, {
+                id: 9,
+                topic: 'دورة GMA402 - العلاقة بين المقاييس',
+                text: 'إذا كان X̄ = 10، Med = 11، Mod = 13، فشكل التوزيع هو:',
+                options: ['ملتوي نحو اليمين', 'طبيعي', 'ملتوي نحو اليسار', 'غير ذلك'],
+                answer: 2,
+                explain: 'X̄ < Med < Mod → ملتوي نحو اليسار'
+            }, {
+                id: 10,
+                topic: 'دورة GMA402 - المنوال المبوب',
+                text: 'لدينا البيانات التالية عن الدخل الشهري لعينة من الأسر: فئات الدخل: 5-10 (f=15)، 10-15 (f=30)، 15-20 (f=25)، 20-25 (f=15)، 25-30 (f=10). أحسب المنوال:',
+                options: ['16', '25', '13.75', 'غير ذلك'],
+                answer: 2,
+                explain: 'الفئة المنوالية: 10-15 (f=30)، Δ₁=15، Δ₂=5، L=10، C=5 → Mod = 10 + [15/(15+5)]×5 = 13.75'
+            }]
+        }, {
+            id: 4,
+            name: 'الفصل الرابع: مقاييس التشتت',
+            short: 'الفصل الرابع',
+            icon: '📉',
+            tag: 'تشتت',
+            tagColor: 'purple',
+            theory: [
+                'المدى: R = MAX - MIN (أبسط مقاييس التشتت، يتأثر بالقيم المتطرفة)',
+                'المدى النسبي: PR = (R ÷ X̄) × 100 (لمقارنة تشتت بيانات مختلفة في الوحدات)',
+                'المدى الربيعي: IQR = Q₃ - Q₁ (يقيس تشتت الـ 50% الوسطى)',
+                'الانحراف الربيعي: QD = (Q₃ - Q₁) ÷ 2 (نصف المدى الربيعي)',
+                'الانحراف المتوسط: MD = ∑|xᵢ - Med| ÷ n (متوسط الانحرافات عن الوسيط)',
+                'التباين: S² = ∑(xᵢ - X̄)² ÷ (n-1) (متوسط مربعات الانحرافات عن الوسط)',
+                'الانحراف المعياري: S = √S² (الجذر التربيعي للتباين، بنفس وحدة البيانات)',
+                'معامل الاختلاف: CV = (S ÷ X̄) × 100 (لمقارنة تشتت بيانات مختلفة في الوحدات)',
+                'التباين للعينات الصغيرة: نستخدم (n-1) في المقام (تصحيح العينة)',
+                'التباين للعينات الكبيرة (n ≥ 30): نستخدم n في المقام',
+                'الانحراف المعياري لا يستخدم للبيانات النوعية'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف التشتت',
+                text: 'التشتت يعني:',
+                options: ['تجمع البيانات حول الوسط', 'اختلاف وتباعد البيانات', 'تساوي جميع البيانات',
+                    'ترتيب البيانات'
+                ],
+                answer: 1,
+                explain: 'التشتت هو اختلاف وتباعد قيم البيانات عن بعضها البعض.'
+            }, {
+                id: 2,
+                topic: 'المدى',
+                text: 'المدى هو:',
+                options: ['الفرق بين أكبر وأصغر قيمة', 'مجموع القيم ÷ عددها', 'القيمة الأكثر تكراراً',
+                    'نصف الفرق بين الربيعين'
+                ],
+                answer: 0,
+                explain: 'المدى = أكبر قيمة - أصغر قيمة'
+            }, {
+                id: 3,
+                topic: 'المدى الربيعي',
+                text: 'المدى الربيعي (IQR) يحسب من العلاقة:',
+                options: ['Q₃ - Q₁', 'Q₁ + Q₃', 'Q₃ ÷ Q₁', 'Q₁ × Q₃'],
+                answer: 0,
+                explain: 'المدى الربيعي = Q₃ - Q₁'
+            }, {
+                id: 4,
+                topic: 'الانحراف الربيعي',
+                text: 'الانحراف الربيعي (QD) يحسب من العلاقة:',
+                options: ['(Q₃ - Q₁) ÷ 2', '(Q₃ + Q₁) ÷ 2', '(Q₃ - Q₁) × 2', 'Q₃ - Q₁'],
+                answer: 0,
+                explain: 'الانحراف الربيعي = (Q₃ - Q₁) ÷ 2'
+            }, {
+                id: 5,
+                topic: 'الانحراف المعياري',
+                text: 'الانحراف المعياري هو:',
+                options: ['الجذر التربيعي للتباين', 'مربع التباين', 'ضعف التباين', 'نصف التباين'],
+                answer: 0,
+                explain: 'الانحراف المعياري = √التباين'
+            }, {
+                id: 6,
+                topic: 'معامل الاختلاف',
+                text: 'معامل الاختلاف (CV) يحسب من العلاقة:',
+                options: ['(S ÷ X̄) × 100', '(X̄ ÷ S) × 100', 'S × X̄ × 100', '(S + X̄) × 100'],
+                answer: 0,
+                explain: 'معامل الاختلاف = (S ÷ X̄) × 100'
+            }, {
+                id: 7,
+                topic: 'معامل الاختلاف',
+                text: 'معامل الاختلاف يستخدم لمقارنة تشتت بيانات:',
+                options: ['من نفس الوحدة', 'مختلفة في الوحدات', 'من نفس المتوسط', 'لا شيء مما سبق'],
+                answer: 1,
+                explain: 'معامل الاختلاف يستخدم لمقارنة تشتت بيانات مختلفة في الوحدات.'
+            }, {
+                id: 8,
+                topic: 'التباين',
+                text: 'عند حساب تباين عينة صغيرة (n < 30) نستخدم في المقام:',
+                options: ['n', 'n-1', 'n+1', 'n²'],
+                answer: 1,
+                explain: 'للعينات الصغيرة نستخدم n-1 في مقام التباين (تصحيح العينة).'
+            }, {
+                id: 9,
+                topic: 'دورة GMA402 - الانحراف الربيعي',
+                text: 'إذا كان Q₁ = 29 و Q₃ = 38، فما هو الانحراف الربيعي؟',
+                options: ['4.5', '5', '9', '18'],
+                answer: 0,
+                explain: 'QD = (38 - 29) ÷ 2 = 4.5'
+            }, {
+                id: 10,
+                topic: 'دورة GMA402 - معامل الاختلاف',
+                text: 'إذا كان X̄ = 12 و S = 3، فما هو معامل الاختلاف؟',
+                options: ['20%', '25%', '30%', '15%'],
+                answer: 1,
+                explain: 'CV = (3 ÷ 12) × 100 = 25%'
+            }]
+        }, {
+            id: 5,
+            name: 'الفصل الخامس: التجربة والحادث',
+            short: 'الفصل الخامس',
+            icon: '🎲',
+            tag: 'احتمالات',
+            tagColor: 'orange',
+            theory: [
+                'التجربة الإحصائية: عملية نتيجتها غير معروفة مسبقاً، ويمكن تكرارها تحت نفس الظروف',
+                'فضاء العينة (Ω): مجموعة جميع النتائج الممكنة للتجربة',
+                'الحادث: مجموعة جزئية من فضاء العينة (نرمز له بأحرف كبيرة A, B, C, ...)',
+                'الحادث البسيط: يحتوي على عنصر واحد فقط من فضاء العينة',
+                'الحادث المركب: يحتوي على أكثر من عنصر من فضاء العينة',
+                'الحادث الأكيد (Ω): يقع دائماً، و P(Ω) = 1',
+                'الحادث المستحيل (Φ): لا يمكن وقوعه، و P(Φ) = 0',
+                'الحوادث المتنافية: A ∩ B = Φ (لا يمكن وقوعها معاً)',
+                'الحوادث المتتامة: A ∩ B = Φ و A ∪ B = Ω (يقع أحدهما إذا لم يقع الآخر)',
+                'الحوادث المتكافئة: لها نفس فرصة الوقوع (مثل: صورة وكتابة في قطعة نقود متوازنة)',
+                'الحوادث المستقلة: وقوع أحدها لا يؤثر على وقوع الآخر',
+                'الحوادث الشرطية: وقوع أحدها يؤثر على وقوع الآخر (P(B|A))',
+                'العمليات على الحوادث: اتحاد (∪)، تقاطع (∩)، فرق (-)، تجزئة'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'التجربة الإحصائية',
+                text: 'التجربة الإحصائية هي عملية:',
+                options: ['نتيجتها معروفة مسبقاً', 'نتيجتها غير معروفة مسبقاً', 'لا يمكن تكرارها',
+                    'نتيجتها دائماً صحيحة'
+                ],
+                answer: 1,
+                explain: 'التجربة الإحصائية: نتيجتها غير معروفة مسبقاً، ويمكن تكرارها تحت نفس الظروف.'
+            }, {
+                id: 2,
+                topic: 'فضاء العينة',
+                text: 'فضاء العينة هو:',
+                options: ['مجموعة النتائج الممكنة للتجربة', 'نتيجة واحدة للتجربة', 'جزء من النتائج',
+                    'تجربة فاشلة'
+                ],
+                answer: 0,
+                explain: 'فضاء العينة = مجموعة جميع النتائج الممكنة للتجربة.'
+            }, {
+                id: 3,
+                topic: 'الحادث',
+                text: 'الحادث هو:',
+                options: ['مجموعة جزئية من فضاء العينة', 'فضاء العينة كاملاً', 'مجموعة خالية',
+                    'نتيجة مستحيلة'
+                ],
+                answer: 0,
+                explain: 'الحادث = مجموعة جزئية من فضاء العينة.'
+            }, {
+                id: 4,
+                topic: 'الحوادث المتنافية',
+                text: 'الحوادث المتنافية هي التي:',
+                options: ['يمكن وقوعها معاً', 'لا يمكن وقوعها معاً', 'تقع دائماً معاً', 'ليس لها علاقة'],
+                answer: 1,
+                explain: 'الحوادث المتنافية: لا يمكن وقوعها معاً (A ∩ B = Φ).'
+            }, {
+                id: 5,
+                topic: 'الحادث الأكيد',
+                text: 'الحادث الأكيد هو:',
+                options: ['Φ', 'Ω', 'A ∩ B', 'A - B'],
+                answer: 1,
+                explain: 'الحادث الأكيد هو فضاء العينة Ω، ويقع دائماً.'
+            }, {
+                id: 6,
+                topic: 'الحادث المستحيل',
+                text: 'الحادث المستحيل هو:',
+                options: ['Φ', 'Ω', 'A ∩ B', 'A ∪ B'],
+                answer: 0,
+                explain: 'الحادث المستحيل هو Φ، لا يمكن أن يقع أبداً.'
+            }, {
+                id: 7,
+                topic: 'الحوادث المستقلة',
+                text: 'الحوادث المستقلة هي التي:',
+                options: ['وقوع أحدها يؤثر على الآخر', 'وقوع أحدها لا يؤثر على الآخر',
+                    'تقع دائماً معاً', 'لا يمكن وقوعها معاً'
+                ],
+                answer: 1,
+                explain: 'الحوادث المستقلة: وقوع أحدها لا يؤثر على وقوع الآخر.'
+            }, {
+                id: 8,
+                topic: 'دورة GMA402 - الحوادث المتنافية',
+                text: 'إذا كان A = {1,3,5} و B = {2,4,6} في تجربة رمي حجر النرد، فما هي العلاقة بين A و B؟',
+                options: ['متنافيان', 'متناميان', 'متنافيان ومتناميان', 'لا شيء مما سبق'],
+                answer: 0,
+                explain: 'A ∩ B = Φ → متنافيان'
+            }]
+        }, {
+            id: 6,
+            name: 'الفصل السادس: الاحتمالات والعمليات عليها',
+            short: 'الفصل السادس',
+            icon: '🎯',
+            tag: 'احتمالات',
+            tagColor: 'blue',
+            theory: [
+                'الاحتمال: قياس فرصة أو حظ وقوع حادث ما، يُرمز له بـ P(A)',
+                '0 ≤ P(A) ≤ 1 (قيمة الاحتمال محصورة بين 0 و 1)',
+                'P(Ω) = 1 (الحادث الأكيد يقع دائماً)',
+                'P(Φ) = 0 (الحادث المستحيل لا يمكن وقوعه)',
+                'الاحتمال الشرطي: P(B|A) = P(A∩B) ÷ P(A) حيث P(A) > 0',
+                'اتحاد حادثين متنافيين: P(A∪B) = P(A) + P(B) (إذا كان A∩B = Φ)',
+                'اتحاد حادثين غير متنافيين: P(A∪B) = P(A) + P(B) - P(A∩B)',
+                'تقاطع حادثين مستقلين: P(A∩B) = P(A) × P(B)',
+                'تقاطع حادثين غير مستقلين (شرطيين): P(A∩B) = P(A) × P(B|A)',
+                'الاحتمال الكلي: P(A) = ∑ P(Bi) × P(A|Bi) (حيث Bi تشكل تجزئة لفضاء العينة)',
+                'قاعدة بايز: P(Bi|A) = [P(Bi) × P(A|Bi)] ÷ P(A) (احتمال السبب)',
+                'شرط الاستقلال: إذا كانت P(A∩B) = P(A) × P(B) فهما مستقلان'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف الاحتمال',
+                text: 'الاحتمال هو:',
+                options: ['قياس فرصة وقوع حادث', 'نتيجة مؤكدة', 'حادث مستحيل', 'تجربة عشوائية'],
+                answer: 0,
+                explain: 'الاحتمال = قياس فرصة أو حظ وقوع حادث ما.'
+            }, {
+                id: 2,
+                topic: 'خصائص الاحتمال',
+                text: 'قيمة الاحتمال P(A) محصورة بين:',
+                options: ['0 و 1', '-1 و 1', '0 و 100', '1 و 10'],
+                answer: 0,
+                explain: '0 ≤ P(A) ≤ 1'
+            }, {
+                id: 3,
+                topic: 'خصائص الاحتمال',
+                text: 'P(Ω) =',
+                options: ['0', '1', '0.5', '100'],
+                answer: 1,
+                explain: 'P(Ω) = 1 (الحادث الأكيد).'
+            }, {
+                id: 4,
+                topic: 'خصائص الاحتمال',
+                text: 'P(Φ) =',
+                options: ['0', '1', '0.5', '100'],
+                answer: 0,
+                explain: 'P(Φ) = 0 (الحادث المستحيل).'
+            }, {
+                id: 5,
+                topic: 'الاحتمال الشرطي',
+                text: 'الاحتمال الشرطي P(B|A) يعبر عن:',
+                options: ['احتمال وقوع B بشرط وقوع A', 'احتمال وقوع A بشرط وقوع B',
+                    'احتمال وقوع A و B معاً', 'احتمال وقوع A أو B'
+                ],
+                answer: 0,
+                explain: 'P(B|A) = احتمال وقوع B بشرط أن يكون A قد وقع.'
+            }, {
+                id: 6,
+                topic: 'اتحاد حادثين متنافيين',
+                text: 'إذا كان A و B متنافيين، فإن P(A ∪ B) =',
+                options: ['P(A) + P(B)', 'P(A) + P(B) - P(A∩B)', 'P(A) × P(B)',
+                    'P(A) ÷ P(B)'
+                ],
+                answer: 0,
+                explain: 'للحوادث المتنافية: P(A ∪ B) = P(A) + P(B)'
+            }, {
+                id: 7,
+                topic: 'اتحاد حادثين غير متنافيين',
+                text: 'إذا كان A و B غير متنافيين، فإن P(A ∪ B) =',
+                options: ['P(A) + P(B)', 'P(A) + P(B) - P(A∩B)', 'P(A) × P(B)',
+                    'P(A) ÷ P(B)'
+                ],
+                answer: 1,
+                explain: 'للحوادث غير المتنافية: P(A ∪ B) = P(A) + P(B) - P(A∩B)'
+            }, {
+                id: 8,
+                topic: 'تقاطع حادثين مستقلين',
+                text: 'إذا كان A و B مستقلين، فإن P(A ∩ B) =',
+                options: ['P(A) + P(B)', 'P(A) + P(B) - P(A∩B)', 'P(A) × P(B)',
+                    'P(A) ÷ P(B)'
+                ],
+                answer: 2,
+                explain: 'للحوادث المستقلة: P(A ∩ B) = P(A) × P(B)'
+            }, {
+                id: 9,
+                topic: 'تقاطع حادثين غير مستقلين',
+                text: 'إذا كان A و B غير مستقلين، فإن P(A ∩ B) =',
+                options: ['P(A) + P(B)', 'P(A) × P(B|A)', 'P(A) × P(B)', 'P(A) ÷ P(B)'],
+                answer: 1,
+                explain: 'للحوادث غير المستقلة: P(A ∩ B) = P(A) × P(B|A)'
+            }, {
+                id: 10,
+                topic: 'الاحتمال الكلي',
+                text: 'الاحتمال الكلي P(A) =',
+                options: ['∑ P(Bi) × P(A|Bi)', '∑ P(Bi) + P(A|Bi)', '∑ P(Bi) ÷ P(A|Bi)',
+                    '∑ P(Bi) - P(A|Bi)'
+                ],
+                answer: 0,
+                explain: 'الاحتمال الكلي = ∑ P(Bi) × P(A|Bi)'
+            }, {
+                id: 11,
+                topic: 'قاعدة بايز',
+                text: 'قاعدة بايز تستخدم لحساب:',
+                options: ['الاحتمال الكلي', 'احتمال السبب P(Bi|A)', 'احتمال الاتحاد',
+                    'احتمال التقاطع'
+                ],
+                answer: 1,
+                explain: 'قاعدة بايز: P(Bi|A) = [P(Bi) × P(A|Bi)] ÷ P(A)'
+            }, {
+                id: 12,
+                topic: 'الحوادث المستقلة',
+                text: 'إذا كانت P(A ∩ B) = P(A) × P(B)، فإن A و B:',
+                options: ['متنافيان', 'مستقلان', 'متناميان', 'شرطيان'],
+                answer: 1,
+                explain: 'P(A ∩ B) = P(A) × P(B) هو شرط استقلال الحادثين.'
+            }]
+        }, {
+            id: 7,
+            name: 'الفصل السابع: التوزيع الطبيعي والمعياري',
+            short: 'الفصل السابع',
+            icon: '🔔',
+            tag: 'توزيعات',
+            tagColor: 'green',
+            theory: [
+                'التوزيع الطبيعي: توزيع متماثل على شكل جرس، القمة في المنتصف عند μ',
+                'في التوزيع الطبيعي: μ = Med = Mod (الوسط = الوسيط = المنوال)',
+                'المساحة الكلية تحت منحنى التوزيع الطبيعي = 1',
+                'نقطتا الانعطاف في التوزيع الطبيعي عند μ - σ و μ + σ',
+                'التوزيع الطبيعي المعياري: μ = 0، σ = 1، يُرمز له بـ Z ~ N(0,1)',
+                'قانون التحويل: Z = (X - μ) ÷ σ (لتحويل أي توزيع طبيعي إلى معياري)',
+                'Z > 0 → X > μ (القيمة أكبر من الوسط)',
+                'Z < 0 → X < μ (القيمة أصغر من الوسط)',
+                'Z = 0 → X = μ (القيمة تساوي الوسط)',
+                'قاعدة 68-95-99.7: 68% ضمن μ±σ، 95% ضمن μ±2σ، 99.7% ضمن μ±3σ',
+                'جدول التوزيع المعياري: يعطي P(Z < z) من -∞ إلى z',
+                'P(Z > z) = 1 - P(Z < z)',
+                'P(Z < -z) = 1 - P(Z < z) (بسبب التماثل)',
+                'P(-z₁ < Z < z₂) = P(Z < z₂) - P(Z < -z₁)'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'التوزيع الطبيعي',
+                text: 'التوزيع الطبيعي هو توزيع:',
+                options: ['متماثل حول الوسط', 'غير متماثل', 'له قمتان', 'ملتوي دائماً'],
+                answer: 0,
+                explain: 'التوزيع الطبيعي متماثل حول الوسط الحسابي μ.'
+            }, {
+                id: 2,
+                topic: 'خصائص التوزيع الطبيعي',
+                text: 'في التوزيع الطبيعي، العلاقة بين الوسط والوسيط والمنوال هي:',
+                options: ['μ < Med < Mod', 'μ > Med > Mod', 'μ = Med = Mod', 'Med < μ < Mod'],
+                answer: 2,
+                explain: 'في التوزيع الطبيعي: μ = Med = Mod'
+            }, {
+                id: 3,
+                topic: 'التوزيع الطبيعي المعياري',
+                text: 'التوزيع الطبيعي المعياري له:',
+                options: ['μ = 0, σ = 1', 'μ = 1, σ = 0', 'μ = 0, σ = 0', 'μ = 1, σ = 1'],
+                answer: 0,
+                explain: 'التوزيع الطبيعي المعياري: μ = 0 و σ = 1'
+            }, {
+                id: 4,
+                topic: 'قانون التحويل',
+                text: 'قانون التحويل إلى التوزيع المعياري هو:',
+                options: ['Z = (X - μ) ÷ σ', 'Z = (X + μ) ÷ σ', 'Z = (X - σ) ÷ μ',
+                    'Z = (X + σ) ÷ μ'
+                ],
+                answer: 0,
+                explain: 'Z = (X - μ) ÷ σ'
+            }, {
+                id: 5,
+                topic: 'تفسير Z',
+                text: 'إذا كانت Z = 0، فهذا يعني أن X:',
+                options: ['أكبر من μ', 'أصغر من μ', 'يساوي μ', 'يساوي σ'],
+                answer: 2,
+                explain: 'Z = 0 → X = μ (القيمة تساوي الوسط).'
+            }, {
+                id: 6,
+                topic: 'قاعدة 68-95-99.7',
+                text: 'في التوزيع الطبيعي، حوالي 68% من البيانات تقع ضمن:',
+                options: ['μ ± σ', 'μ ± 2σ', 'μ ± 3σ', 'μ ± 0.5σ'],
+                answer: 0,
+                explain: '68% من البيانات تقع ضمن μ ± σ.'
+            }, {
+                id: 7,
+                topic: 'قاعدة 68-95-99.7',
+                text: 'في التوزيع الطبيعي، حوالي 95% من البيانات تقع ضمن:',
+                options: ['μ ± σ', 'μ ± 2σ', 'μ ± 3σ', 'μ ± 0.5σ'],
+                answer: 1,
+                explain: '95% من البيانات تقع ضمن μ ± 2σ.'
+            }, {
+                id: 8,
+                topic: 'قاعدة 68-95-99.7',
+                text: 'في التوزيع الطبيعي، حوالي 99.7% من البيانات تقع ضمن:',
+                options: ['μ ± σ', 'μ ± 2σ', 'μ ± 3σ', 'μ ± 0.5σ'],
+                answer: 2,
+                explain: '99.7% من البيانات تقع ضمن μ ± 3σ.'
+            }, {
+                id: 9,
+                topic: 'دورة F22 - التحويل',
+                text: 'إذا كان μ = 175، σ = 5، و X = 180، فما هي قيمة Z؟',
+                options: ['-1', '0', '1', '2'],
+                answer: 2,
+                explain: 'Z = (180-175) ÷ 5 = 5 ÷ 5 = 1'
+            }, {
+                id: 10,
+                topic: 'دورة GMA402 - التوزيع الطبيعي',
+                text: 'في التوزيع الطبيعي، حوالي 68% من البيانات تقع ضمن:',
+                options: ['μ ± σ', 'μ ± 2σ', 'μ ± 3σ', 'μ ± 0.5σ'],
+                answer: 0,
+                explain: '68% من البيانات تقع ضمن μ ± σ.'
+            }]
+        }, {
+            id: 8,
+            name: 'الفصل الثامن: الارتباط والانحدار',
+            short: 'الفصل الثامن',
+            icon: '📊',
+            tag: 'ارتباط',
+            tagColor: 'purple',
+            theory: [
+                'الارتباط: دراسة العلاقة بين متغيرين أو أكثر، وتحديد نوعها (طردية/عكسية) وقوتها',
+                'المتغير المستقل (X): هو المتغير المؤثر (السبب)',
+                'المتغير التابع (Y): هو المتغير المتأثر (النتيجة)',
+                'الشكل الانتشار: تمثيل بياني للعلاقة بين X و Y بنقاط على المحاور الإحداثية',
+                'معامل بيرسون (R): مقياس كمي لقوة العلاقة الخطية، محصور بين -1 و +1',
+                'R = 0 → لا توجد علاقة خطية بين المتغيرين',
+                'R > 0 → علاقة طردية (تزداد Y بزيادة X)',
+                'R < 0 → علاقة عكسية (تنقص Y بزيادة X)',
+                '|R| بين 0 و 0.3 → علاقة ضعيفة',
+                '|R| بين 0.3 و 0.7 → علاقة متوسطة',
+                '|R| بين 0.7 و 1 → علاقة قوية',
+                'معامل سبيرمان: يستخدم للبيانات الرتبية (النوعية)',
+                'معامل الاقتران: يستخدم للمتغيرات النوعية ذات القيمتين',
+                'معادلة الانحدار: ŷ = a + bx (للتنبؤ بقيم Y من X)',
+                'b = ميل خط الانحدار (معامل الانحدار)',
+                'a = نقطة التقاطع مع محور Y (ثابت الانحدار)',
+                'معامل التحديد: R² = R × R (نسبة التغير في Y التي يفسرها X)'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف الارتباط',
+                text: 'الارتباط هو دراسة:',
+                options: ['العلاقة بين متغيرين أو أكثر', 'متوسط البيانات', 'تشتت البيانات',
+                    'توزيع البيانات'
+                ],
+                answer: 0,
+                explain: 'الارتباط = دراسة العلاقة بين متغيرين أو أكثر.'
+            }, {
+                id: 2,
+                topic: 'معامل ارتباط بيرسون',
+                text: 'معامل ارتباط بيرسون (R) محصور بين:',
+                options: ['0 و 1', '-1 و +1', '-∞ و +∞', '0 و 100'],
+                answer: 1,
+                explain: '-1 ≤ R ≤ +1'
+            }, {
+                id: 3,
+                topic: 'معامل ارتباط بيرسون',
+                text: 'إذا كان R = 0، فهذا يعني:',
+                options: ['علاقة طردية تامة', 'علاقة عكسية تامة', 'لا توجد علاقة خطية',
+                    'علاقة قوية جداً'
+                ],
+                answer: 2,
+                explain: 'R = 0 يعني عدم وجود علاقة خطية بين المتغيرين.'
+            }, {
+                id: 4,
+                topic: 'معامل ارتباط بيرسون',
+                text: 'إذا كان R موجباً، فهذا يعني:',
+                options: ['علاقة طردية', 'علاقة عكسية', 'لا توجد علاقة', 'علاقة تامة'],
+                answer: 0,
+                explain: 'R > 0 → علاقة طردية (تزداد Y بزيادة X).'
+            }, {
+                id: 5,
+                topic: 'معامل ارتباط سبيرمان',
+                text: 'معامل ارتباط سبيرمان يستخدم للبيانات:',
+                options: ['الكمية فقط', 'الرتبية (النوعية)', 'المستمرة فقط', 'جميع ما سبق'],
+                answer: 1,
+                explain: 'سبيرمان يستخدم للبيانات الرتبية (النوعية).'
+            }, {
+                id: 6,
+                topic: 'معامل الاقتران',
+                text: 'معامل الاقتران يستخدم لقياس العلاقة بين:',
+                options: ['متغيرين كميين', 'متغيرين نوعيين', 'متغير كمي ومتغير نوعي', 'جميع ما سبق'],
+                answer: 1,
+                explain: 'معامل الاقتران يستخدم للمتغيرات النوعية ذات القيمتين.'
+            }, {
+                id: 7,
+                topic: 'معادلة الانحدار',
+                text: 'معادلة الانحدار الخطي هي:',
+                options: ['ŷ = a + bx', 'y = a + bx', 'ŷ = a - bx', 'y = ax + b'],
+                answer: 0,
+                explain: 'معادلة الانحدار: ŷ = a + bx'
+            }, {
+                id: 8,
+                topic: 'معامل التحديد',
+                text: 'معامل التحديد R² يحسب من العلاقة:',
+                options: ['R² = R', 'R² = R × R', 'R² = R + R', 'R² = 1 - R'],
+                answer: 1,
+                explain: 'R² = R × R (مربع معامل الارتباط).'
+            }, {
+                id: 9,
+                topic: 'دورة GMA402 - معامل بيرسون',
+                text: 'قيمة معامل ارتباط بيرسون محصورة بين:',
+                options: ['0 و 1', '-1 و +1', '-∞ و +∞', '0 و 100'],
+                answer: 1,
+                explain: '-1 ≤ R ≤ +1'
+            }, {
+                id: 10,
+                topic: 'دورة GMA402 - معامل التحديد',
+                text: 'إذا كان R = 0.992، فإن R² =',
+                options: ['0.984', '0.992', '0.5', '0.996'],
+                answer: 0,
+                explain: 'R² = 0.992² = 0.984'
+            }]
+        }, {
+            id: 9,
+            name: 'الفصل التاسع: السلاسل الزمنية',
+            short: 'الفصل التاسع',
+            icon: '📈',
+            tag: 'زمنية',
+            tagColor: 'teal',
+            theory: [
+                'السلسلة الزمنية (Time Series): بيانات تصف ظاهرة خلال فترات زمنية متعاقبة (سنوات، أشهر، ...)',
+                'الاتجاه العام (Trend): الحركة المستمرة على المدى البعيد (صاعد أو هابط)',
+                'الحركات الدورية (Cycle): حركة متكررة على فترات طويلة (أكثر من سنة)، مرتبطة بالدورات الاقتصادية',
+                'العوامل الموسمية (Seasonal): حركة متكررة سنوياً بنفس الاتجاه، مرتبطة بالفصول والعادات',
+                'العوامل غير المنتظمة (Irregular): حركة عشوائية لا يمكن التنبؤ بها (حروب، كوارث)',
+                'معادلة الاتجاه العام (طريقة المربعات الصغرى): ŷt = a + bt',
+                'b = متوسط التغير السنوي (معدل النمو)',
+                'a = قيمة الظاهرة عند t = 0 (سنة الأساس)',
+                'الرقم القياسي الموسمي (بدون اتجاه): S = (متوسط الفصل ÷ المتوسط العام) × 100',
+                'الرقم القياسي الموسمي (مع اتجاه): يتم حسابه بعد إيجاد معادلة الاتجاه العام',
+                'S > 100 → تأثير موسمي موجب (القيم أعلى من المتوسط)',
+                'S < 100 → تأثير موسمي سالب (القيم أقل من المتوسط)',
+                'S = 100 → لا يوجد تأثير موسمي',
+                'القيمة المتوقعة مع الموسم = ŷt × S',
+                'القيمة بدون موسم = (y ÷ S) × 100'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف السلسلة الزمنية',
+                text: 'السلسلة الزمنية هي بيانات تصف ظاهرة:',
+                options: ['في مكان واحد', 'خلال فترات زمنية متعاقبة', 'في مكانين مختلفين',
+                    'بطريقة عشوائية'
+                ],
+                answer: 1,
+                explain: 'السلسلة الزمنية = بيانات ظاهرة خلال فترات زمنية متعاقبة.'
+            }, {
+                id: 2,
+                topic: 'الاتجاه العام',
+                text: 'الاتجاه العام (Trend) هو حركة:',
+                options: ['مستمرة على المدى البعيد', 'موسمية', 'عشوائية', 'دورية'],
+                answer: 0,
+                explain: 'الاتجاه العام = حركة مستمرة على المدى البعيد (صاعد أو هابط).'
+            }, {
+                id: 3,
+                topic: 'الحركات الدورية',
+                text: 'الحركات الدورية (Cycle) هي حركة:',
+                options: ['مستمرة', 'متكررة على فترات طويلة', 'موسمية', 'عشوائية'],
+                answer: 1,
+                explain: 'الحركات الدورية = متكررة على فترات طويلة (مرتبطة بالدورات الاقتصادية).'
+            }, {
+                id: 4,
+                topic: 'العوامل الموسمية',
+                text: 'العوامل الموسمية (Seasonal) هي حركة:',
+                options: ['مستمرة', 'متكررة سنوياً بنفس الاتجاه', 'دورية', 'عشوائية'],
+                answer: 1,
+                explain: 'العوامل الموسمية = متكررة سنوياً بنفس الاتجاه (مرتبطة بالفصول والعادات).'
+            }, {
+                id: 5,
+                topic: 'معادلة الاتجاه العام',
+                text: 'معادلة الاتجاه العام هي:',
+                options: ['ŷt = a + bt', 'ŷt = a - bt', 'ŷt = abt', 'ŷt = a × bᵗ'],
+                answer: 0,
+                explain: 'معادلة الاتجاه العام: ŷt = a + bt'
+            }, {
+                id: 6,
+                topic: 'ميل الاتجاه',
+                text: 'في معادلة الاتجاه العام ŷt = a + bt، b يمثل:',
+                options: ['قيمة الظاهرة عند t=0', 'متوسط التغير السنوي', 'الزمن', 'القيمة التقديرية'],
+                answer: 1,
+                explain: 'b = متوسط التغير السنوي (معدل النمو).'
+            }, {
+                id: 7,
+                topic: 'الرقم القياسي الموسمي',
+                text: 'الرقم القياسي الموسمي S يقيس:',
+                options: ['الاتجاه العام', 'تأثير الموسم على الظاهرة', 'التغير الدوري',
+                    'العوامل العشوائية'
+                ],
+                answer: 1,
+                explain: 'الرقم القياسي الموسمي = يقيس تأثير الموسم على قيم الظاهرة.'
+            }, {
+                id: 8,
+                topic: 'الرقم القياسي الموسمي',
+                text: 'إذا كان S > 100، فهذا يعني:',
+                options: ['تأثير موسمي موجب', 'تأثير موسمي سالب', 'لا يوجد تأثير موسمي',
+                    'تأثير عشوائي'
+                ],
+                answer: 0,
+                explain: 'S > 100 → تأثير موسمي موجب (القيم أعلى من المتوسط).'
+            }, {
+                id: 9,
+                topic: 'دورة F22 - الاتجاه العام',
+                text: 'في معادلة الاتجاه العام ŷt = a + bt، b يمثل:',
+                options: ['قيمة الظاهرة عند t=0', 'متوسط التغير السنوي', 'الزمن', 'القيمة التقديرية'],
+                answer: 1,
+                explain: 'b = متوسط التغير السنوي (معدل النمو).'
+            }, {
+                id: 10,
+                topic: 'دورة F22 - الرقم الموسمي',
+                text: 'إذا كان ŷt = 14.8 + 3.2t و S للفصل الأول = 82.5%، ما هي القيمة المتوقعة للفصل الأول عند t = 21؟',
+                options: ['67.65', '82', '75', '70'],
+                answer: 0,
+                explain: 'ŷt = 14.8 + 3.2(21) = 82، القيمة مع الموسم = 82 × 0.825 = 67.65'
+            }]
+        }, {
+            id: 10,
+            name: 'الفصل العاشر: الأرقام القياسية',
+            short: 'الفصل العاشر',
+            icon: '📊',
+            tag: 'قياسية',
+            tagColor: 'orange',
+            theory: [
+                'الرقم القياسي: أداة إحصائية لمقارنة ظاهرة في فترات زمنية مختلفة أو أماكن مختلفة',
+                'سنة الأساس: السنة التي تتم المقارنة بها، ويكون رقمها القياسي = 100',
+                'سنة الدراسة (المقارنة): السنة المراد مقارنتها بسنة الأساس',
+                'الرقم القياسي البسيط: I = (p₁ ÷ p₀) × 100 (لسلعة واحدة)',
+                'الرقم التجميعي البسيط: I = (∑p₁ ÷ ∑p₀) × 100 (لعدة سلع)',
+                'رقم لاسبير (Laspeyres): يرجح بكميات سنة الأساس (q₀)',
+                'رقم باش (Paasche): يرجح بكميات سنة الدراسة (q₁)',
+                'رقم فيشر (Fisher): الرقم المثالي، الوسط الهندسي للاسبير وباش (√(IL × IP))',
+                'رقم مارشال-إيدجورث: يرجح بمجموع كميات السنتين (q₀ + q₁)',
+                'القيمة الاسمية: القيمة بأسعار السنة الحالية (الظاهرية)',
+                'القيمة الحقيقية: القيمة بعد عزل تأثير التضخم، بأسعار سنة الأساس',
+                'القيمة الحقيقية = (القيمة الاسمية ÷ I) × 100',
+                'I > 100 → زيادة عن سنة الأساس',
+                'I < 100 → نقص عن سنة الأساس',
+                'I = 100 → لا تغير عن سنة الأساس'
+            ],
+            questions: [{
+                id: 1,
+                topic: 'تعريف الرقم القياسي',
+                text: 'الرقم القياسي هو أداة لـ:',
+                options: ['جمع البيانات', 'مقارنة ظاهرة في فترات مختلفة', 'تحليل البيانات',
+                    'تخزين البيانات'
+                ],
+                answer: 1,
+                explain: 'الرقم القياسي = أداة لمقارنة ظاهرة في فترات زمنية مختلفة أو أماكن مختلفة.'
+            }, {
+                id: 2,
+                topic: 'سنة الأساس',
+                text: 'سنة الأساس في الأرقام القياسية يكون رقمها:',
+                options: ['0', '1', '100', '1000'],
+                answer: 2,
+                explain: 'سنة الأساس يكون رقمها القياسي = 100.'
+            }, {
+                id: 3,
+                topic: 'الرقم البسيط',
+                text: 'الرقم القياسي البسيط يحسب من العلاقة:',
+                options: ['(p₁ ÷ p₀) × 100', '(p₀ ÷ p₁) × 100', 'p₁ + p₀', 'p₁ - p₀'],
+                answer: 0,
+                explain: 'الرقم البسيط = (p₁ ÷ p₀) × 100'
+            }, {
+                id: 4,
+                topic: 'الرقم التجميعي البسيط',
+                text: 'الرقم التجميعي البسيط يحسب من العلاقة:',
+                options: ['(∑p₁ ÷ ∑p₀) × 100', '(∑p₀ ÷ ∑p₁) × 100', '∑p₁ + ∑p₀', '∑p₁ - ∑p₀'],
+                answer: 0,
+                explain: 'الرقم التجميعي البسيط = (∑p₁ ÷ ∑p₀) × 100'
+            }, {
+                id: 5,
+                topic: 'رقم لاسبير',
+                text: 'رقم لاسبير يرجح بكميات:',
+                options: ['سنة الدراسة (q₁)', 'سنة الأساس (q₀)', 'متوسط السنتين', 'بدون ترجيح'],
+                answer: 1,
+                explain: 'لاسبير يرجح بكميات سنة الأساس (q₀).'
+            }, {
+                id: 6,
+                topic: 'رقم باش',
+                text: 'رقم باش يرجح بكميات:',
+                options: ['سنة الدراسة (q₁)', 'سنة الأساس (q₀)', 'متوسط السنتين', 'بدون ترجيح'],
+                answer: 0,
+                explain: 'باش يرجح بكميات سنة الدراسة (q₁).'
+            }, {
+                id: 7,
+                topic: 'رقم فيشر',
+                text: 'رقم فيشر هو:',
+                options: ['الوسط الحسابي للاسبير وباش', 'الوسط الهندسي للاسبير وباش',
+                    'مجموع الاسبير وباش', 'الفرق بين الاسبير وباش'
+                ],
+                answer: 1,
+                explain: 'رقم فيشر = الوسط الهندسي للاسبير وباش: √(IL × IP)'
+            }, {
+                id: 8,
+                topic: 'القيمة الحقيقية',
+                text: 'القيمة الحقيقية تحسب من العلاقة:',
+                options: ['(القيمة الاسمية ÷ I) × 100', '(القيمة الاسمية × I) ÷ 100',
+                    'القيمة الاسمية + I', 'القيمة الاسمية - I'
+                ],
+                answer: 0,
+                explain: 'القيمة الحقيقية = (القيمة الاسمية ÷ I) × 100'
+            }, {
+                id: 9,
+                topic: 'دورة F22 - القيمة الحقيقية',
+                text: 'إذا كان الدخل الاسمي في 2017 = 9250 والرقم القياسي = 185، فإن الدخل الحقيقي =',
+                options: ['5000', '9250', '5550', '4500'],
+                answer: 0,
+                explain: 'الدخل الحقيقي = (9250 ÷ 185) × 100 = 5000'
+            }, {
+                id: 10,
+                topic: 'دورة F22 - رقم فيشر',
+                text: 'رقم فيشر هو:',
+                options: ['الوسط الحسابي للاسبير وباش', 'الوسط الهندسي للاسبير وباش',
+                    'مجموع الاسبير وباش', 'الفرق بين الاسبير وباش'
+                ],
+                answer: 1,
+                explain: 'رقم فيشر = الوسط الهندسي للاسبير وباش: √(IL × IP)'
+            }]
+        }];
+
+        // =============================================================
+        // RENDER
+        // =============================================================
+        let totalQuestions = 0;
+        const tabsContainer = document.getElementById('tabsContainer');
+        const contentContainer = document.getElementById('contentContainer');
+
+        // Create tabs
+        chaptersData.forEach((chapter, idx) => {
+            const tab = document.createElement('div');
+            tab.className = 'tab' + (idx === 0 ? ' active' : '');
+            tab.dataset.index = idx;
+            tab.innerHTML = `
+                        <span class="full">${chapter.icon} ${chapter.name}</span>
+                        <span class="short">${chapter.icon} ف${chapter.id}</span>
+                        <span class="num">${chapter.questions.length}</span>
+                    `;
+            tab.onclick = function() { showChapter(idx); };
+            tabsContainer.appendChild(tab);
+        });
+
+        // Create content for all chapters
+        chaptersData.forEach((chapter, idx) => {
+            const card = document.createElement('div');
+            card.className = 'content-card' + (idx === 0 ? ' active' : '');
+            card.id = 'chapter-' + idx;
+
+            // Theory section
+            let theoryHtml = `
+                        <div class="theory-section">
+                            <div class="title">
+                                <span class="icon">${chapter.icon}</span>
+                                ${chapter.name}
+                                <span class="tag ${chapter.tagColor}">${chapter.tag}</span>
+                            </div>
+                            <ul>
+                    `;
+            chapter.theory.forEach(item => {
+                theoryHtml += `<li>${item}</li>`;
+            });
+            theoryHtml += `</ul></div>`;
+
+            // Questions section
+            let questionsHtml = `
+                        <div class="q-section-title">
+                            📝 أسئلة ${chapter.name}
+                            <span class="tag ${chapter.tagColor}">${chapter.questions.length} سؤال</span>
+                        </div>
+                    `;
+
+            chapter.questions.forEach((q, qIdx) => {
+                const letters = ['أ', 'ب', 'ج', 'د'];
+                const optionsHtml = q.options.map((opt, i) => {
+                    return `<div class="opt"><span class="opt-letter">${letters[i]})</span> ${opt}</div>`;
+                }).join('');
+
+                const isExam = q.topic.includes('دورة');
+                const examBadge = isExam ? `<span class="exam ${q.topic.includes('F22') ? '' : 'blue'}">${q.topic}</span>` :
+                    '';
+
+                questionsHtml += `
+                            <div class="q-item">
+                                <div class="q-header">
+                                    <span class="q-num">${q.id}</span>
+                                    <span class="q-topic">${q.topic} ${examBadge}</span>
+                                </div>
+                                <div class="q-text">${q.text}</div>
+                                <div class="q-options">${optionsHtml}</div>
+                                <button class="btn-answer" onclick="toggleAnswer(this)">📖 إظهار الحل</button>
+                                <div class="answer-box">
+                                    <div class="correct">✅ الإجابة: ${letters[q.answer]}) ${q.options[q.answer]}</div>
+                                    <div class="explain">💡 ${q.explain}</div>
+                                </div>
+                            </div>
+                        `;
+            });
+
+            card.innerHTML = theoryHtml + questionsHtml;
+            contentContainer.appendChild(card);
+        });
+
+        // =============================================================
+        // FUNCTIONS
+        // =============================================================
+        function showChapter(index) {
+            document.querySelectorAll('.content-card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('chapter-' + index).classList.add('active');
+            document.querySelectorAll('.tab')[index].classList.add('active');
+        }
+
+        function toggleAnswer(btn) {
+            const box = btn.nextElementSibling;
+            if (box.classList.contains('show')) {
+                box.classList.remove('show');
+                btn.textContent = '📖 إظهار الحل';
+                btn.classList.remove('showing');
+            } else {
+                box.classList.add('show');
+                btn.textContent = '📖 إخفاء الحل';
+                btn.classList.add('showing');
+            }
+        }
+
+        function expandAll() {
+            const boxes = document.querySelectorAll('.answer-box');
+            const btns = document.querySelectorAll('.btn-answer');
+            const allShown = boxes.length > 0 && boxes[0].classList.contains('show');
+
+            boxes.forEach((b, i) => {
+                if (allShown) {
+                    b.classList.remove('show');
+                    btns[i].textContent = '📖 إظهار الحل';
+                    btns[i].classList.remove('showing');
+                } else {
+                    b.classList.add('show');
+                    btns[i].textContent = '📖 إخفاء الحل';
+                    btns[i].classList.add('showing');
+                }
+            });
+        }
+
+        // =============================================================
+        // TOTAL COUNT
+        // =============================================================
+        let total = 0;
+        chaptersData.forEach(c => total += c.questions.length);
+        document.getElementById('totalCount').textContent = total;
+
+        // =============================================================
+        // KEYBOARD SHORTCUTS
+        // =============================================================
+        document.addEventListener('keydown', function(e) {
+            const tabs = document.querySelectorAll('.tab');
+            const activeIdx = Array.from(tabs).findIndex(t => t.classList.contains('active'));
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = (activeIdx + 1) % tabs.length;
+                showChapter(next);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = (activeIdx - 1 + tabs.length) % tabs.length;
+                showChapter(prev);
+            } else if (e.key === 'Enter') {
+                const btn = document.querySelector('.btn-answer:not(.showing)');
+                if (btn) btn.click();
+            }
+        });
+
+        console.log('✅ الأسئلة النظرية الشاملة جاهزة!');
+        console.log('📚 ' + chaptersData.length + ' فصول');
+        console.log('📝 ' + total + ' سؤالاً نظرياً');
+        console.log('🎯 اختصارات: → التالي، ← السابق، Enter = عرض الحل');
+    </script>
+
+</body>
+</html>
